@@ -16,9 +16,25 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private SpriteRenderer playerSpriteRenderer;
 
+    [SerializeField] private Transform GunTip;
+
+    [SerializeField] private GameObject bullet;
+
+    [SerializeField] private float GunFireRate;
+
+    [SerializeField] private float bulletMovementSpeed;
+
     Vector2 mousePosition;
 
     float rotZ;
+
+    float ShotBulletTime;
+
+    bool canShoot = true;
+
+    bool hasShot = false;
+
+    private GameObject _lastSpawnedBullet;
 
     // Start is called before the first frame update
     void Start()
@@ -29,13 +45,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector2 direction = new Vector2(horizontal, vertical);
         mousePosition = camera.ScreenToWorldPoint(Input.mousePosition); // converts position of mouse on screen to world coordinates
-
         movementController.MovePosition(direction, playerData.movementSpeed);
+
+        if(Input.GetMouseButtonDown(0) && canShoot)
+        {
+            ShotBulletTime = Time.time;
+            canShoot = false;
+            hasShot = true;
+        }
+
+        if (Time.time >= ShotBulletTime + GunFireRate && !canShoot)
+            canShoot = true;
     }
     
     private void FixedUpdate()
@@ -50,7 +74,8 @@ public class PlayerController : MonoBehaviour
         {
             if (GunSpriteRenderer.flipY)
             {
-                GunSprite.transform.localPosition = new Vector3(0.403f,0.148f, GunSprite.transform.localPosition.z);
+                GunSprite.transform.localPosition = new Vector3(0.403f,0.148f,GunSprite.transform.localPosition.z);
+                GunTip.transform.localPosition = new Vector3(0.86f,-0.109f,GunTip.transform.localPosition.z);
                 playerSpriteRenderer.flipX = false;
                 GunSpriteRenderer.flipY = false;
             }
@@ -60,8 +85,21 @@ public class PlayerController : MonoBehaviour
             if (!GunSpriteRenderer.flipY)
             {
                 GunSprite.transform.localPosition = new Vector3(0.4f,-0.482f,GunSprite.transform.localPosition.z);
+                GunTip.transform.localPosition = new Vector3(0.883f,-0.253f, GunTip.transform.localPosition.z);
                 playerSpriteRenderer.flipX = true;
                 GunSpriteRenderer.flipY = true;
+            }
+        }
+
+        if(hasShot)
+        {
+            _lastSpawnedBullet = Instantiate(bullet,GunTip.position,Quaternion.identity);
+            if (_lastSpawnedBullet != null)
+            {
+                Rigidbody2D bulletRB = _lastSpawnedBullet.GetComponent<Rigidbody2D>();
+                bulletRB.velocity = lookDir * bulletMovementSpeed;
+                Debug.Log(bulletRB.velocity);
+                hasShot = false;
             }
         }
     }
