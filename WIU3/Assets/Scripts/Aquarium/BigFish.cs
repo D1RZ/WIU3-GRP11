@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-//using Unity.VisualScripting;
 using UnityEngine;
 
-public class SmallFish : MonoBehaviour
+public class BigFish : MonoBehaviour
 {
     private State currentState;
     private Vector2 targetPosition;
@@ -11,18 +10,27 @@ public class SmallFish : MonoBehaviour
 
     [SerializeField] private Collider2D roamingArea;
     [SerializeField] private LayerMask foodLayer; // For efficiency reasons
-    [SerializeField] private GameObject fish; // For spawning new fish
+    [SerializeField] private GameObject bigFishPrefab; // For spawning new big fish
 
     private bool isWaiting = false;
     private bool onEatCooldown = false;
-    private int foodEaten = 0; // Counter for spawning new fish
+    private int smallFishEaten = 0; // Counter for spawning new big fish
     private float timeSinceLastEat = 0f; // Timer for tracking time since last eat
 
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float roamingSpeed = 1f; // Roaming speed of the big fish
+    [SerializeField] private float eatingSpeed = 3f; // Burst speed when eating or chasing small fish
     [SerializeField] private float dieSpeed = 1f; // Speed the fish floats up at when it dies
-    [SerializeField] private float slowingDistance = 0.5f; // Fish slow down when within this distance from target pos
     [SerializeField] private float detectionRadius = 10f; // detectionRadius for food
     [SerializeField] private float deathTime = 10f; // Time before the fish dies if no food is eaten
+
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        currentState = State.ROAM;
+        PickRandomPoint();
+        spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
+    }
 
     private enum State
     {
@@ -30,20 +38,17 @@ public class SmallFish : MonoBehaviour
         EAT
     }
 
-    private void Start()
-    {
-        currentState = State.ROAM;
-        PickRandomPoint();
-    }
-
     private void Update()
     {
-        // Update timer - for starving to death
-        timeSinceLastEat += Time.deltaTime;
-        if (timeSinceLastEat >= deathTime)
+        // Update timer
+        if (currentState == State.ROAM)
         {
-            Die();
-            return;
+            timeSinceLastEat += Time.deltaTime;
+            if (timeSinceLastEat >= deathTime)
+            {
+                Die();
+                return;
+            }
         }
 
         switch (currentState)
@@ -64,10 +69,7 @@ public class SmallFish : MonoBehaviour
         DetectFood();
 
         float distanceToTarget = Vector2.Distance(transform.position, targetPosition);
-        float currentSpeed = speed;
-
-        if (distanceToTarget < slowingDistance)
-            currentSpeed = Mathf.Lerp(0, speed, distanceToTarget / slowingDistance);    // Slow down the fish as it gets closer to the target
+        float currentSpeed = roamingSpeed;
 
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
         if (distanceToTarget <= 0.01f) // Start waiting when fish reach target position
@@ -78,29 +80,16 @@ public class SmallFish : MonoBehaviour
     {
         if (targetFood != null) // If food still exists
         {
-            Vector2 targetFoodPosition = targetFood.transform.position;
+            transform.position = Vector2.MoveTowards(transform.position, targetFood.transform.position, eatingSpeed * Time.deltaTime);
 
-            // Move the fish towards the food position
-            Vector2 newPosition = Vector2.MoveTowards(transform.position, targetFoodPosition, speed * Time.deltaTime);
-
-            // Keep the fish within the bounds of the roaming area
-            if (roamingArea != null)
-            {
-                Bounds bounds = roamingArea.bounds;
-                newPosition.x = Mathf.Clamp(newPosition.x, bounds.min.x, bounds.max.x);
-                newPosition.y = Mathf.Clamp(newPosition.y, bounds.min.y + 0.2f, bounds.max.y - 0.2f);
-            }
-
-            transform.position = newPosition;
-
-            if (Vector2.Distance(transform.position, targetFoodPosition) <= 0.5f) // When gets within range to eat food
+            if (Vector2.Distance(transform.position, targetFood.transform.position) <= 0.5f) // When gets within range to eat food
             {
                 Destroy(targetFood.gameObject);
-                foodEaten++;
-                if (foodEaten >= 2) // if ate 2 food, spawn new fish
+                smallFishEaten++;
+                if (smallFishEaten >= 3) // if ate 3 small fish, spawn new big fish
                 {
-                    spawnNewFish();
-                    foodEaten = 0;
+                    SpawnNewBigFish();
+                    smallFishEaten = 0;
                 }
                 StartCoroutine(EatCooldown());
 
@@ -123,18 +112,18 @@ public class SmallFish : MonoBehaviour
         }
     }
 
-    private void spawnNewFish()
+    private void SpawnNewBigFish()
     {
-        // Spawn new fish at same position and rotation
-        Instantiate(fish, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+        // Spawn new big fish at same position and rotation
+        Instantiate(bigFishPrefab, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
     }
 
     private IEnumerator EatCooldown()
     {
         onEatCooldown = true;
 
-        // Wait for a random time between 3 to 5 seconds
-        float waitTime = Random.Range(3f, 5f);
+        // Wait for a random time between 8 to 10 seconds
+        float waitTime = Random.Range(8f, 10f);
         yield return new WaitForSeconds(waitTime);
 
         onEatCooldown = false;
@@ -151,9 +140,9 @@ public class SmallFish : MonoBehaviour
         {
             foreach (Collider2D food in foodInRange)
             {
-                if (food.CompareTag("FloatingPlant") || food.CompareTag("FoodPellet"))
+                if (food.CompareTag("SmallFish"))
                 {
-                    targetFood = food; // Store the reference to the detected food
+                    targetFood = food; // Store the reference to the detected small fish
                     targetPosition = food.transform.position;
                     currentState = State.EAT;
                     break;
@@ -165,7 +154,7 @@ public class SmallFish : MonoBehaviour
     private void LookForward()
     {
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;    // Get direction of target position
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;    // Rotate fish to face direction its moving in
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;    // Rotate fish to face direction it's moving in
 
         if (direction.x < 0) // if moving left
             transform.rotation = Quaternion.Euler(new Vector3(180, 0, -angle));    // Flip the sprite and adjust the angle
@@ -192,7 +181,7 @@ public class SmallFish : MonoBehaviour
         {
             Bounds bounds = roamingArea.bounds;
             float x = Random.Range(bounds.min.x + 1f, bounds.max.x - 1f);
-            float y = Random.Range(bounds.min.y + 1f, bounds.max.y - 1f);
+            float y = Random.Range(bounds.min.y + 1f, bounds.max.y);
             targetPosition = new Vector2(x, y);
         }
     }
