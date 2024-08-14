@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6221871495546636904}
   - component: {fileID: 6927334232710950969}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: fishTile_032 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2819457075148126176}
   - component: {fileID: 2926835832164780476}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6874942171064253486}
   - component: {fileID: 473246693660135696}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Floating Plant
   m_TagString: FloatingPlant
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1304096277457416519}
   - component: {fileID: 8524434322454468796}
   - component: {fileID: 8392532485311685981}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Small Fish
   m_TagString: SmallFish
   m_Icon: {fileID: 0}
@@ -98,11 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3810804bb58f0b49950120a25b1cfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roamArea: {fileID: 0}
   roamingArea: {fileID: 0}
   foodLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   fish: {fileID: 4586331281289145463}
   speed: 2
   dieSpeed: 1

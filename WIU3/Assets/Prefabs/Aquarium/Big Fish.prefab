@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 731023409910004128}
   - component: {fileID: 1123707684300758647}
   - component: {fileID: 5257702538658696989}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Big Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   roamingArea: {fileID: 0}
   foodLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
   bigFishPrefab: {fileID: 7222825418489420656}
   roamingSpeed: 1
   eatingSpeed: 3
