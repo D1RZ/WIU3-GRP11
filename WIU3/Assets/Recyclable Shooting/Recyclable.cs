@@ -6,13 +6,16 @@ public class Recyclable : MonoBehaviour
 {
     [SerializeField] float maxPower;
     [SerializeField] float maxPowerSpeed;
+    [SerializeField] private float despawnDelay = 2.0f;    // Time in seconds before the object is despawned
     float shotPower;
+
+    private GameObject GameManager;
+
     private Rigidbody2D rb;
-    [SerializeField] private RecyclableData data;
+    public RecyclableData data;
     public GameObject SpriteImage;
 
-    private Vector2 AimPosition;
-    private bool isThrown;
+    private bool properlyScored;
 
     private PhysicsScene2D sceneMainPhysics;
     private PhysicsScene2D scenePredictionPhysics;
@@ -20,6 +23,9 @@ public class Recyclable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        properlyScored = false;
+        GameManager = GameObject.Find("Score");
+
         // Get the bounds of the parent and child
         SpriteRenderer parentRenderer = GetComponent<SpriteRenderer>();
         SpriteRenderer childRenderer = SpriteImage.GetComponent<SpriteRenderer>();
@@ -38,54 +44,56 @@ public class Recyclable : MonoBehaviour
 
         // Apply the scale to the child
         SpriteImage.transform.localScale = new Vector3(scaleX, scaleY, 1f);
-
-        //make it so that it does not fall first
-        rb.gravityScale = 0.0f;
-
-        AimPosition = Vector2.zero;
-        isThrown = false;
-        shotPower = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //get normalized position of ball pos to mouse pos
-        if (!isThrown)
-        {
-            AimPosition = (mousePosition() - transform.position).normalized;
-            //Debug.Log(AimPosition);
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        properlyScored = transform.position.y > collision.gameObject.transform.position.y;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(properlyScored)
+        { 
+            Transform Hoop = collision.gameObject.transform.parent;
+            
+            //If recyclable goes into the correct hoop
+            if (Hoop.GetComponent<Hoop>().type == data.type)
+            {
+                GameManager.GetComponent<RecyclingGameManager>().addScore();
+            }
+            else
+            {
+                GameManager.GetComponent<RecyclingGameManager>().minusScore();
+            }
+            Destroy(gameObject);
         }
+    }
 
-        if (Input.GetMouseButton(0) && !isThrown)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the collided object has the tag "Ground"
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            // Increase the shot power over time
-            shotPower = Mathf.Lerp(shotPower, maxPower, maxPowerSpeed * Time.deltaTime);
-            Debug.Log(shotPower);
+            // Call the Despawn method after a delay
+            Invoke("Despawn", despawnDelay);
         }
-        if (Input.GetMouseButtonUp(0) && !isThrown)
-        {
-            //Freeze any gravity first
-            //rb.velocity = Vector2.zero;
-
-            //give back gravity
-            rb.gravityScale = 1.0f;
-
-            //Check where the mouse is aiming
-            AimPosition = (mousePosition() - transform.position).normalized;
-
-            //Shot in mouse direction
-            rb.AddForce(AimPosition * shotPower, ForceMode2D.Impulse);
-
-            //Reset variables and make sure recyclable cannot be thrown again
-            shotPower = 0;
-            isThrown = true;
-        }
-
     }
 
     private Vector3 mousePosition()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    void Despawn()
+    {
+        // Destroy the game object
+        Destroy(gameObject);
     }
 }

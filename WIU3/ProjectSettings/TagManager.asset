@@ -4,20 +4,21 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Water
   - FloatingPlant
   - FoodPellet
+  - Recyclable
   - SmallFish
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
-  - Player
-  - Enemy
-  - Food
+  - Ground
+  - 
+  - 
   - 
   - 
   - 
