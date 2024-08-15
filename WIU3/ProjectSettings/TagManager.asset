@@ -8,11 +8,11 @@ TagManager:
   - Recyclable
   - SmallFish
   - Water
-  - FloatingPlant
   - Hitbox
   - Locust
   - BigFish
   - Ground
+  - Seaweed
   layers:
   - Default
   - TransparentFX
