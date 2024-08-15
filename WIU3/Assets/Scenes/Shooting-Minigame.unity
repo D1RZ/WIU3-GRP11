@@ -4058,6 +4058,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndGameScreenGUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4387765700610210117, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175849200609019719, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
