@@ -9,4 +9,6 @@ public class PlayerData : ScriptableObject
     public List<MedalData> Medal;
 
     public float movementSpeed;
+
+    public float health;
 }

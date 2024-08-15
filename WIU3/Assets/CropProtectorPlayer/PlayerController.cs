@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private MovementController movementController;
 
-    [SerializeField] private PlayerData playerData;
+    public PlayerData playerData;
 
     [SerializeField] private Camera camera;
 
@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float bulletMovementSpeed;
 
+    [SerializeField] private Transform GunCollider;
+
     Vector2 mousePosition;
 
     float rotZ;
@@ -39,12 +41,15 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+        playerData.health = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (playerData.health <= 0)
+            Destroy(gameObject);
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector2 direction = new Vector2(horizontal, vertical);
@@ -76,6 +81,7 @@ public class PlayerController : MonoBehaviour
             {
                 GunSprite.transform.localPosition = new Vector3(0.403f,0.148f,GunSprite.transform.localPosition.z);
                 GunTip.transform.localPosition = new Vector3(0.86f,-0.109f,GunTip.transform.localPosition.z);
+                GunCollider.transform.localPosition = new Vector3(0,0,GunCollider.transform.localPosition.z);
                 playerSpriteRenderer.flipX = false;
                 GunSpriteRenderer.flipY = false;
             }
@@ -86,6 +92,7 @@ public class PlayerController : MonoBehaviour
             {
                 GunSprite.transform.localPosition = new Vector3(0.4f,-0.482f,GunSprite.transform.localPosition.z);
                 GunTip.transform.localPosition = new Vector3(0.883f,-0.253f, GunTip.transform.localPosition.z);
+                GunCollider.transform.localPosition = new Vector3(0.03f,1.8f, GunCollider.transform.localPosition.z);
                 playerSpriteRenderer.flipX = true;
                 GunSpriteRenderer.flipY = true;
             }
