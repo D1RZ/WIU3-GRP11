@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Aquarium.unity
     guid: da474b099aee08b48853be5d958bf657
   - enabled: 1
-    path: Assets/Scenes/Shooting-Minigame.unity
+    path: Assets/Scenes/CropProtector.unity
     guid: f6679906adef0764bb6cdbe2552a5120
   - enabled: 1
     path: Assets/Scenes/Recyclables.unity

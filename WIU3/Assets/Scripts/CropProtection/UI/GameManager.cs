@@ -17,22 +17,28 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] PlayerController playerController;
 
-    [SerializeField] List<EnemySpawner> enemySpawners;
+    [SerializeField] MovementController movementController;
+
+    [SerializeField] List<GameObject> enemySpawners;
 
     // Update is called once per frame
     void Update()
     {
         if(Crop.CropCurrentHealth <= 0)
         {
-            if(playerController != null)
-            playerController.enabled = false;
+            if (playerController != null)
+            {
+                playerController.enabled = false;
+
+                if (movementController != null)
+                    movementController._PlayerRB.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
 
             if (enemySpawners != null)
             {
                 for (int i = 0; i < enemySpawners.Count; i++)
                 {
-                    if (enemySpawners[i] != null)
-                        enemySpawners[i].enabled = false;
+                    enemySpawners[i].SetActive(false);
                 }
             }
 

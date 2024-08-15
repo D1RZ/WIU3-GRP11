@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MovementController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
-    // Start is called before the first frame update
-    void Start()
+    public Rigidbody2D _PlayerRB
     {
-        rb = GetComponent<Rigidbody2D>();
+        get
+        {
+            return rb;
+        }
     }
 
     public void MovePosition(Vector2 direction,float movementSpeed)
