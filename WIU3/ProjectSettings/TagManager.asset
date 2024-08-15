@@ -9,6 +9,7 @@ TagManager:
   - SmallFish
   - Water
   - FloatingPlant
+  - BigFish
   layers:
   - Default
   - TransparentFX
