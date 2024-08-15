@@ -10,6 +10,10 @@ public class ArcadeSceneLoader : MonoBehaviour
     private bool isInteract = false;
     private bool isEnter = false;
 
+    private void Start()
+    {
+    }
+
     private void Update()
     {
         isInteract = Input.GetKeyDown(KeyCode.E);
@@ -18,6 +22,7 @@ public class ArcadeSceneLoader : MonoBehaviour
         {
             // Call Loading Screen here
             StartCoroutine(DelaySeconds(3f));
+            // Close loading screen here
             // Task 2c - Load the scene using SceneManager.LoadScene()
             SceneManager.LoadScene(SceneName, LoadSceneMode.Single);
         }
