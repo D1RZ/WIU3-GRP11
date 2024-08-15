@@ -4,20 +4,27 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - FoodPellet
+  - Recyclable
+  - SmallFish
   - Water
   - FloatingPlant
   - Hitbox
   - Locust
+  - BigFish
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - Water
   - Water
   - UI
   - Player
   - Enemy
   - EnemySpawner
+  - Food
+  - Fish
+  - 
   - 
   - 
   - 

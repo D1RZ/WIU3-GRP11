@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnFloatingPlant : MonoBehaviour
 {
     [SerializeField] private GameObject floatingPlant; // The prefab to spawn
-    [SerializeField] private Transform spawnArea; // The transform defining the spawn area
+    [SerializeField] private GameObject spawnArea; // The GameObject defining the spawn area
     [SerializeField] private float minSpawnInterval = 6f; // Minimum time between spawns
     [SerializeField] private float maxSpawnInterval = 12f; // Maximum time between spawns
 
@@ -32,11 +32,14 @@ public class SpawnFloatingPlant : MonoBehaviour
 
     private void Spawn()
     {
+        // Access the Transform component of the spawnArea GameObject
+        Transform spawnTransform = spawnArea.transform;
+
         // Get the spawn area bounds (assuming spawnArea is a rectangular area)
         Vector3 spawnPosition = new Vector3(
-            Random.Range(spawnArea.position.x - spawnArea.localScale.x / 2, spawnArea.position.x + spawnArea.localScale.x / 2),
-            Random.Range(spawnArea.position.y - spawnArea.localScale.y / 2, spawnArea.position.y + spawnArea.localScale.y / 2),
-            spawnArea.position.z // Assuming we spawn in 2D, so z is constant
+            Random.Range(spawnTransform.position.x - spawnTransform.localScale.x / 2, spawnTransform.position.x + spawnTransform.localScale.x / 2),
+            Random.Range(spawnTransform.position.y - spawnTransform.localScale.y / 2, spawnTransform.position.y + spawnTransform.localScale.y / 2),
+            spawnTransform.position.z // Assuming we spawn in 2D, so z is constant
         );
 
         Instantiate(floatingPlant, spawnPosition, Quaternion.identity);

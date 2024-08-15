@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6570421458014011361}
   - component: {fileID: 5852375211779979251}
   - component: {fileID: 6623968662666286220}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Food Pellet
-  m_TagString: Untagged
+  m_TagString: FoodPellet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

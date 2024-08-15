@@ -24,7 +24,6 @@ public class Food : MonoBehaviour
     {
         if (other.CompareTag("Water"))
         {
-            Debug.Log("Entered Water");
             if (!isInWater) // Check to ensure speed only changes once
             {
                 isInWater = true;
