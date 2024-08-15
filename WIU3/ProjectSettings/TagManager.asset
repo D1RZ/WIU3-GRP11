@@ -12,6 +12,7 @@ TagManager:
   - Hitbox
   - Locust
   - BigFish
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -24,10 +25,7 @@ TagManager:
   - EnemySpawner
   - Food
   - Fish
-  - 
-  - 
-  - 
-  - 
+  - Ground
   - 
   - 
   - 

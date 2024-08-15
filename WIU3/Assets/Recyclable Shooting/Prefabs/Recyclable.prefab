@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2366267647149117712}
   - component: {fileID: 1624505514618386632}
   - component: {fileID: -1557173389385108106}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Recyclable
   m_TagString: Recyclable
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3383806919623569686}
   - component: {fileID: 2987510757315733319}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
