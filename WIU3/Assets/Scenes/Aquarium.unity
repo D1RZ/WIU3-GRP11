@@ -3434,13 +3434,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 681640463}
     m_Modifications:
+    - target: {fileID: 3323367279626017520, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3323367279626017520, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12
+      objectReference: {fileID: 0}
     - target: {fileID: 4387765700610210117, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_Name
       value: EndGameScreenGUI
       objectReference: {fileID: 0}
     - target: {fileID: 4387765700610210117, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5175849200609019719, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_Pivot.x
@@ -3533,6 +3541,26 @@ PrefabInstance:
     - target: {fileID: 6703929573857076213, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 3.0009766
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375140646044238134, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_text
+      value: Aquarium Caretaker Complete!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375140646044238134, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_fontSize
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375140646044238134, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_margin.x
+      value: -91.654724
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375140646044238134, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_margin.z
+      value: -18.187561
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375140646044238134, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7675405586489740414, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3662,7 +3690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 174001816324431460, guid: 614d00027ae0b534196ecb02fe3c453c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7450556004697938630, guid: 614d00027ae0b534196ecb02fe3c453c, type: 3}
       propertyPath: m_Pivot.x
