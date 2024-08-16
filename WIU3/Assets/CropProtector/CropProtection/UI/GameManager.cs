@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private float _timeElapsed = 0;
 
-    private float _timeRemaining = 50;
+    private float _timeRemaining = 60;
 
     private void Start()
     {
