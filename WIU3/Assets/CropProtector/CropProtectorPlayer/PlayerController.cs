@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -25,6 +26,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float bulletMovementSpeed;
 
     [SerializeField] private Transform GunCollider;
+
+    [SerializeField] TextMeshProUGUI bannerText;
+
+    [SerializeField] GameObject MakeScreenDarkerPanel;
+
+    [SerializeField] GameObject EndGameUI;
 
     Vector2 mousePosition;
 
@@ -124,5 +131,14 @@ public class PlayerController : MonoBehaviour
                 hasShot = false;
             }
         }
+    }
+
+    void OpenEndGame()
+    {
+        bannerText.text = "Better luck next time!";
+
+        MakeScreenDarkerPanel.SetActive(true);
+
+        EndGameUI.SetActive(true);
     }
 }

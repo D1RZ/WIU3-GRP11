@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
                 if (movementController != null)
                     movementController._PlayerRB.constraints = RigidbodyConstraints2D.FreezeAll;
 
+                if(playerData.health >= 0 && Crop.CropCurrentHealth <= 0)
                 playerAnimator.enabled = false;
             }
 
@@ -79,11 +80,20 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            bannerText.text = "Better luck next time!";
+            if (playerData.health >= 0 && Crop.CropCurrentHealth <= 0)
+            {
+                bannerText.text = "Better luck next time!";
 
-            MakeScreenDarkerPanel.SetActive(true);
+                MakeScreenDarkerPanel.SetActive(true);
 
-            EndGameUI.SetActive(true);
+                EndGameUI.SetActive(true);
+            }
+            else
+            {
+                playerAnimator.SetBool("death", true);
+                playerAnimator.SetBool("idle", false);
+                playerAnimator.SetBool("move", false);
+            }
 
             return;
         }
