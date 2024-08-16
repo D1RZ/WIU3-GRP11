@@ -53,12 +53,12 @@ public class GameController : MonoBehaviour
     private void EventTriggers()
     {
         // Decay Condition Triggers
-        if (SeaweedCount > 10) // Too many Floating Plants
+        if (SeaweedCount <= 0) // Too less Seaweed
         {
             DecayCondition(10);
-            //Debug.Log("Condition decrease due to too many floating plants");
+            //Debug.Log("Condition decrease due to too less seaweed");
         } 
-        if (smallFishesCount > 15) // Too many Small Fishes
+        if (smallFishesCount > 20) // Too many Small Fishes
         {
             DecayCondition(10);
             //Debug.Log("Condition decrease due to too many small fishes");

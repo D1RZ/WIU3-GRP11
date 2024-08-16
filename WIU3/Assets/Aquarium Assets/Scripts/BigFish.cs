@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BigFish : MonoBehaviour
 {
+    public Sprite graySprite; // Assign this in the Inspector
+    public Sprite skeleSprite; // Assign this in the Inspector
+
     private State currentState;
     private Vector2 targetPosition;
     private Collider2D targetFood;
@@ -11,6 +14,9 @@ public class BigFish : MonoBehaviour
     [SerializeField] private Collider2D roamingArea;
     [SerializeField] private LayerMask foodLayer; // For efficiency reasons
     [SerializeField] private GameObject bigFishPrefab; // For spawning new big fish
+    [SerializeField] private GameObject spawnFood; // food to spawn
+    [SerializeField] private GameObject spawnArea; // Spawn area for food
+    [SerializeField] private GameObject wastePrefab; // Prefab for the waste to be spawned
 
     private bool isWaiting = false;
     private bool onEatCooldown = false;
@@ -86,6 +92,7 @@ public class BigFish : MonoBehaviour
             {
                 Destroy(targetFood.gameObject);
                 smallFishEaten++;
+                DropWaste();
                 if (smallFishEaten >= 3) // if ate 3 small fish, spawn new big fish
                 {
                     SpawnNewBigFish();
@@ -175,6 +182,62 @@ public class BigFish : MonoBehaviour
         isWaiting = false;
     }
 
+    private IEnumerator WaitToDecompose()
+    {
+        yield return new WaitForSeconds(10f);
+
+        // Check for nearby seaweed within a radius of 6f
+        Collider2D[] seaweedInRange = Physics2D.OverlapCircleAll(transform.position, 6f, foodLayer);
+        int seaweedSpawned = 0; // Counter to track how many seaweed have been spawned
+        int maxSeaweedSpawn = 10; // Max number of seaweed that can spawn
+
+        foreach (Collider2D seaweed in seaweedInRange)
+        {
+            if (seaweed.CompareTag("Seaweed"))
+            {
+                for (int i = 0; i < 1; i++) // how many seaweed to spawn per 1 detected seaweed
+                {
+                    if (seaweedSpawned >= maxSeaweedSpawn)
+                        break;
+
+                    Transform spawnTransform = spawnArea.transform;
+
+                    // Get the fish's position and determine a random direction and distance within a 6f radius
+                    Vector2 randomDirection = Random.insideUnitCircle.normalized;
+                    float randomDistance = Random.Range(0.5f, 6f); // Choose a distance within the 6f radius
+                    Vector2 potentialSpawnPosition = (Vector2)transform.position + randomDirection * randomDistance;
+
+                    // Ensure the spawn position is within the bounds of the spawn area
+                    float spawnX = Mathf.Clamp(
+                        potentialSpawnPosition.x,
+                        spawnTransform.position.x - spawnTransform.localScale.x / 2,
+                        spawnTransform.position.x + spawnTransform.localScale.x / 2
+                    );
+
+                    float spawnY = Mathf.Clamp(
+                        potentialSpawnPosition.y,
+                        spawnTransform.position.y - spawnTransform.localScale.y / 2,
+                        spawnTransform.position.y + spawnTransform.localScale.y / 2
+                    );
+
+                    Vector3 spawnPosition = new Vector3(spawnX, spawnY, spawnTransform.position.z);
+
+                    Instantiate(spawnFood, spawnPosition, Quaternion.identity);
+                    seaweedSpawned++;
+                }
+                if (seaweedSpawned >= maxSeaweedSpawn)
+                    break;
+            }
+        }
+
+        // Change to skeleton sprite
+        spriteRenderer.sprite = skeleSprite;
+        yield return new WaitForSeconds(1f);
+
+        // Destroy the game object after spawning
+        Destroy(gameObject);
+    }
+
     private void PickRandomPoint()
     {
         if (roamingArea != null)
@@ -186,19 +249,32 @@ public class BigFish : MonoBehaviour
         }
     }
 
+    private void DropWaste()
+    {
+        // Start the coroutine to spawn waste after 10 seconds
+        StartCoroutine(SpawnWaste());
+    }
+
+    private IEnumerator SpawnWaste()
+    {
+        // Wait for 10 seconds
+        yield return new WaitForSeconds(10f);
+
+        // Instantiate waste at the fish's current position
+        Instantiate(wastePrefab, transform.position, Quaternion.identity);
+    }
+
     private void Die()
     {
-        // Reset rotation to default and flip sprite upside down
-        transform.rotation = Quaternion.Euler(Vector3.zero);
-        Vector3 scale = transform.localScale;
-        scale.y = -Mathf.Abs(scale.y); // Flip vertically
-        transform.localScale = scale;
+        currentState = State.ROAM; // Ensure state doesn't interfere with dying animation
+        transform.rotation = Quaternion.identity; // Reset rotation
+        StartCoroutine(WaitToDecompose());
+    }
 
-        // Move upwards until it reaches the top of the roam area
-        float topY = roamingArea.bounds.max.y;
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, topY), dieSpeed * Time.deltaTime);
-
-        // Destroy after 5 seconds
-        Destroy(gameObject, 5f);
+    private void OnDrawGizmos()
+    {
+        // Draw a green sphere around the fish to show detection radius
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }
