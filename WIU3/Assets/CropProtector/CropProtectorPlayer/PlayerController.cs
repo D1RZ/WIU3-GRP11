@@ -38,22 +38,37 @@ public class PlayerController : MonoBehaviour
 
     private GameObject _lastSpawnedBullet;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         playerData.health = 100;
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (playerData.health <= 0)
-            Destroy(gameObject);
+            return;
 
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector2 direction = new Vector2(horizontal, vertical);
         mousePosition = camera.ScreenToWorldPoint(Input.mousePosition); // converts position of mouse on screen to world coordinates
+
+        if (Mathf.Abs(horizontal) < 0.0001f && Mathf.Abs(vertical) < 0.0001f)
+        {
+            animator.SetBool("idle", true);
+            animator.SetBool("move", false);
+        }
+        else
+        {
+            animator.SetBool("move", true);
+            animator.SetBool("idle", false);
+        }
+
         movementController.MovePosition(direction, playerData.movementSpeed);
 
         if(Input.GetMouseButtonDown(0) && canShoot)

@@ -54,9 +54,13 @@ public class Locust : Enemy
 
     public bool _isEating = false;
 
+    public bool _HitPlayer = false;
+
     private float _timeElapsed;
 
     private GameObject Crops;
+
+    private SpriteRenderer PlayerSprite;
     
     public override void Start()
     {
@@ -65,6 +69,7 @@ public class Locust : Enemy
         health = 100;
         MaxHealth = 100;
         Crops = GameObject.Find("Crops");
+        PlayerSprite = GameObject.Find("PlayerGraphics").GetComponent<SpriteRenderer>();
     }
     
     public void Update()
@@ -73,10 +78,13 @@ public class Locust : Enemy
             return;
 
         if (health <= 0)
+        {
+            gameManager.LocustCount -= 1;
             Destroy(gameObject);
+        }
 
         if (Player == null)
-            return;
+        return;
 
         if (_isEating)
         {
@@ -220,6 +228,7 @@ public class Locust : Enemy
             totalDistance = 0;
             dashTimer = 0.5f;
             _PlayerController.playerData.health -= 20;
+            PlayerSprite.color = Color.red;
             currentState = State.ExitAttack;
         }
     }
