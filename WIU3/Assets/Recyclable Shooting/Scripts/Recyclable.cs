@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Recyclable : MonoBehaviour
 {
-    [SerializeField] float maxPower;
-    [SerializeField] float maxPowerSpeed;
+    [SerializeField] private float maxPower;
+    [SerializeField] private float maxPowerSpeed;
     [SerializeField] private float despawnDelay = 2.0f;    // Time in seconds before the object is despawned
     float shotPower;
 
@@ -17,8 +17,7 @@ public class Recyclable : MonoBehaviour
 
     private bool properlyScored;
 
-    private PhysicsScene2D sceneMainPhysics;
-    private PhysicsScene2D scenePredictionPhysics;
+    [SerializeField] private GameObject starEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +58,7 @@ public class Recyclable : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(properlyScored)
+        if(properlyScored && collision.gameObject.layer == LayerMask.NameToLayer("Hoop"))
         { 
             Transform Hoop = collision.gameObject.transform.parent;
             
@@ -67,6 +66,16 @@ public class Recyclable : MonoBehaviour
             if (Hoop.GetComponent<Hoop>().type == data.type)
             {
                 GameManager.GetComponent<RecyclingGameManager>().addScore();
+
+                //get parent of the hoop
+                Transform hoop = collision.gameObject.transform.parent;
+
+                Vector2 offset = new Vector2(0.0f, -0.7f);
+
+                GameObject newStarEffect = Instantiate(starEffect, hoop);
+
+                // Set the local position with the offset applied
+                newStarEffect.transform.localPosition = offset;
             }
             else
             {
