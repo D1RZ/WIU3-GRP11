@@ -29,7 +29,7 @@ public class MainmenuControl : MonoBehaviour
         {
             if (Escapeispressed)
             {
-                SetactiveObj(Mainmenu, false);
+                SetactiveObj(Mainmenu, true);
                 for (int i = 0; i < PannelsTrueorFalse.Length + 1; i++)
                 {
                     PannelsTrueorFalse[i] = false;
