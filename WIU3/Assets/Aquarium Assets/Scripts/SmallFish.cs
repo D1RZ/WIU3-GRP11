@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SmallFish : MonoBehaviour
 {
@@ -18,10 +17,10 @@ public class SmallFish : MonoBehaviour
     [SerializeField] private Collider2D roamingArea;
     [SerializeField] private LayerMask foodLayer;
     [SerializeField] private GameObject fish;
+    [SerializeField] private GameObject wastePrefab;
 
     private bool isWaiting = false;
     private bool onEatCooldown = false;
-    private bool isDying = false;
     private int foodEaten = 0;
     private float timeSinceLastEat = 0f;
 
@@ -107,9 +106,10 @@ public class SmallFish : MonoBehaviour
             {
                 Destroy(targetFood.gameObject);
                 foodEaten++;
+                DropWaste();
                 if (foodEaten >= 2) // if ate 2 food, spawn new fish
                 {
-                    spawnNewFish();
+                    SpawnNewFish();
                     foodEaten = 0;
                 }
                 StartCoroutine(EatCooldown());
@@ -133,7 +133,7 @@ public class SmallFish : MonoBehaviour
         }
     }
 
-    private void spawnNewFish()
+    private void SpawnNewFish()
     {
         // Spawn new fish at same position and rotation
         Instantiate(fish, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
@@ -203,18 +203,21 @@ public class SmallFish : MonoBehaviour
         // Change to skeleton sprite
         spriteRenderer.sprite = skeleSprite;
         yield return new WaitForSeconds(1f);
+
         // Check for nearby seaweed within a radius of 3f
         Collider2D[] seaweedInRange = Physics2D.OverlapCircleAll(transform.position, 3f, foodLayer);
+        int seaweedSpawned = 0; // Counter to track how many seaweed have been spawned
+        int maxSeaweedSpawn = 5; // Max number of seaweed that can spawn
 
         foreach (Collider2D seaweed in seaweedInRange)
         {
             if (seaweed.CompareTag("Seaweed"))
             {
-                Debug.Log("pewee");
-                // Spawn new objects within a 3f radius while still considering the bounds of the spawn area
-                for (int i = 0; i < 1; i++) // Adjust this number to spawn more objects if needed
+                for (int i = 0; i < 1; i++) // how many seaweed to spawn per 1 detected seaweed
                 {
-                    // Access the Transform component of the spawnArea GameObject
+                    if (seaweedSpawned >= maxSeaweedSpawn)
+                        break;
+
                     Transform spawnTransform = spawnArea.transform;
 
                     // Get the fish's position and determine a random direction and distance within a 3f radius
@@ -237,18 +240,31 @@ public class SmallFish : MonoBehaviour
 
                     Vector3 spawnPosition = new Vector3(spawnX, spawnY, spawnTransform.position.z);
 
-                    // Instantiate the new object at the calculated position
                     Instantiate(spawnFood, spawnPosition, Quaternion.identity);
+                    seaweedSpawned++;
                 }
+                if (seaweedSpawned >= maxSeaweedSpawn)
+                    break;
             }
         }
-        // Destroy gameobject
+
+        // Destroy the game object after spawning
         Destroy(gameObject);
     }
 
-    private IEnumerator WaitForSeconds(float sec)
+    private IEnumerator SpawnWaste()
     {
-        yield return new WaitForSeconds(sec);
+        // Wait for 10 seconds
+        yield return new WaitForSeconds(10f);
+
+        // Instantiate waste at the fish's current position
+        Instantiate(wastePrefab, transform.position, Quaternion.identity);
+    }
+
+    private void DropWaste()
+    {
+        // Start the coroutine to spawn waste after 10 seconds
+        StartCoroutine(SpawnWaste());
     }
 
     private void PickRandomPoint()
@@ -264,8 +280,6 @@ public class SmallFish : MonoBehaviour
 
     private void Die()
     {
-        isDying = true;
-
         // Change the sprite to the gray one
         spriteRenderer.sprite = graySprite;
 
@@ -281,6 +295,5 @@ public class SmallFish : MonoBehaviour
 
         // Wait to decompose
         StartCoroutine(WaitToDecompose());
-
     }
 }

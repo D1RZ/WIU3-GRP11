@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1304096277457416519}
   - component: {fileID: 8524434322454468796}
   - component: {fileID: 8392532485311685981}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Small Fish
   m_TagString: SmallFish
   m_Icon: {fileID: 0}
@@ -100,11 +100,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graySprite: {fileID: 21300000, guid: 0ee43eb9c40e01647afefae4190b4d53, type: 3}
   skeleSprite: {fileID: 21300000, guid: 843d4f774bd5c404cbfa444d5d905230, type: 3}
+  spawnFood: {fileID: 0}
+  spawnArea: {fileID: 0}
   roamingArea: {fileID: 0}
   foodLayer:
     serializedVersion: 2
     m_Bits: 512
   fish: {fileID: 4586331281289145463}
+  wastePrefab: {fileID: 7913847531410049720, guid: 720f8b89512267641908162f6acaf931, type: 3}
   speed: 2
   dieSpeed: 1
   slowingDistance: 0.5
