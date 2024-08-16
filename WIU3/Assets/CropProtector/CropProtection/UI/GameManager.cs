@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI; 
@@ -20,6 +21,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] MovementController movementController;
 
     [SerializeField] List<GameObject> enemySpawners;
+
+    [SerializeField] TextMeshProUGUI timer;
+
+    private float _timeElapsed = 0;
+
+    private float _timeRemaining = 50;
+
+    private void Start()
+    {
+        timer.text = _timeRemaining.ToString();
+    }
 
     // Update is called once per frame
     void Update()
@@ -43,6 +55,15 @@ public class GameManager : MonoBehaviour
             }
 
             return;
+        }
+
+        _timeElapsed += Time.deltaTime;
+
+        if(_timeElapsed >= 1)
+        {
+            _timeRemaining -= 1;
+            timer.text = _timeRemaining.ToString();
+            _timeElapsed = 0;
         }
 
         PlayerHealthBar.rectTransform.sizeDelta = new Vector2(1.8f * playerData.health, 38);
