@@ -1,28 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
-//using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SmallFish : MonoBehaviour
 {
+    public Sprite graySprite; // Assign this in the Inspector
+    public Sprite skeleSprite; // Assign this in the Inspector
+
     private State currentState;
     private Vector2 targetPosition;
     private Collider2D targetFood;
+    private SpriteRenderer spriteRenderer; // Store the SpriteRenderer component
 
+    [SerializeField] private GameObject spawnFood;
+    [SerializeField] private GameObject spawnArea;
     [SerializeField] private Collider2D roamingArea;
-    [SerializeField] private LayerMask foodLayer; // For efficiency reasons
-    [SerializeField] private GameObject fish; // For spawning new fish
+    [SerializeField] private LayerMask foodLayer;
+    [SerializeField] private GameObject fish;
 
     private bool isWaiting = false;
     private bool onEatCooldown = false;
-    private int foodEaten = 0; // Counter for spawning new fish
-    private float timeSinceLastEat = 0f; // Timer for tracking time since last eat
+    private bool isDying = false;
+    private int foodEaten = 0;
+    private float timeSinceLastEat = 0f;
 
     [SerializeField] private float speed = 2f;
-    [SerializeField] private float dieSpeed = 1f; // Speed the fish floats up at when it dies
-    [SerializeField] private float slowingDistance = 0.5f; // Fish slow down when within this distance from target pos
-    [SerializeField] private float detectionRadius = 10f; // detectionRadius for food
-    [SerializeField] private float deathTime = 10f; // Time before the fish dies if no food is eaten
+    [SerializeField] private float dieSpeed = 1f;
+    [SerializeField] private float slowingDistance = 0.5f;
+    [SerializeField] private float detectionRadius = 10f;
+    [SerializeField] private float deathTime = 10f;
 
     private enum State
     {
@@ -32,6 +39,9 @@ public class SmallFish : MonoBehaviour
 
     private void Start()
     {
+        // Store the SpriteRenderer component
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         currentState = State.ROAM;
         PickRandomPoint();
     }
@@ -151,7 +161,7 @@ public class SmallFish : MonoBehaviour
         {
             foreach (Collider2D food in foodInRange)
             {
-                if (food.CompareTag("FloatingPlant") || food.CompareTag("FoodPellet"))
+                if (food.CompareTag("Seaweed") || food.CompareTag("FoodPellet"))
                 {
                     targetFood = food; // Store the reference to the detected food
                     targetPosition = food.transform.position;
@@ -186,6 +196,61 @@ public class SmallFish : MonoBehaviour
         isWaiting = false;
     }
 
+    private IEnumerator WaitToDecompose()
+    {
+        yield return new WaitForSeconds(6f);
+
+        // Change to skeleton sprite
+        spriteRenderer.sprite = skeleSprite;
+        yield return new WaitForSeconds(1f);
+        // Check for nearby seaweed within a radius of 3f
+        Collider2D[] seaweedInRange = Physics2D.OverlapCircleAll(transform.position, 3f, foodLayer);
+
+        foreach (Collider2D seaweed in seaweedInRange)
+        {
+            if (seaweed.CompareTag("Seaweed"))
+            {
+                Debug.Log("pewee");
+                // Spawn new objects within a 3f radius while still considering the bounds of the spawn area
+                for (int i = 0; i < 1; i++) // Adjust this number to spawn more objects if needed
+                {
+                    // Access the Transform component of the spawnArea GameObject
+                    Transform spawnTransform = spawnArea.transform;
+
+                    // Get the fish's position and determine a random direction and distance within a 3f radius
+                    Vector2 randomDirection = Random.insideUnitCircle.normalized;
+                    float randomDistance = Random.Range(0.5f, 3f); // Choose a distance within the 3f radius
+                    Vector2 potentialSpawnPosition = (Vector2)transform.position + randomDirection * randomDistance;
+
+                    // Ensure the spawn position is within the bounds of the spawn area
+                    float spawnX = Mathf.Clamp(
+                        potentialSpawnPosition.x,
+                        spawnTransform.position.x - spawnTransform.localScale.x / 2,
+                        spawnTransform.position.x + spawnTransform.localScale.x / 2
+                    );
+
+                    float spawnY = Mathf.Clamp(
+                        potentialSpawnPosition.y,
+                        spawnTransform.position.y - spawnTransform.localScale.y / 2,
+                        spawnTransform.position.y + spawnTransform.localScale.y / 2
+                    );
+
+                    Vector3 spawnPosition = new Vector3(spawnX, spawnY, spawnTransform.position.z);
+
+                    // Instantiate the new object at the calculated position
+                    Instantiate(spawnFood, spawnPosition, Quaternion.identity);
+                }
+            }
+        }
+        // Destroy gameobject
+        Destroy(gameObject);
+    }
+
+    private IEnumerator WaitForSeconds(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+    }
+
     private void PickRandomPoint()
     {
         if (roamingArea != null)
@@ -199,17 +264,23 @@ public class SmallFish : MonoBehaviour
 
     private void Die()
     {
+        isDying = true;
+
+        // Change the sprite to the gray one
+        spriteRenderer.sprite = graySprite;
+
         // Reset rotation to default and flip sprite upside down
         transform.rotation = Quaternion.Euler(Vector3.zero);
         Vector3 scale = transform.localScale;
         scale.y = -Mathf.Abs(scale.y); // Flip vertically
         transform.localScale = scale;
 
-        // Move upwards until it reaches the top of the roam area
-        float topY = roamingArea.bounds.max.y;
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, topY), dieSpeed * Time.deltaTime);
+        // Move downwards until it reaches the bottom of the roam area
+        float botY = roamingArea.bounds.min.y;
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, botY), dieSpeed * Time.deltaTime);
 
-        // Destroy after 5 seconds
-        Destroy(gameObject, 5f);
+        // Wait to decompose
+        StartCoroutine(WaitToDecompose());
+
     }
 }

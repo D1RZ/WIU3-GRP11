@@ -8,12 +8,12 @@ public class GameController : MonoBehaviour
     public Image conditionBar;
 
     [SerializeField] public float maxCondition = 200f;
-    GameObject[] floatingPlants = null;
+    GameObject[] Seaweeds = null;
     GameObject[] smallFishes = null;
     GameObject[] bigFishes = null;
 
     public float currentCondition;
-    int floatingPlantCount = 0;
+    int SeaweedCount = 0;
     int smallFishesCount = 0;
     int bigFishesCount = 0;
 
@@ -40,12 +40,12 @@ public class GameController : MonoBehaviour
     private void GetCounts()
     {
         // Find all active objects
-        floatingPlants = GameObject.FindGameObjectsWithTag("FloatingPlant");
+        Seaweeds = GameObject.FindGameObjectsWithTag("Seaweed");
         smallFishes = GameObject.FindGameObjectsWithTag("SmallFish");
         bigFishes = GameObject.FindGameObjectsWithTag("BigFish");
 
         // Get the counts of each type
-        floatingPlantCount = floatingPlants.Length;
+        SeaweedCount = Seaweeds.Length;
         smallFishesCount = smallFishes.Length;
         bigFishesCount = bigFishes.Length;
     }
@@ -53,20 +53,20 @@ public class GameController : MonoBehaviour
     private void EventTriggers()
     {
         // Decay Condition Triggers
-        if (floatingPlantCount > 10) // Too many Floating Plants
+        if (SeaweedCount > 10) // Too many Floating Plants
         {
             DecayCondition(10);
-            Debug.Log("Condition decrease due to too many floating plants");
+            //Debug.Log("Condition decrease due to too many floating plants");
         } 
         if (smallFishesCount > 15) // Too many Small Fishes
         {
             DecayCondition(10);
-            Debug.Log("Condition decrease due to too many small fishes");
+            //Debug.Log("Condition decrease due to too many small fishes");
         }
         if (bigFishesCount > 5) // Too many Big Fishes
         {
             DecayCondition(10);
-            Debug.Log("Condition decrease due to too many big fishes");
+            //Debug.Log("Condition decrease due to too many big fishes");
         }
 
         // Lose Condition
@@ -95,17 +95,14 @@ public class GameController : MonoBehaviour
     {
         if (gameStatus == "Start")
         {
-            Debug.Log("Game Start");
             // initialize stuff (again)?
         }
         else if (gameStatus == "Ongoing")
         {
-            Debug.Log("Game Ongoing");
             // Do nothing
         }
         else if (gameStatus == "End")
         {
-            Debug.Log("Game End");
             // End gametimer
             // Reset gametimer?
             // Show Endgame Screen
