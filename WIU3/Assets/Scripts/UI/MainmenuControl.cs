@@ -8,24 +8,25 @@ public class MainmenuControl : MonoBehaviour
     [SerializeField] private GameObject[] MenuPannels;
     private bool[] PannelsTrueorFalse;
     private bool Escapeispressed;
-    private int BoolIndex = 0;
-    private bool ClickedToF = false;
-    private bool isMenuOpen = false; // New state variable
+    private int BoolIndex;
+    private bool ClickedToF;
+    private bool isMenuOpen = false; // State variable
 
     // Start is called before the first frame update
     void Start()
     {
         PannelsTrueorFalse = new bool[MenuPannels.Length]; // Initialize array
-        //for (int i = 0; i < PannelsTrueorFalse.Length; i++)
-        //{
-        //    PannelsTrueorFalse[i] = false;
-        //}
+        for (int i = 0; i < PannelsTrueorFalse.Length; i++)
+        {
+            PannelsTrueorFalse[i] = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        ClickCheck();
+        if(Input.GetMouseButtonDown(0))
+            ClickCheck();
         Escapeispressed = Input.GetKeyUp(KeyCode.E);
         Debug.Log("Escapeispressed : " + Escapeispressed);
 
@@ -56,6 +57,7 @@ public class MainmenuControl : MonoBehaviour
 
     private void OpenMenu()
     {
+        Debug.Log("Opening menu");
         SetactiveObj(Mainmenu, true);
         isMenuOpen = true; // Set menu open state
         PannelsTrueorFalse[0] = true; // Activate the first panel
@@ -67,6 +69,7 @@ public class MainmenuControl : MonoBehaviour
 
     private void CloseMenu()
     {
+        Debug.Log("Closing menu");
         SetactiveObj(Mainmenu, false);
         isMenuOpen = false; // Set menu closed state
         for (int i = 0; i < PannelsTrueorFalse.Length; i++)
@@ -77,24 +80,120 @@ public class MainmenuControl : MonoBehaviour
 
     private void ClickCheck()
     {
+        // Log the current BoolIndex and ClickedToF state
+        Debug.Log($"ClickCheck - BoolIndex: {BoolIndex}, ClickedToF: {ClickedToF}");
         PannelsTrueorFalse[BoolIndex] = ClickedToF;
     }
 
     public void Clickedtrue(bool trueorfalse)
     {
         ClickedToF = trueorfalse;
+        Debug.Log($"Clickedtrue called with: {trueorfalse}");
     }
 
     public void Clickedindex(int Index)
     {
         BoolIndex = Index;
+        Debug.Log($"Clickedindex set to: {Index}");
     }
 
     private void SetactiveObj(GameObject gameObject, bool trueorfalse)
     {
-        Debug.Log(gameObject.name + " : " + trueorfalse);
+        Debug.Log($"{gameObject.name} : {trueorfalse}");
         gameObject.SetActive(trueorfalse);
     }
+
+    //[SerializeField] private GameObject Mainmenu;
+    //[SerializeField] private GameObject[] MenuPannels;
+    //private bool[] PannelsTrueorFalse;
+    //private bool Escapeispressed;
+    //private int BoolIndex = 0;
+    //private bool ClickedToF = false;
+    //private bool isMenuOpen = false; // New state variable
+
+    //// Start is called before the first frame update
+    //void Start()
+    //{
+    //    PannelsTrueorFalse = new bool[MenuPannels.Length]; // Initialize array
+    //    //for (int i = 0; i < PannelsTrueorFalse.Length; i++)
+    //    //{
+    //    //    PannelsTrueorFalse[i] = false;
+    //    //}
+    //}
+
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    ClickCheck();
+    //    Escapeispressed = Input.GetKeyUp(KeyCode.E);
+    //    Debug.Log("Escapeispressed : " + Escapeispressed);
+
+    //    // Check if the menu is open
+    //    if (isMenuOpen)
+    //    {
+    //        // If the menu is currently open and Escape is pressed, close it
+    //        if (Escapeispressed)
+    //        {
+    //            CloseMenu();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        // If the menu is not open and Escape is pressed, open it
+    //        if (Escapeispressed)
+    //        {
+    //            OpenMenu();
+    //        }
+    //    }
+
+    //    // Update active states of menu panels
+    //    for (int index = 0; index < MenuPannels.Length; index++)
+    //    {
+    //        SetactiveObj(MenuPannels[index], PannelsTrueorFalse[index]);
+    //    }
+    //}
+
+    //private void OpenMenu()
+    //{
+    //    SetactiveObj(Mainmenu, true);
+    //    isMenuOpen = true; // Set menu open state
+    //    PannelsTrueorFalse[0] = true; // Activate the first panel
+    //    for (int i = 1; i < PannelsTrueorFalse.Length; i++)
+    //    {
+    //        PannelsTrueorFalse[i] = false; // Deactivate other panels
+    //    }
+    //}
+
+    //private void CloseMenu()
+    //{
+    //    SetactiveObj(Mainmenu, false);
+    //    isMenuOpen = false; // Set menu closed state
+    //    for (int i = 0; i < PannelsTrueorFalse.Length; i++)
+    //    {
+    //        PannelsTrueorFalse[i] = false; // Deactivate all panels
+    //    }
+    //}
+
+    //private void ClickCheck()
+    //{
+    //    PannelsTrueorFalse[BoolIndex] = ClickedToF;
+    //}
+
+    //public void Clickedtrue(bool trueorfalse)
+    //{
+    //    ClickedToF = trueorfalse;
+    //}
+
+    //public void Clickedindex(int Index)
+    //{
+    //    BoolIndex = Index;
+    //}
+
+    //private void SetactiveObj(GameObject gameObject, bool trueorfalse)
+    //{
+    //    Debug.Log(gameObject.name + " : " + trueorfalse);
+    //    gameObject.SetActive(trueorfalse);
+    //}
 
     //[SerializeField] private GameObject Mainmenu;
     //[SerializeField] private GameObject[] MenuPannels;
