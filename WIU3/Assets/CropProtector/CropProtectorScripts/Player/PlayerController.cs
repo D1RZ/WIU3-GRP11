@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject EndGameUI;
 
-    [SerializeField] AudioClip Footsteps;
+    [SerializeField] GameObject audioSettingsPanel;
 
     Vector2 mousePosition;
 
@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         playerData.health = 100;
         animator = gameObject.GetComponent<Animator>();
+        transform.GetChild(2).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,6 +62,11 @@ public class PlayerController : MonoBehaviour
     {
         if (playerData.health <= 0)
             return;
+
+        if (Input.GetKeyDown(KeyCode.I) && audioSettingsPanel.active == false)
+            audioSettingsPanel.SetActive(true);
+        else if (Input.GetKeyDown(KeyCode.I) && audioSettingsPanel.active == true)
+            audioSettingsPanel.SetActive(false);
 
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");

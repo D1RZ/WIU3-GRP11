@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private AudioClip damageSoundClip;
+    private void Start()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +18,7 @@ public class Bullet : MonoBehaviour
             {
                 Locust locust = collision.gameObject.transform.parent.gameObject.GetComponent<Locust>();
                 locust.Health -= 25;
-                CropSoundManager.instance.PlaySoundFXClip(damageSoundClip,transform,1f);
+                transform.GetChild(0).gameObject.SetActive(true);
                 Destroy(gameObject);
             }
         }
