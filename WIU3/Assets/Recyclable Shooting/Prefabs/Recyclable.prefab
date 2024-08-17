@@ -167,6 +167,7 @@ MonoBehaviour:
   despawnDelay: 1
   data: {fileID: 0}
   SpriteImage: {fileID: 8424160054620250460}
+  starEffect: {fileID: 3691427939056575734, guid: 6f9574cdebf570b41a937d866cbffd0e, type: 3}
 --- !u!1 &8424160054620250460
 GameObject:
   m_ObjectHideFlags: 0
