@@ -161,3 +161,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8f3dfd61b52f74fbb76f45db526579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageSoundClip: {fileID: 8300000, guid: af2dee6fc5424a44196b2fce038dc5fc, type: 3}

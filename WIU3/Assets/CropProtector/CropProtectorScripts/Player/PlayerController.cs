@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject EndGameUI;
 
+    [SerializeField] AudioClip Footsteps;
+
     Vector2 mousePosition;
 
     float rotZ;
@@ -69,11 +71,13 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("idle", true);
             animator.SetBool("move", false);
+            transform.GetChild(2).gameObject.SetActive(false);
         }
         else
         {
             animator.SetBool("move", true);
             animator.SetBool("idle", false);
+            transform.GetChild(2).gameObject.SetActive(true);
         }
 
         movementController.MovePosition(direction, playerData.movementSpeed);
