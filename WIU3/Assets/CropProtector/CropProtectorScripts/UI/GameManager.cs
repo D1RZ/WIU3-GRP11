@@ -57,6 +57,10 @@ public class GameManager : MonoBehaviour
         bannerText.text = "";
 
         LocustCountText.text = LocustCount.ToString();
+
+        MakeScreenDarkerPanel.SetActive(false);
+
+        EndGameUI.SetActive(false);
     }
 
     // Update is called once per frame

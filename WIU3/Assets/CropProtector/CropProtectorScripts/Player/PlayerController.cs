@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float GunSwapDelay;
 
+    [SerializeField] AudioClip WeaponSwapAudio;
+
     public enum Gun
     {
         Pistol,
@@ -117,10 +119,14 @@ public class PlayerController : MonoBehaviour
 
         movementController.MovePosition(direction, playerData.movementSpeed);
 
+        if (Input.GetKeyDown(KeyCode.F))
+            Time.timeScale = 0;
+
         if(Input.mouseScrollDelta.y > 0 && currentEquippedGun != Gun.Pistol && !hasScrolled)
         {
             if(currentEquippedGun == Gun.Shotgun)
             {
+                CropSoundManager.instance.PlaySoundFXClip(WeaponSwapAudio, transform);
                 GunSpriteRenderer.sprite = PistolSprite;
                 currentEquippedGun = Gun.Pistol;
                 lastMouseScrollTime = Time.time;
@@ -131,6 +137,7 @@ public class PlayerController : MonoBehaviour
         {
             if(currentEquippedGun == Gun.Pistol)
             {
+                CropSoundManager.instance.PlaySoundFXClip(WeaponSwapAudio,transform);
                 GunSpriteRenderer.sprite = ShotgunSprite;
                 currentEquippedGun = Gun.Shotgun;
                 lastMouseScrollTime = Time.time;

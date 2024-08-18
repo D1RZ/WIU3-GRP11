@@ -3247,7 +3247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6822348134743871728, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4872,7 +4872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6822348134743871728, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5023,7 +5023,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2482564904195522927, guid: 4758a71f3ca8ba54f8e1b80ea96313ac, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: CropPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 3787773521039673273, guid: 4758a71f3ca8ba54f8e1b80ea96313ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5144,7 +5144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6822348134743871728, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
