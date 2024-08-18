@@ -27,6 +27,7 @@ public class Locust : Enemy
     
     public enum State
     {
+        Idle,
         Move,
         Chase,
         EnterAttack,
@@ -74,8 +75,11 @@ public class Locust : Enemy
     
     public void Update()
     {
-        if (Crops.GetComponent<Crop>().CropCurrentHealth <= 0 && _PlayerController.playerData.health <= 0)
+        if (Crops.GetComponent<Crop>().CropCurrentHealth <= 0 || _PlayerController.playerData.health <= 0)
+        {
+            currentState = State.Idle;
             return;
+        }
 
         if (health <= 0)
         {
@@ -96,6 +100,11 @@ public class Locust : Enemy
         
         switch (currentState)
         {
+
+          case State.Idle:
+
+               break;
+
           case State.Move:
           
               if (!CheckForPlayer())
@@ -139,6 +148,8 @@ public class Locust : Enemy
               break;
 
           case State.EnterAttack:
+
+
 
                 RotateTowardsPlayer();
 
@@ -223,6 +234,9 @@ public class Locust : Enemy
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (Crops.GetComponent<Crop>().CropCurrentHealth <= 0 || _PlayerController.playerData.health <= 0)
+            return;
+
         if (collision.gameObject.layer == 6 && currentState == State.Attack)
         {
             totalDistance = 0;
@@ -232,6 +246,7 @@ public class Locust : Enemy
             CropSoundManager.instance.PlaySoundFXClip(PlayerHurt,_PlayerController.gameObject.transform);
             currentState = State.ExitAttack;
         }
+
     }
 
     bool CheckForPlayer()
