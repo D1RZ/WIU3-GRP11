@@ -6,23 +6,30 @@ public class CropSoundManager : MonoBehaviour
 {
     public static CropSoundManager instance;
 
-    [SerializeField] private AudioSource soundFXObject;
+    [SerializeField] private List<AudioSource> soundFXObject; // creates an array of audio sources
+
+    private AudioSource audioSource;
 
     private void Awake()
     {
         if(instance == null)
         instance = this;
     }
-    public void PlaySoundFXClip(AudioClip soundEffect, Transform soundSourceLocation, float volume)
+
+    public void PlaySoundFXClip(AudioClip soundEffect, Transform soundSourceLocation)
     {
         // spawn in gameObject
-        AudioSource audioSource = Instantiate(soundFXObject, soundSourceLocation.position, Quaternion.identity);
+        for (int i = 0; i < soundFXObject.Count; i++)
+        {
+            if (!soundFXObject[i].isPlaying)
+            {
+                audioSource = Instantiate(soundFXObject[i], soundSourceLocation.position, Quaternion.identity);
+                break;
+            }
+        }
 
         // assign the audioClip
         audioSource.clip = soundEffect;
-
-        // assign the volume
-        audioSource.volume = volume;
 
         // play sound
         audioSource.Play();
@@ -31,6 +38,6 @@ public class CropSoundManager : MonoBehaviour
         float clipLength = audioSource.clip.length;
 
         // destroy the clip after it is done playing
-        Destroy(audioSource.gameObject,clipLength);
+        Destroy(audioSource.gameObject, clipLength);
     }
 }

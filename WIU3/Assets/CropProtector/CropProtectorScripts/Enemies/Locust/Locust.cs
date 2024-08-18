@@ -46,6 +46,8 @@ public class Locust : Enemy
 
     [SerializeField] private float chaseSpeed;
 
+    [SerializeField] private AudioClip PlayerHurt;
+
     private Vector2 PrevPosition;
 
     private float totalDistance;
@@ -53,8 +55,6 @@ public class Locust : Enemy
     private Vector2 DashDirection;
 
     public bool _isEating = false;
-
-    public bool _HitPlayer = false;
 
     private float _timeElapsed;
 
@@ -74,7 +74,7 @@ public class Locust : Enemy
     
     public void Update()
     {
-        if (Crops.GetComponent<Crop>().CropCurrentHealth <= 0)
+        if (Crops.GetComponent<Crop>().CropCurrentHealth <= 0 && _PlayerController.playerData.health <= 0)
             return;
 
         if (health <= 0)
@@ -229,6 +229,7 @@ public class Locust : Enemy
             dashTimer = 0.5f;
             _PlayerController.playerData.health -= 20;
             PlayerSprite.color = Color.red;
+            CropSoundManager.instance.PlaySoundFXClip(PlayerHurt,_PlayerController.gameObject.transform);
             currentState = State.ExitAttack;
         }
     }

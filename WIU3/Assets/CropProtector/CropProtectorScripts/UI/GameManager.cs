@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject EndGameUI;
 
+    [SerializeField] AudioClip GameOverSound;
+
+    [SerializeField] GameObject BGM;
+
     public int LocustSpawnCount = 0;
 
     public int LocustMaxCount = 10;
@@ -43,6 +47,8 @@ public class GameManager : MonoBehaviour
     public int LocustCount = 10;
 
     private float CurrentWave = 1;
+
+    bool GameOver = false;
 
     private void Start()
     {
@@ -58,7 +64,16 @@ public class GameManager : MonoBehaviour
     {
         if (Crop.CropCurrentHealth <= 0 || playerData.health <= 0)
         {
-            if(playerData.health <= 0)
+            if (!GameOver)
+            {
+                BGM.SetActive(false);
+
+                CropSoundManager.instance.PlaySoundFXClip(GameOverSound, transform);
+
+                GameOver = true;
+            }
+
+            if (playerData.health <= 0)
             PlayerHealthBar.rectTransform.sizeDelta = new Vector2(0, 38);
 
             if (playerController != null)
@@ -82,6 +97,7 @@ public class GameManager : MonoBehaviour
 
             if (playerData.health >= 0 && Crop.CropCurrentHealth <= 0)
             {
+
                 bannerText.text = "Better luck next time!";
 
                 MakeScreenDarkerPanel.SetActive(true);

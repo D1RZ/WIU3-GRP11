@@ -196,12 +196,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7ca4514c51be642abbde79ba31d73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   movementSpeed: 1.2
   dashSpeed: 5
   retreatSpeed: 2
   dashTimer: 0.2
   chaseSpeed: 1.5
+  PlayerHurt: {fileID: 8300000, guid: 94498b94d26fb1e4e9d71adb559da672, type: 3}
   _isEating: 0
+  _HitPlayer: 0
 --- !u!1 &2456466112164971597
 GameObject:
   m_ObjectHideFlags: 0

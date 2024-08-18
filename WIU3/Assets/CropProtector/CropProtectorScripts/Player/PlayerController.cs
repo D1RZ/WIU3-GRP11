@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject audioSettingsPanel;
 
+    [SerializeField] AudioClip PistolShotAudio;
+
     Vector2 mousePosition;
 
     float rotZ;
@@ -54,7 +56,6 @@ public class PlayerController : MonoBehaviour
     {
         playerData.health = 100;
         animator = gameObject.GetComponent<Animator>();
-        transform.GetChild(2).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -77,13 +78,11 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("idle", true);
             animator.SetBool("move", false);
-            transform.GetChild(2).gameObject.SetActive(false);
         }
         else
         {
             animator.SetBool("move", true);
             animator.SetBool("idle", false);
-            transform.GetChild(2).gameObject.SetActive(true);
         }
 
         movementController.MovePosition(direction, playerData.movementSpeed);
@@ -93,6 +92,7 @@ public class PlayerController : MonoBehaviour
             ShotBulletTime = Time.time;
             canShoot = false;
             hasShot = true;
+            CropSoundManager.instance.PlaySoundFXClip(PistolShotAudio,transform);
         }
 
         if (Time.time >= ShotBulletTime + GunFireRate && !canShoot)
