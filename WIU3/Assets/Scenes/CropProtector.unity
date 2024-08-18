@@ -5023,7 +5023,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2482564904195522927, guid: 4758a71f3ca8ba54f8e1b80ea96313ac, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: CropPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 3787773521039673273, guid: 4758a71f3ca8ba54f8e1b80ea96313ac, type: 3}
       propertyPath: m_LocalPosition.x
