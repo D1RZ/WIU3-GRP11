@@ -19,9 +19,18 @@ public class Recyclable : MonoBehaviour
 
     [SerializeField] private GameObject starEffect;
 
+    public float minPitch = 0.5f;    // Minimum pitch value
+    public float maxPitch = 3.0f;    // Maximum pitch value
+    public float maxVelocity = 20.0f; // Maximum velocity to map
+    private AudioSource sfxAudioSrc;
+    [SerializeField] private AudioClip HoopAudioClip;
+    [SerializeField] private AudioClip GroundAudioClip;
+
     // Start is called before the first frame update
     void Start()
     {
+        sfxAudioSrc = GetComponent<AudioSource>();
+
         properlyScored = false;
         GameManager = GameObject.Find("Score");
 
@@ -87,11 +96,29 @@ public class Recyclable : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Get the velocity magnitude of the object
+        float velocity = rb.velocity.magnitude;
+
+        // Map the velocity to the pitch range
+        float pitch = Mathf.Lerp(minPitch, maxPitch, velocity / maxVelocity);
+
+        // Set the pitch of the AudioSource
+        sfxAudioSrc.pitch = pitch;
+
         // Check if the collided object has the tag "Ground"
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")
+        || collision.gameObject.layer == LayerMask.NameToLayer("Recyclable"))
         {
+            sfxAudioSrc.PlayOneShot(GroundAudioClip, 1.0f);
+
             // Call the Despawn method after a delay
             Invoke("Despawn", despawnDelay);
+        }
+        else
+        {
+            //recyclable has hit the hoop
+            sfxAudioSrc.PlayOneShot(HoopAudioClip, 1.0f);
+
         }
     }
 
