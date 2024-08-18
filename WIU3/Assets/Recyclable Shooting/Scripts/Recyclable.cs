@@ -45,7 +45,6 @@ public class Recyclable : MonoBehaviour
         // Calculate the scale factor
         Vector3 parentSize = parentRenderer.bounds.size;
         Vector3 childSize = childRenderer.bounds.size;
-        Debug.Log(childSize);
 
         float scaleX = parentSize.x / childSize.x;
         float scaleY = parentSize.y / childSize.y;
@@ -68,7 +67,7 @@ public class Recyclable : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(properlyScored && collision.gameObject.layer == LayerMask.NameToLayer("Hoop"))
-        { 
+        {   
             Transform Hoop = collision.gameObject.transform.parent;
             
             //If recyclable goes into the correct hoop
@@ -90,6 +89,7 @@ public class Recyclable : MonoBehaviour
             {
                 GameManager.GetComponent<RecyclingGameManager>().minusScore();
             }
+            Debug.Log("Went through");
             Destroy(gameObject);
         }
     }
