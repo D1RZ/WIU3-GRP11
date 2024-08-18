@@ -21,9 +21,15 @@ public class Cannon : MonoBehaviour
     private Vector2 AimPosition;
     float shotPower;
 
+    private AudioSource sfxAudioSrc;
+    [SerializeField] private AudioClip fireAudioClip;
+
     // Start is called before the first frame update
     void Start()
     {
+        //assign audio source
+        sfxAudioSrc = GetComponent<AudioSource>();
+
         //assign the intial recyclable
         ChangeRecyclableData();
 
@@ -38,6 +44,7 @@ public class Cannon : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+
             // Check where the mouse is aiming
             AimPosition = (mousePosition() - transform.position).normalized;
 
@@ -62,6 +69,10 @@ public class Cannon : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            //play audio when fired
+            sfxAudioSrc.clip = fireAudioClip;
+            sfxAudioSrc.Play();
+
             //reset the trajectory line
             lr.positionCount = 0;
 
