@@ -162,3 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageSound: {fileID: 8300000, guid: af2dee6fc5424a44196b2fce038dc5fc, type: 3}
+  activeTime: 3

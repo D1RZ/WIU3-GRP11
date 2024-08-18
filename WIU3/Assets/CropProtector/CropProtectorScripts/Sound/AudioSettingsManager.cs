@@ -67,15 +67,9 @@ public class AudioSettingsManager : MonoBehaviour
 
     public void Load()
     {
-        Debug.Log(PlayerPrefs.GetFloat("SFXVolume"));
-
         SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
 
-        Debug.Log(PlayerPrefs.GetFloat("SFXVolume"));
-
         BGMSlider.value = PlayerPrefs.GetFloat("BGMVolume");
-
-        Debug.Log(PlayerPrefs.GetFloat("BGMVolume"));
     }
 }
 

@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     
     public virtual void Start()
     {
-        Player = GameObject.Find("Player");
+        Player = GameObject.Find("CropPlayer");
         if(Player != null)
         playerController = Player.GetComponent<PlayerController>();
         gameManager = GameObject.Find("CropGameManager").GetComponent<GameManager>();

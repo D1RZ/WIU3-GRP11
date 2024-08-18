@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -17,7 +18,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private SpriteRenderer playerSpriteRenderer;
 
-    [SerializeField] private Transform GunTip;
+    [SerializeField] private Transform PistolTip;
+
+    [SerializeField] private List<Transform> ShotgunBulletSpawn;
 
     [SerializeField] private GameObject bullet;
 
@@ -37,6 +40,25 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] AudioClip PistolShotAudio;
 
+    [SerializeField] AudioClip ShotgunShotAudio;
+
+    [SerializeField] Sprite AssaultRifleSprite;
+
+    [SerializeField] Sprite PistolSprite;
+
+    [SerializeField] Sprite ShotgunSprite;
+
+    [SerializeField] float GunSwapDelay;
+
+    public enum Gun
+    {
+        Pistol,
+        Shotgun,
+        AR
+    }
+
+    public Gun currentEquippedGun;
+
     Vector2 mousePosition;
 
     float rotZ;
@@ -47,15 +69,23 @@ public class PlayerController : MonoBehaviour
 
     bool hasShot = false;
 
-    private GameObject _lastSpawnedBullet;
+    private GameObject _lastSpawnedPistolBullet;
+
+    private GameObject[] _lastSpawnedShotgunBullet;
 
     private Animator animator;
+
+    float lastMouseScrollTime;
+
+    bool hasScrolled;
 
     // Start is called before the first frame update
     void Start()
     {
         playerData.health = 100;
         animator = gameObject.GetComponent<Animator>();
+        currentEquippedGun = Gun.Pistol;
+        _lastSpawnedShotgunBullet = new GameObject[3]; // initialises array with capacity of 3
     }
 
     // Update is called once per frame
@@ -87,16 +117,51 @@ public class PlayerController : MonoBehaviour
 
         movementController.MovePosition(direction, playerData.movementSpeed);
 
-        if(Input.GetMouseButtonDown(0) && canShoot)
+        if(Input.mouseScrollDelta.y > 0 && currentEquippedGun != Gun.Pistol && !hasScrolled)
         {
-            ShotBulletTime = Time.time;
-            canShoot = false;
-            hasShot = true;
-            CropSoundManager.instance.PlaySoundFXClip(PistolShotAudio,transform);
+            if(currentEquippedGun == Gun.Shotgun)
+            {
+                GunSpriteRenderer.sprite = PistolSprite;
+                currentEquippedGun = Gun.Pistol;
+                lastMouseScrollTime = Time.time;
+                hasScrolled = true;
+            }
+        }
+        else if(Input.mouseScrollDelta.y < 0 && currentEquippedGun != Gun.AR && !hasScrolled)
+        {
+            if(currentEquippedGun == Gun.Pistol)
+            {
+                GunSpriteRenderer.sprite = ShotgunSprite;
+                currentEquippedGun = Gun.Shotgun;
+                lastMouseScrollTime = Time.time;
+                hasScrolled = true;
+            }
         }
 
-        if (Time.time >= ShotBulletTime + GunFireRate && !canShoot)
-            canShoot = true;
+        if (Time.time > lastMouseScrollTime + GunSwapDelay && hasScrolled)
+            hasScrolled = false;
+
+        if (currentEquippedGun == Gun.Pistol || currentEquippedGun == Gun.Shotgun) // shotgun and pistol both use GetMouseButtonDown
+        {
+            if (Input.GetMouseButtonDown(0) && canShoot)
+            {
+                ShotBulletTime = Time.time;
+                canShoot = false;
+                hasShot = true;
+                if(currentEquippedGun == Gun.Pistol) // plays pistol gunshot sound
+                CropSoundManager.instance.PlaySoundFXClip(PistolShotAudio, transform);
+
+                if (currentEquippedGun == Gun.Shotgun)
+                CropSoundManager.instance.PlaySoundFXClip(ShotgunShotAudio,transform);
+            }
+
+            if (Time.time >= ShotBulletTime + GunFireRate && !canShoot)
+                canShoot = true;
+        }
+        else if(currentEquippedGun == Gun.AR) // AR uses GetMouseButton
+        {
+            // Insert AR Shooting logic
+        }
     }
     
     private void FixedUpdate()
@@ -112,7 +177,7 @@ public class PlayerController : MonoBehaviour
             if (GunSpriteRenderer.flipY)
             {
                 GunSprite.transform.localPosition = new Vector3(0.403f,0.148f,GunSprite.transform.localPosition.z);
-                GunTip.transform.localPosition = new Vector3(0.86f,-0.109f,GunTip.transform.localPosition.z);
+                PistolTip.transform.localPosition = new Vector3(0.86f,-0.109f,PistolTip.transform.localPosition.z);
                 GunCollider.transform.localPosition = new Vector3(0,0,GunCollider.transform.localPosition.z);
                 playerSpriteRenderer.flipX = false;
                 GunSpriteRenderer.flipY = false;
@@ -123,7 +188,7 @@ public class PlayerController : MonoBehaviour
             if (!GunSpriteRenderer.flipY)
             {
                 GunSprite.transform.localPosition = new Vector3(0.4f,-0.482f,GunSprite.transform.localPosition.z);
-                GunTip.transform.localPosition = new Vector3(0.883f,-0.253f, GunTip.transform.localPosition.z);
+                PistolTip.transform.localPosition = new Vector3(0.883f,-0.253f, PistolTip.transform.localPosition.z);
                 GunCollider.transform.localPosition = new Vector3(0.03f,1.8f, GunCollider.transform.localPosition.z);
                 playerSpriteRenderer.flipX = true;
                 GunSpriteRenderer.flipY = true;
@@ -132,12 +197,29 @@ public class PlayerController : MonoBehaviour
 
         if(hasShot)
         {
-            _lastSpawnedBullet = Instantiate(bullet,GunTip.position,Quaternion.identity);
-            if (_lastSpawnedBullet != null)
+            if (currentEquippedGun == Gun.Pistol)
             {
-                Rigidbody2D bulletRB = _lastSpawnedBullet.GetComponent<Rigidbody2D>();
-                bulletRB.velocity = lookDir * bulletMovementSpeed;
-                Debug.Log(bulletRB.velocity);
+                _lastSpawnedPistolBullet = Instantiate(bullet, PistolTip.position, Quaternion.identity);
+                if (_lastSpawnedPistolBullet != null)
+                {
+                    Rigidbody2D bulletRB = _lastSpawnedPistolBullet.GetComponent<Rigidbody2D>();
+                    bulletRB.velocity = lookDir * bulletMovementSpeed;
+                    Debug.Log(bulletRB.velocity);
+                    hasShot = false;
+                }
+            }
+            else if(currentEquippedGun == Gun.Shotgun)
+            {
+                for (int i = 0; i < ShotgunBulletSpawn.Count; i++)
+                {
+                    _lastSpawnedShotgunBullet[i] = Instantiate(bullet, ShotgunBulletSpawn[i].position, Quaternion.identity);
+                    if (_lastSpawnedShotgunBullet[i] != null)
+                    {
+                        Rigidbody2D bulletRB = _lastSpawnedShotgunBullet[i].GetComponent<Rigidbody2D>();
+                        bulletRB.velocity = lookDir * bulletMovementSpeed;
+                        Debug.Log(bulletRB.velocity);
+                    }
+                }
                 hasShot = false;
             }
         }

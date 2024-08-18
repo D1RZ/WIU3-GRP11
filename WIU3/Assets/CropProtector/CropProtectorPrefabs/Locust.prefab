@@ -204,7 +204,6 @@ MonoBehaviour:
   chaseSpeed: 1.5
   PlayerHurt: {fileID: 8300000, guid: 94498b94d26fb1e4e9d71adb559da672, type: 3}
   _isEating: 0
-  _HitPlayer: 0
 --- !u!1 &2456466112164971597
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +370,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0271886, y: 0.32626426}
+  m_Offset: {x: -0.04094833, y: 0.29191768}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -382,7 +381,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4590882, y: 1}
+  m_Size: {x: 0.31461155, y: 0.75931}
   m_EdgeRadius: 0
 --- !u!1 &5531738719719673700
 GameObject:
