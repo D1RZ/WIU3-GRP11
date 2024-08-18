@@ -25,6 +25,8 @@ public class Recyclable : MonoBehaviour
     private AudioSource sfxAudioSrc;
     [SerializeField] private AudioClip HoopAudioClip;
     [SerializeField] private AudioClip GroundAudioClip;
+    [SerializeField] private AudioClip correctBinAudioClip;
+    [SerializeField] private AudioClip wrongBinAudioClip;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +75,8 @@ public class Recyclable : MonoBehaviour
             //If recyclable goes into the correct hoop
             if (Hoop.GetComponent<Hoop>().type == data.type)
             {
+                sfxAudioSrc.PlayOneShot(correctBinAudioClip, 1.0f);
+
                 GameManager.GetComponent<RecyclingGameManager>().addScore();
 
                 //get parent of the hoop
@@ -87,6 +91,8 @@ public class Recyclable : MonoBehaviour
             }
             else
             {
+                sfxAudioSrc.PlayOneShot(wrongBinAudioClip, 1.0f);
+
                 GameManager.GetComponent<RecyclingGameManager>().minusScore();
             }
             Debug.Log("Went through");
