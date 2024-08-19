@@ -7,6 +7,6 @@ public class GoBackArcade : SceneLoader
 {
     private void LoadArcadeScene()
     {
-      LoadScene("Main");
+      LoadScene("Arcade");
     }
 }

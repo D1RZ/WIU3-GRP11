@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnFloatingPlant : MonoBehaviour
+public class SpawnSeaweed : MonoBehaviour
 {
     [SerializeField] private GameObject floatingPlant; // The prefab to spawn
     [SerializeField] private GameObject spawnArea; // The GameObject defining the spawn area
     [SerializeField] private float minSpawnInterval = 6f; // Minimum time between spawns
-    [SerializeField] private float maxSpawnInterval = 12f; // Maximum time between spawns
+    [SerializeField] private float maxSpawnInterval = 8f; // Maximum time between spawns
 
     private void Start()
     {

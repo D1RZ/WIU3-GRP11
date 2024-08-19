@@ -27,7 +27,9 @@ public class BigFish : MonoBehaviour
     [SerializeField] private float eatingSpeed = 3f; // Burst speed when chasing small fish
     [SerializeField] private float dieSpeed = 1f; // Speed of the fish sinking when it dies
     [SerializeField] private float detectionRadius = 10f;
-    [SerializeField] private float starveTime = 10f;
+    [SerializeField] private float starveTime = 40f;
+    [SerializeField] private float lifeSpan = 60f;
+    private float timeAlive;
 
     private SpriteRenderer spriteRenderer;
 
@@ -36,6 +38,8 @@ public class BigFish : MonoBehaviour
         currentState = State.ROAM;
         PickRandomPoint();
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
+
+        timeAlive = 0f;
     }
 
     private enum State
@@ -46,7 +50,7 @@ public class BigFish : MonoBehaviour
 
     private void Update()
     {
-        // Update timer
+        // Update timer - for starving to death
         if (currentState == State.ROAM)
         {
             timeSinceLastEat += Time.deltaTime;
@@ -55,6 +59,14 @@ public class BigFish : MonoBehaviour
                 Die();
                 return;
             }
+        }
+
+        // Update timer - for dying to old age
+        timeAlive += Time.deltaTime;
+        if (timeAlive >= lifeSpan)
+        {
+            Die();
+            return;
         }
 
         switch (currentState)
@@ -130,7 +142,7 @@ public class BigFish : MonoBehaviour
         onEatCooldown = true;
 
         // Wait for a random time between 6 to 8 seconds
-        float waitTime = Random.Range(6f, 8f);
+        float waitTime = Random.Range(5f, 6f);
         yield return new WaitForSeconds(waitTime);
 
         onEatCooldown = false;
@@ -186,6 +198,10 @@ public class BigFish : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
 
+        // Change to skeleton sprite
+        spriteRenderer.sprite = skeleSprite;
+        yield return new WaitForSeconds(1f);
+
         // Check for nearby seaweed within a radius of 3f
         Collider2D[] seaweedInRange = Physics2D.OverlapCircleAll(transform.position, 3f, foodLayer);
         int seaweedSpawned = 0; // Counter to track how many seaweed have been spawned
@@ -195,47 +211,40 @@ public class BigFish : MonoBehaviour
         {
             if (seaweed.CompareTag("Seaweed"))
             {
-                if (seaweedSpawned <= maxSeaweedSpawn)
+                for (int i = 0; i < 1; i++) // how many seaweed to spawn per 1 detected seaweed
                 {
-                    Debug.Log("Start");
-                    for (int i = 0; i < 1; i++) // how many seaweed to spawn per 1 detected seaweed
-                    {
-                        Debug.Log("Continue");
-                        Transform spawnTransform = spawnArea.transform;
+                    if (seaweedSpawned >= maxSeaweedSpawn)
+                        break;
 
-                        // Get the fish's position and determine a random direction and distance within a 6f radius
-                        Vector2 randomDirection = Random.insideUnitCircle.normalized;
-                        float randomDistance = Random.Range(0.5f, 6f); // Choose a distance within the 6f radius
-                        Vector2 potentialSpawnPosition = (Vector2)transform.position + randomDirection * randomDistance;
+                    Transform spawnTransform = spawnArea.transform;
 
-                        // Ensure the spawn position is within the bounds of the spawn area
-                        float spawnX = Mathf.Clamp(
-                            potentialSpawnPosition.x,
-                            spawnTransform.position.x - spawnTransform.localScale.x / 2,
-                            spawnTransform.position.x + spawnTransform.localScale.x / 2
-                        );
+                    // Get the fish's position and determine a random direction and distance within a 3f radius
+                    Vector2 randomDirection = Random.insideUnitCircle.normalized;
+                    float randomDistance = Random.Range(0.5f, 3f); // Choose a distance within the 3f radius
+                    Vector2 potentialSpawnPosition = (Vector2)transform.position + randomDirection * randomDistance;
 
-                        float spawnY = Mathf.Clamp(
-                            potentialSpawnPosition.y,
-                            spawnTransform.position.y - spawnTransform.localScale.y / 2,
-                            spawnTransform.position.y + spawnTransform.localScale.y / 2
-                        );
+                    // Ensure the spawn position is within the bounds of the spawn area
+                    float spawnX = Mathf.Clamp(
+                        potentialSpawnPosition.x,
+                        spawnTransform.position.x - spawnTransform.localScale.x / 2,
+                        spawnTransform.position.x + spawnTransform.localScale.x / 2
+                    );
 
-                        Vector3 spawnPosition = new Vector3(spawnX, spawnY, spawnTransform.position.z);
+                    float spawnY = Mathf.Clamp(
+                        potentialSpawnPosition.y,
+                        spawnTransform.position.y - spawnTransform.localScale.y / 2,
+                        spawnTransform.position.y + spawnTransform.localScale.y / 2
+                    );
 
-                        Instantiate(spawnFood, spawnPosition, Quaternion.identity);
-                        seaweedSpawned++;
-                    }
-                    Debug.Log("End");
+                    Vector3 spawnPosition = new Vector3(spawnX, spawnY, spawnTransform.position.z);
+
+                    Instantiate(spawnFood, spawnPosition, Quaternion.identity);
+                    seaweedSpawned++;
                 }
-                else if (seaweedSpawned > maxSeaweedSpawn)
+                if (seaweedSpawned >= maxSeaweedSpawn)
                     break;
             }
         }
-
-        // Change to skeleton sprite
-        spriteRenderer.sprite = skeleSprite;
-        yield return new WaitForSeconds(1f);
 
         // Destroy the game object after spawning
         Destroy(gameObject);

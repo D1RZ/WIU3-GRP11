@@ -62,15 +62,15 @@ public class GameController : MonoBehaviour
         // Decay Condition Triggers
         if (SeaweedCount <= 0) // Too less Seaweed
         {
-            DecayCondition(10);
+            DecayCondition(5);
         } 
-        if (smallFishesCount > 20) // Too many Small Fishes
+        if (smallFishesCount > 20 && bigFishesCount > 5) // Too many Small Fishes or Big Fishes
         {
             DecayCondition(10);
         }
-        if (bigFishesCount > 5) // Too many Big Fishes
+        if (smallFishesCount == 0 ||  bigFishesCount == 0) // Too less Small Fishes or Big Fishes
         {
-            DecayCondition(10);
+            DecayCondition(30); 
         }
 
         // Lose Condition
