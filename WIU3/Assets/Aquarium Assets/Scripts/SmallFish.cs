@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SmallFish : MonoBehaviour
 {
-    public Sprite graySprite; // Assign this in the Inspector
-    public Sprite skeleSprite; // Assign this in the Inspector
+    public Sprite graySprite;
+    public Sprite skeleSprite;
 
     private State currentState;
     private Vector2 targetPosition;
@@ -25,10 +25,10 @@ public class SmallFish : MonoBehaviour
     private float timeSinceLastEat = 0f;
 
     [SerializeField] private float speed = 2f;
-    [SerializeField] private float dieSpeed = 1f;
+    [SerializeField] private float dieSpeed = 1f; // Speed of the fish sinking when it dies
     [SerializeField] private float slowingDistance = 0.5f;
     [SerializeField] private float detectionRadius = 10f;
-    [SerializeField] private float deathTime = 10f;
+    [SerializeField] private float starveTime = 10f;
 
     private enum State
     {
@@ -49,7 +49,7 @@ public class SmallFish : MonoBehaviour
     {
         // Update timer - for starving to death
         timeSinceLastEat += Time.deltaTime;
-        if (timeSinceLastEat >= deathTime)
+        if (timeSinceLastEat >= starveTime)
         {
             Die();
             return;
@@ -107,7 +107,7 @@ public class SmallFish : MonoBehaviour
                 Destroy(targetFood.gameObject);
                 foodEaten++;
                 DropWaste();
-                if (foodEaten >= 2) // if ate 2 food, spawn new fish
+                if (foodEaten >= 3) // if ate 3 food, spawn new fish
                 {
                     SpawnNewFish();
                     foodEaten = 0;
