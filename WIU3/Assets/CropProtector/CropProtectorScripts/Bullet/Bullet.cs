@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
             {
                 Locust locust = collision.gameObject.transform.parent.gameObject.GetComponent<Locust>();
 
-                if(playerController.currentEquippedGun == PlayerController.Gun.Pistol)
+                if(playerController.currentEquippedGun == PlayerController.Gun.Pistol || playerController.currentEquippedGun == PlayerController.Gun.AR)
                    locust.Health -= 25;
                 else if(playerController.currentEquippedGun == PlayerController.Gun.Shotgun)
                 {
