@@ -135,6 +135,8 @@ public class PlayerController : MonoBehaviour
         mousePosition = camera.ScreenToWorldPoint(Input.mousePosition); // converts position of mouse on screen to world coordinates
 
         Vector2 lookDir = mousePosition - (Vector2)GunPivot.position;
+        rotZ = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        Quaternion target = Quaternion.Euler(0, 0, rotZ);
 
         if (Mathf.Abs(horizontal) < 0.0001f && Mathf.Abs(vertical) < 0.0001f)
         {
@@ -217,7 +219,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Time.time >= InstantiatedBulletTime + ARFireRate)
                 {
-                    _lastSpawnedARBullet = Instantiate(bullet, ARBulletSpawn.position, Quaternion.identity);
+                    _lastSpawnedARBullet = Instantiate(bullet, ARBulletSpawn.position,target);
 
                     if (_lastSpawnedARBullet != null)
                     {
@@ -270,7 +272,7 @@ public class PlayerController : MonoBehaviour
         {
             if (currentEquippedGun == Gun.Pistol)
             {
-                _lastSpawnedPistolBullet = Instantiate(bullet, PistolBulletSpawn.position, Quaternion.identity);
+                _lastSpawnedPistolBullet = Instantiate(bullet, PistolBulletSpawn.position,target);
                 if (_lastSpawnedPistolBullet != null)
                 {
                     Rigidbody2D bulletRB = _lastSpawnedPistolBullet.GetComponent<Rigidbody2D>();
@@ -282,7 +284,7 @@ public class PlayerController : MonoBehaviour
             {
                 for (int i = 0; i < ShotgunBulletSpawn.Count; i++)
                 {
-                    _lastSpawnedShotgunBullet[i] = Instantiate(bullet, ShotgunBulletSpawn[i].position, Quaternion.identity);
+                    _lastSpawnedShotgunBullet[i] = Instantiate(bullet, ShotgunBulletSpawn[i].position,target);
                     if (_lastSpawnedShotgunBullet[i] != null)
                     {
                         Rigidbody2D bulletRB = _lastSpawnedShotgunBullet[i].GetComponent<Rigidbody2D>();
