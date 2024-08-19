@@ -32,13 +32,10 @@ Transform:
   m_LocalPosition: {x: 1.452, y: -3.23, z: 0}
   m_LocalScale: {x: 0.02, y: 0.02, z: 1}
   m_ConstrainProportionsScale: 0
-<<<<<<< Updated upstream
   m_Children: []
-=======
   m_Children:
   - {fileID: 708200112122297976}
   - {fileID: 8112636389581968093}
->>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3916940326386934226
@@ -169,8 +166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageSound: {fileID: 8300000, guid: af2dee6fc5424a44196b2fce038dc5fc, type: 3}
   activeTime: 3
-<<<<<<< Updated upstream
-=======
 --- !u!1 &5761017652235423412
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,4 +386,3 @@ MonoBehaviour:
   - {x: 0.4157348, y: -0.27778515, z: 0}
   - {x: 0.46193978, y: -0.19134171, z: 0}
   - {x: 0.49039266, y: -0.09754512, z: 0}
->>>>>>> Stashed changes
