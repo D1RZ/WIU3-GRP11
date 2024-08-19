@@ -13,6 +13,7 @@ TagManager:
   - BigFish
   - Ground
   - Seaweed
+  - SpawnArea
   layers:
   - Default
   - TransparentFX
