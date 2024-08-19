@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject MakeScreenDarkerPanel;
     [SerializeField] GameObject EndGameUI;
 
-    [SerializeField] private float _timeRemaining = 300; // Game time = 300 seconds
+    [SerializeField] private float _timeRemaining = 120; // Game time = 120 seconds
     [SerializeField] public float maxCondition = 200f;
     GameObject[] Seaweeds = null;
     GameObject[] smallFishes = null;
