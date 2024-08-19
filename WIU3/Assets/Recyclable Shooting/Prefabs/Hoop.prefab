@@ -376,7 +376,7 @@ MonoBehaviour:
   startingPoint: {fileID: 0}
   type: 0
   scoreTrigger: {fileID: 2057669993296865867}
-  moveSpeed: 1
+  moveSpeed: 0.5
 --- !u!82 &4528942922946319222
 AudioSource:
   m_ObjectHideFlags: 0
