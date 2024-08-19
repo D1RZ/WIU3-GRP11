@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +11,8 @@ public class CropSoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
-        instance = this;
+        if (instance == null)
+            instance = this;
     }
 
     public void PlaySoundFXClip(AudioClip soundEffect, Transform soundSourceLocation)
