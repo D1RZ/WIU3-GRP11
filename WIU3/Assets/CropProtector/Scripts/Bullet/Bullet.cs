@@ -8,15 +8,12 @@ public class Bullet : MonoBehaviour
     [SerializeField] AudioClip DamageSound;
     [SerializeField] private float activeTime;
 
-    private PlayerController playerController;
-
     private float instantiatedTime;
 
     private Vector2 instantiatedPosition;
 
     private void Start()
     {
-        playerController = GameObject.Find("CropPlayer").GetComponent<PlayerController>();
         instantiatedTime = Time.time;
         instantiatedPosition = gameObject.transform.position;
     }
@@ -35,9 +32,9 @@ public class Bullet : MonoBehaviour
             {
                 Locust locust = collision.gameObject.transform.parent.gameObject.GetComponent<Locust>();
 
-                if(playerController.currentEquippedGun == PlayerController.Gun.Pistol)
+                if(PlayerController.instance.currentEquippedGun == PlayerController.Gun.Pistol || PlayerController.instance.currentEquippedGun == PlayerController.Gun.AR)
                    locust.Health -= 25;
-                else if(playerController.currentEquippedGun == PlayerController.Gun.Shotgun)
+                else if(PlayerController.instance.currentEquippedGun == PlayerController.Gun.Shotgun)
                 {
                    if(Vector2.Distance(transform.position,instantiatedPosition) < 1.8f)
                    {
