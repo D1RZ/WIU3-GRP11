@@ -8,17 +8,27 @@ using UnityEngine.UI;
 public class AudioSettingsManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer mixer;
+    [SerializeField] private Slider MasterSlider;
     [SerializeField] private Slider BGMSlider;
     [SerializeField] private Slider SFXSlider;
+    [SerializeField] private Slider VoicesSlider;
+    [SerializeField] private TextMeshProUGUI MasterVolumeTxt;
     [SerializeField] private TextMeshProUGUI BGMVolumeTxt;
     [SerializeField] private TextMeshProUGUI SFXVolumeTxt;
+    [SerializeField] private TextMeshProUGUI VoicesVolumeTxt;
 
     private void Start()
     {
         Load();
+        SetMasterVolume();
         SetSFXVolume();
         SetBGMVolume();
-        this.gameObject.SetActive(false);
+        SetVoicesVolume();
+    }
+    public void SetMasterVolume()
+    {
+        mixer.SetFloat("MasterVolume", Mathf.Log10(MasterSlider.value) * 20);
+        MasterVolumeTxt.text = Mathf.RoundToInt((MasterSlider.value / 1 * 100)).ToString();
     }
 
     public void SetBGMVolume()
@@ -31,6 +41,11 @@ public class AudioSettingsManager : MonoBehaviour
     {
         mixer.SetFloat("SFXVolume", Mathf.Log10(SFXSlider.value) * 20);
         SFXVolumeTxt.text = Mathf.RoundToInt((SFXSlider.value / 1 * 100)).ToString();
+    }
+    public void SetVoicesVolume()
+    {
+        mixer.SetFloat("VoicesVolume", Mathf.Log10(VoicesSlider.value) * 20);
+        VoicesVolumeTxt.text = Mathf.RoundToInt((VoicesSlider.value / 1 * 100)).ToString();
     }
 
     private void Show()
@@ -55,6 +70,11 @@ public class AudioSettingsManager : MonoBehaviour
         }
     }
 
+    public void SaveMaster()
+    {
+        PlayerPrefs.SetFloat("MasterVolume",MasterSlider.value);
+    }
+
     public void SaveSFX()
     {
         PlayerPrefs.SetFloat("SFXVolume", SFXSlider.value);
@@ -65,11 +85,20 @@ public class AudioSettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat("BGMVolume", BGMSlider.value);
     }
 
+    public void SaveVoices()
+    {
+        PlayerPrefs.SetFloat("VoicesVolume", VoicesSlider.value);
+    }
+
     public void Load()
     {
+        MasterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        
         SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
 
         BGMSlider.value = PlayerPrefs.GetFloat("BGMVolume");
+
+        VoicesSlider.value = PlayerPrefs.GetFloat("VoicesVolume");
     }
 }
 
