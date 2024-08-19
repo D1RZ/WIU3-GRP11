@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BigFish : MonoBehaviour
 {
-    public Sprite graySprite; // Assign this in the Inspector
-    public Sprite skeleSprite; // Assign this in the Inspector
+    public Sprite graySprite;
+    public Sprite skeleSprite;
 
     private State currentState;
     private Vector2 targetPosition;
@@ -13,21 +13,23 @@ public class BigFish : MonoBehaviour
 
     [SerializeField] private Collider2D roamingArea;
     [SerializeField] private LayerMask foodLayer; // For efficiency reasons
-    [SerializeField] private GameObject bigFishPrefab; // For spawning new big fish
-    [SerializeField] private GameObject spawnFood; // food to spawn
-    [SerializeField] private GameObject spawnArea; // Spawn area for food
-    [SerializeField] private GameObject wastePrefab; // Prefab for the waste to be spawned
+    [SerializeField] private GameObject bigFishPrefab;
+    [SerializeField] private GameObject spawnFood;
+    [SerializeField] private GameObject spawnArea;
+    [SerializeField] private GameObject wastePrefab;
 
     private bool isWaiting = false;
     private bool onEatCooldown = false;
-    private int smallFishEaten = 0; // Counter for spawning new big fish
+    private int smallFishEaten = 0;
     private float timeSinceLastEat = 0f; // Timer for tracking time since last eat
 
-    [SerializeField] private float roamingSpeed = 1f; // Roaming speed of the big fish
-    [SerializeField] private float eatingSpeed = 3f; // Burst speed when eating or chasing small fish
-    [SerializeField] private float dieSpeed = 1f; // Speed the fish floats up at when it dies
-    [SerializeField] private float detectionRadius = 10f; // detectionRadius for food
-    [SerializeField] private float deathTime = 10f; // Time before the fish dies if no food is eaten
+    [SerializeField] private float roamingSpeed = 1f;
+    [SerializeField] private float eatingSpeed = 3f; // Burst speed when chasing small fish
+    [SerializeField] private float dieSpeed = 1f; // Speed of the fish sinking when it dies
+    [SerializeField] private float detectionRadius = 10f;
+    [SerializeField] private float starveTime = 40f;
+    [SerializeField] private float lifeSpan = 60f;
+    private float timeAlive;
 
     private SpriteRenderer spriteRenderer;
 
@@ -36,6 +38,8 @@ public class BigFish : MonoBehaviour
         currentState = State.ROAM;
         PickRandomPoint();
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
+
+        timeAlive = 0f;
     }
 
     private enum State
@@ -46,15 +50,23 @@ public class BigFish : MonoBehaviour
 
     private void Update()
     {
-        // Update timer
+        // Update timer - for starving to death
         if (currentState == State.ROAM)
         {
             timeSinceLastEat += Time.deltaTime;
-            if (timeSinceLastEat >= deathTime)
+            if (timeSinceLastEat >= starveTime)
             {
                 Die();
                 return;
             }
+        }
+
+        // Update timer - for dying to old age
+        timeAlive += Time.deltaTime;
+        if (timeAlive >= lifeSpan)
+        {
+            Die();
+            return;
         }
 
         switch (currentState)
@@ -93,7 +105,7 @@ public class BigFish : MonoBehaviour
                 Destroy(targetFood.gameObject);
                 smallFishEaten++;
                 DropWaste();
-                if (smallFishEaten >= 3) // if ate 3 small fish, spawn new big fish
+                if (smallFishEaten >= 4) // if ate 4 small fish, spawn new big fish
                 {
                     SpawnNewBigFish();
                     smallFishEaten = 0;
@@ -129,8 +141,8 @@ public class BigFish : MonoBehaviour
     {
         onEatCooldown = true;
 
-        // Wait for a random time between 8 to 10 seconds
-        float waitTime = Random.Range(8f, 10f);
+        // Wait for a random time between 6 to 8 seconds
+        float waitTime = Random.Range(5f, 6f);
         yield return new WaitForSeconds(waitTime);
 
         onEatCooldown = false;
@@ -186,10 +198,14 @@ public class BigFish : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
 
-        // Check for nearby seaweed within a radius of 6f
-        Collider2D[] seaweedInRange = Physics2D.OverlapCircleAll(transform.position, 6f, foodLayer);
+        // Change to skeleton sprite
+        spriteRenderer.sprite = skeleSprite;
+        yield return new WaitForSeconds(1f);
+
+        // Check for nearby seaweed within a radius of 3f
+        Collider2D[] seaweedInRange = Physics2D.OverlapCircleAll(transform.position, 3f, foodLayer);
         int seaweedSpawned = 0; // Counter to track how many seaweed have been spawned
-        int maxSeaweedSpawn = 10; // Max number of seaweed that can spawn
+        int maxSeaweedSpawn = 5; // Max number of seaweed that can spawn
 
         foreach (Collider2D seaweed in seaweedInRange)
         {
@@ -202,9 +218,9 @@ public class BigFish : MonoBehaviour
 
                     Transform spawnTransform = spawnArea.transform;
 
-                    // Get the fish's position and determine a random direction and distance within a 6f radius
+                    // Get the fish's position and determine a random direction and distance within a 3f radius
                     Vector2 randomDirection = Random.insideUnitCircle.normalized;
-                    float randomDistance = Random.Range(0.5f, 6f); // Choose a distance within the 6f radius
+                    float randomDistance = Random.Range(0.5f, 3f); // Choose a distance within the 3f radius
                     Vector2 potentialSpawnPosition = (Vector2)transform.position + randomDirection * randomDistance;
 
                     // Ensure the spawn position is within the bounds of the spawn area
@@ -229,10 +245,6 @@ public class BigFish : MonoBehaviour
                     break;
             }
         }
-
-        // Change to skeleton sprite
-        spriteRenderer.sprite = skeleSprite;
-        yield return new WaitForSeconds(1f);
 
         // Destroy the game object after spawning
         Destroy(gameObject);
@@ -266,8 +278,20 @@ public class BigFish : MonoBehaviour
 
     private void Die()
     {
-        currentState = State.ROAM; // Ensure state doesn't interfere with dying animation
-        transform.rotation = Quaternion.identity; // Reset rotation
+        // Change the sprite to the gray one
+        spriteRenderer.sprite = graySprite;
+
+        // Reset rotation to default and flip sprite upside down
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+        Vector3 scale = transform.localScale;
+        scale.y = -Mathf.Abs(scale.y); // Flip vertically
+        transform.localScale = scale;
+
+        // Move downwards until it reaches the bottom of the roam area
+        float botY = roamingArea.bounds.min.y;
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, botY), dieSpeed * Time.deltaTime);
+
+        // Wait to decompose
         StartCoroutine(WaitToDecompose());
     }
 

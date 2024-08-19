@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +8,17 @@ public class GameController : MonoBehaviour
 {
     public Image conditionBar;
 
+    [SerializeField] TextMeshProUGUI bannerText;
+    [SerializeField] GameObject MakeScreenDarkerPanel;
+    [SerializeField] GameObject EndGameUI;
+
+    [SerializeField] private float _timeRemaining = 300; // Game time = 300 seconds
     [SerializeField] public float maxCondition = 200f;
     GameObject[] Seaweeds = null;
     GameObject[] smallFishes = null;
     GameObject[] bigFishes = null;
 
+    private float _timeElapsed = 0;
     public float currentCondition;
     int SeaweedCount = 0;
     int smallFishesCount = 0;
@@ -25,11 +32,11 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        
-        GameStatus("Ongoing");
+        GameStatus("Go");
         GetCounts();
         EventTriggers();
         UpdateConditionBar();
+        _timeElapsed += Time.deltaTime;
 
         // Print the counts
         //Debug.Log($"Floating Plants: {floatingPlantCount}");
@@ -55,28 +62,43 @@ public class GameController : MonoBehaviour
         // Decay Condition Triggers
         if (SeaweedCount <= 0) // Too less Seaweed
         {
-            DecayCondition(10);
-            //Debug.Log("Condition decrease due to too less seaweed");
+            DecayCondition(5);
         } 
-        if (smallFishesCount > 20) // Too many Small Fishes
+        if (smallFishesCount > 20 && bigFishesCount > 5) // Too many Small Fishes or Big Fishes
         {
             DecayCondition(10);
-            //Debug.Log("Condition decrease due to too many small fishes");
         }
-        if (bigFishesCount > 5) // Too many Big Fishes
+        if (smallFishesCount == 0 ||  bigFishesCount == 0) // Too less Small Fishes or Big Fishes
         {
-            DecayCondition(10);
-            //Debug.Log("Condition decrease due to too many big fishes");
+            DecayCondition(30); 
         }
 
         // Lose Condition
         if (currentCondition <= 0)
         {
+            // Call end screen
+            bannerText.text = "Better luck next time!";
+            GameStatus("Stop");
             GameStatus("End");
         }
 
         // Timer end Trigger
-        // add code to check time and switch gameStatus to "End"
+        if (_timeRemaining > 0)
+        {
+            if (_timeElapsed >= 1)
+            {
+                _timeRemaining -= 1;
+                //timer.text = _timeRemaining.ToString();
+                _timeElapsed = 0;
+            }
+        }
+        else if (_timeRemaining <= 0)
+        {
+            // Call end screen
+            bannerText.text = "Well Done!";
+            GameStatus("Stop");
+            GameStatus("End");
+        }
     }
 
     private void DecayCondition(float reduceAmt) // minus this amount of condition continously
@@ -96,16 +118,22 @@ public class GameController : MonoBehaviour
         if (gameStatus == "Start")
         {
             // initialize stuff (again)?
+            // reload the scene? This State might not be needed
         }
-        else if (gameStatus == "Ongoing")
+        else if (gameStatus == "Go")
         {
-            // Do nothing
+            Time.timeScale = 1;
+        }
+        else if (gameStatus == "Stop")
+        {
+            Time.timeScale = 0;
+            // Stop music
         }
         else if (gameStatus == "End")
         {
-            // End gametimer
-            // Reset gametimer?
             // Show Endgame Screen
+            MakeScreenDarkerPanel.SetActive(true);
+            EndGameUI.SetActive(true);
         }
     }
 }

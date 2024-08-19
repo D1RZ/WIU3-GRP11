@@ -1,0 +1,2463 @@
+fileFormatVersion: 2
+guid: 7e7d8b1ad48048e4bb399513bf60d40c
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Player Inventory Bar_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 464
+      height: 272
+    spriteID: 52bc2096255a9f74b935925df0968384
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Player Inventory Bar_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 476
+      y: 4
+      width: 464
+      height: 272
+    spriteID: 1fe927af7b3959042b6d163b57653c60
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 476, y: 4}
+  - name: Player Inventory Bar_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 948
+      y: 4
+      width: 464
+      height: 272
+    spriteID: d5dd379e9a25b094ba0c10da86814533
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 948, y: 4}
+  - name: Player Inventory Bar_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1420
+      y: 4
+      width: 464
+      height: 272
+    spriteID: de5ca1ac04662464a93c6cc414f891f6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1420, y: 4}
+  - name: Player Inventory Bar_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1892
+      y: 4
+      width: 464
+      height: 272
+    spriteID: 068c4da19b5d4084ca131f3c2c44a4d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1892, y: 4}
+  - name: Player Inventory Bar_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2364
+      y: 4
+      width: 464
+      height: 272
+    spriteID: 3e7c9c87d05d57849bcf273fc426ab72
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2364, y: 4}
+  - name: Player Inventory Bar_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2836
+      y: 4
+      width: 464
+      height: 272
+    spriteID: 0be0fae265cbd664ba42127a2323eb84
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2836, y: 4}
+  - name: Player Inventory Bar_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3308
+      y: 4
+      width: 464
+      height: 272
+    spriteID: 0a738e7208a228b4d8f0d7041909e52a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3308, y: 4}
+  - name: Player Inventory Bar_Frame_8
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 284
+      width: 464
+      height: 272
+    spriteID: 35733f9f872ab7e4fbbe28e475e42e54
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 284}
+  - name: Player Inventory Bar_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 476
+      y: 284
+      width: 464
+      height: 272
+    spriteID: 3483ad8d2ec329f48894d2d804ce6a14
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 476, y: 284}
+  - name: Player Inventory Bar_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 948
+      y: 284
+      width: 464
+      height: 272
+    spriteID: 110f476c989e48f48b758b1a88c2709c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 948, y: 284}
+  - name: Player Inventory Bar_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1420
+      y: 284
+      width: 464
+      height: 272
+    spriteID: 24bfc242bb4141748b222a40b6ada456
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1420, y: 284}
+  - name: Player Inventory Bar_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1892
+      y: 284
+      width: 464
+      height: 272
+    spriteID: 656d21acc42f42f4685bf2436b1ae373
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1892, y: 284}
+  - name: Player Inventory Bar_Frame_13
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2364
+      y: 284
+      width: 464
+      height: 272
+    spriteID: ee3a2e1a66d92d943b5e782cf2bbc085
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2364, y: 284}
+  - name: Player Inventory Bar_Frame_14
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2836
+      y: 284
+      width: 464
+      height: 272
+    spriteID: 1576ed94dfbdb6048895bbc0d8edc59c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2836, y: 284}
+  - name: Player Inventory Bar_Frame_15
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3308
+      y: 284
+      width: 464
+      height: 272
+    spriteID: ffd842c20baf32349a7f7f55dee38c91
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3308, y: 284}
+  - name: Player Inventory Bar_Frame_16
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 564
+      width: 464
+      height: 272
+    spriteID: 9cb07bfe7aff8774e904c92064c6082e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 564}
+  - name: Player Inventory Bar_Frame_17
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 476
+      y: 564
+      width: 464
+      height: 272
+    spriteID: 24c87a4dd837ded46b43d36b2bccb981
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 476, y: 564}
+  - name: Player Inventory Bar_Frame_18
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 948
+      y: 564
+      width: 464
+      height: 272
+    spriteID: c034d7d778b44eb428923698484a1a86
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 948, y: 564}
+  - name: Player Inventory Bar_Frame_19
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1420
+      y: 564
+      width: 464
+      height: 272
+    spriteID: fd7e3206fbc1f9840a9980a0c0e56a45
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1420, y: 564}
+  - name: Player Inventory Bar_Frame_20
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1892
+      y: 564
+      width: 464
+      height: 272
+    spriteID: 002b54a04550135438006ddfbaa47b33
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1892, y: 564}
+  - name: Player Inventory Bar_Frame_21
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2364
+      y: 564
+      width: 464
+      height: 272
+    spriteID: 0113a3b013fb51e438c9d33c3b604947
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2364, y: 564}
+  - name: Player Inventory Bar_Frame_22
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2836
+      y: 564
+      width: 464
+      height: 272
+    spriteID: fa89ff058e8bac14aa74fd4776f4cd7f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2836, y: 564}
+  - name: Player Inventory Bar_Frame_23
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3308
+      y: 564
+      width: 464
+      height: 272
+    spriteID: c2b9cba01cd3d4140b1f870b1e9c184e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3308, y: 564}
+  - name: Player Inventory Bar_Frame_24
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 844
+      width: 464
+      height: 272
+    spriteID: 47c8d6bd784c4064b9d5660f9d3789a0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 844}
+  - name: Player Inventory Bar_Frame_25
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 476
+      y: 844
+      width: 464
+      height: 272
+    spriteID: 113fb1be040034945b17993009516807
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 476, y: 844}
+  - name: Player Inventory Bar_Frame_26
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 948
+      y: 844
+      width: 464
+      height: 272
+    spriteID: ad6cfef897406ab48b39f8886bab5e58
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 948, y: 844}
+  - name: Player Inventory Bar_Frame_27
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1420
+      y: 844
+      width: 464
+      height: 272
+    spriteID: f9976db86a245c242858990e500bd5c8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1420, y: 844}
+  - name: Player Inventory Bar_Frame_28
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1892
+      y: 844
+      width: 464
+      height: 272
+    spriteID: 67b87aea1c1333243a08b81d208a953d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1892, y: 844}
+  - name: Player Inventory Bar_Frame_29
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2364
+      y: 844
+      width: 464
+      height: 272
+    spriteID: 3a6922de5e1aeed4fa4cd0506853b0c9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2364, y: 844}
+  - name: Player Inventory Bar_Frame_30
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2836
+      y: 844
+      width: 464
+      height: 272
+    spriteID: 7104f74a0bdce2945aa011f4ac57eb90
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2836, y: 844}
+  - name: Player Inventory Bar_Frame_31
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3308
+      y: 844
+      width: 464
+      height: 272
+    spriteID: a1335427367df7e4d8609fced299db13
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3308, y: 844}
+  - name: Player Inventory Bar_Frame_32
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1124
+      width: 464
+      height: 272
+    spriteID: b2866dd592768174c91e6a3a8291a9fd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1124}
+  - name: Player Inventory Bar_Frame_33
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 476
+      y: 1124
+      width: 464
+      height: 272
+    spriteID: dd4fc07c694bc6d4aa2d71e779625a95
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 476, y: 1124}
+  - name: Player Inventory Bar_Frame_34
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 948
+      y: 1124
+      width: 464
+      height: 272
+    spriteID: 39f1622b6bbd2ea4da2f4817f57146e0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 948, y: 1124}
+  - name: Player Inventory Bar_Frame_35
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1420
+      y: 1124
+      width: 464
+      height: 272
+    spriteID: f1e4fcf9f6e64f6488e0bdb61e29c416
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1420, y: 1124}
+  - name: Player Inventory Bar_Frame_36
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1892
+      y: 1124
+      width: 464
+      height: 272
+    spriteID: 72851b74719cefe4d9636374fc3a85d8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1892, y: 1124}
+  - name: Player Inventory Bar_Frame_37
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2364
+      y: 1124
+      width: 464
+      height: 272
+    spriteID: 159b7203744e0ec4fa5960283b7926fc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2364, y: 1124}
+  - name: Player Inventory Bar_Frame_38
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2836
+      y: 1124
+      width: 464
+      height: 272
+    spriteID: 4ccca7c7b8799f2479cdd25f085c64d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2836, y: 1124}
+  - name: Player Inventory Bar_Frame_39
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3308
+      y: 1124
+      width: 464
+      height: 272
+    spriteID: a4bb7d6c4a9f3fe43a49c1966e4b6b9c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3308, y: 1124}
+  - name: Player Inventory Bar_Frame_40
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1404
+      width: 464
+      height: 272
+    spriteID: 72cc5e06de2beeb429b92e8a26376836
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1404}
+  - name: Player Inventory Bar_Frame_41
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 476
+      y: 1404
+      width: 464
+      height: 272
+    spriteID: 86c5b23fee1b12e499f46ffec4cc7260
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 476, y: 1404}
+  - name: Player Inventory Bar_Frame_42
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 948
+      y: 1404
+      width: 464
+      height: 272
+    spriteID: 040a52c388feaaa4b9eb1d6e933df1a8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 948, y: 1404}
+  - name: Player Inventory Bar_Frame_43
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1420
+      y: 1404
+      width: 464
+      height: 272
+    spriteID: 3839d6c0c61f43348803dd337d8aa7f3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1420, y: 1404}
+  - name: Player Inventory Bar_Frame_44
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1892
+      y: 1404
+      width: 464
+      height: 272
+    spriteID: 56b2020994274f142afd9976c0e4f276
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1892, y: 1404}
+  - name: Player Inventory Bar_Frame_45
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2364
+      y: 1404
+      width: 464
+      height: 272
+    spriteID: 803a6a7d92e9b2e40934d40e341c597c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2364, y: 1404}
+  - name: Player Inventory Bar_Frame_46
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2836
+      y: 1404
+      width: 464
+      height: 272
+    spriteID: 3f9bad32b5ac173429c512e4ddf8dd42
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2836, y: 1404}
+  - name: Player Inventory Bar_Frame_47
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3308
+      y: 1404
+      width: 464
+      height: 272
+    spriteID: 40c4dfc80cdabb344931a8c44cb1f2be
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3308, y: 1404}
+  - name: Player Inventory Bar_Frame_48
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1684
+      width: 464
+      height: 272
+    spriteID: 8336ecf08de7542409a28cc6195a726f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1684}
+  - name: Player Inventory Bar_Frame_49
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 476
+      y: 1684
+      width: 464
+      height: 272
+    spriteID: d31117120a6d832418ac0df797714513
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 476, y: 1684}
+  - name: Player Inventory Bar_Frame_50
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 948
+      y: 1684
+      width: 464
+      height: 272
+    spriteID: 635ef29148b95184fbbb6305df436731
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 948, y: 1684}
+  - name: Player Inventory Bar_Frame_51
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1420
+      y: 1684
+      width: 464
+      height: 272
+    spriteID: b93e39888588880489de6810b741294c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1420, y: 1684}
+  - name: Player Inventory Bar_Frame_52
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1892
+      y: 1684
+      width: 464
+      height: 272
+    spriteID: 9ffff9daa7905964cb27ea96711f9036
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1892, y: 1684}
+  - name: Player Inventory Bar_Frame_53
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2364
+      y: 1684
+      width: 464
+      height: 272
+    spriteID: 804cd6ba5bdb5284aab3efadc97ac558
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2364, y: 1684}
+  - name: Player Inventory Bar_Frame_54
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2836
+      y: 1684
+      width: 464
+      height: 272
+    spriteID: e045a990c26b3e642983727da8ab47f4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2836, y: 1684}
+  - name: Player Inventory Bar_Frame_55
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3308
+      y: 1684
+      width: 464
+      height: 272
+    spriteID: e22bccfc1b431964ea5aedf368a9354e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3308, y: 1684}
+  - name: Player Inventory Bar_Frame_56
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1964
+      width: 464
+      height: 272
+    spriteID: a732bd06edc81a842af62e5ba8d70bbd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1964}
+  - name: Player Inventory Bar_Frame_57
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 476
+      y: 1964
+      width: 464
+      height: 272
+    spriteID: 4b8d51b3b70f2844684a67867582e30c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 476, y: 1964}
+  - name: Player Inventory Bar_Frame_58
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 948
+      y: 1964
+      width: 464
+      height: 272
+    spriteID: bf6cd129464960944b0e69abca012993
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 948, y: 1964}
+  - name: Player Inventory Bar_Frame_59
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1420
+      y: 1964
+      width: 464
+      height: 272
+    spriteID: 8fe189aa7b99c8a4c8fdda05560d3e1d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1420, y: 1964}
+  - name: Player Inventory Bar_Frame_60
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1892
+      y: 1964
+      width: 464
+      height: 272
+    spriteID: 8f9081d51532f12418087b8b9fd4294a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1892, y: 1964}
+  - name: Player Inventory Bar_Frame_61
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2364
+      y: 1964
+      width: 464
+      height: 272
+    spriteID: 549533efa81e9c846ba27cebd99138ba
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2364, y: 1964}
+  - name: Player Inventory Bar_Frame_62
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2836
+      y: 1964
+      width: 464
+      height: 272
+    spriteID: 1056a0ec8eabfd64ca32e5ce7308eca5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2836, y: 1964}
+  - name: Player Inventory Bar_Frame_63
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3308
+      y: 1964
+      width: 464
+      height: 272
+    spriteID: c4f864f3bf4222f4bafeae5d90d9be2f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3308, y: 1964}
+  - name: Player Inventory Bar_Frame_64
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2244
+      width: 464
+      height: 272
+    spriteID: 130a12fe6015ec0438ac114a15b3a533
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2244}
+  - name: Player Inventory Bar_Frame_65
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 476
+      y: 2244
+      width: 464
+      height: 272
+    spriteID: 7500b3599854c004c9af5a942e1c18be
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 476, y: 2244}
+  - name: Player Inventory Bar_Frame_66
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 948
+      y: 2244
+      width: 464
+      height: 272
+    spriteID: 75db108608eaefc478ffdd296ea5afa3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 948, y: 2244}
+  - name: Player Inventory Bar_Frame_67
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1420
+      y: 2244
+      width: 464
+      height: 272
+    spriteID: c87ef323b4500dd4f853a63a3dd01095
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1420, y: 2244}
+  - name: Player Inventory Bar_Frame_68
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1892
+      y: 2244
+      width: 464
+      height: 272
+    spriteID: 55e887c1f2e8bc143af036e1a9dfed12
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1892, y: 2244}
+  - name: Player Inventory Bar_Frame_69
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2364
+      y: 2244
+      width: 464
+      height: 272
+    spriteID: d32b33439cab48e498bed3dd6a4dabbf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2364, y: 2244}
+  - name: Player Inventory Bar_Frame_70
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2836
+      y: 2244
+      width: 464
+      height: 272
+    spriteID: ad2205a79e427ee4a8dafb548cbaa262
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2836, y: 2244}
+  - name: Player Inventory Bar_Frame_71
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3308
+      y: 2244
+      width: 464
+      height: 272
+    spriteID: 61dbf3689f37ef343b818745ad89086e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3308, y: 2244}
+  - name: Player Inventory Bar_Frame_72
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2524
+      width: 464
+      height: 272
+    spriteID: 7d245ae3495915a4e80ba73229060e62
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2524}
+  - name: Player Inventory Bar_Frame_73
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 476
+      y: 2524
+      width: 464
+      height: 272
+    spriteID: e42a8b667490b8c4cb92a0f32caaaeed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 476, y: 2524}
+  - name: Player Inventory Bar_Frame_74
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 948
+      y: 2524
+      width: 464
+      height: 272
+    spriteID: d1277b04d2001da40adcd297ca2636e5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 948, y: 2524}
+  - name: Player Inventory Bar_Frame_75
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1420
+      y: 2524
+      width: 464
+      height: 272
+    spriteID: 941ffaac5fb614b4e8b7552f731000a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1420, y: 2524}
+  - name: Player Inventory Bar_Frame_76
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1892
+      y: 2524
+      width: 464
+      height: 272
+    spriteID: 7aace5cfe8be4494ebae9b53b6923109
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1892, y: 2524}
+  - name: Player Inventory Bar_Frame_77
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2364
+      y: 2524
+      width: 464
+      height: 272
+    spriteID: d4eb9aaed2b81cc43a7953dfc95057a9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2364, y: 2524}
+  - name: Player Inventory Bar_Frame_78
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2836
+      y: 2524
+      width: 464
+      height: 272
+    spriteID: dc66263c1b0ccfa48901a5b27256df1c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2836, y: 2524}
+  - name: Player Inventory Bar_Frame_79
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3308
+      y: 2524
+      width: 464
+      height: 272
+    spriteID: 4dcd8931dcd18374b81b616857d65b45
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3308, y: 2524}
+  - name: Player Inventory Bar_Frame_80
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2804
+      width: 464
+      height: 272
+    spriteID: 153d2e088157ebc4fa7609769db301fd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2804}
+  - name: Player Inventory Bar_Frame_81
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 476
+      y: 2804
+      width: 464
+      height: 272
+    spriteID: ecffbce55156607428726dc7615329b4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 476, y: 2804}
+  - name: Player Inventory Bar_Frame_82
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 948
+      y: 2804
+      width: 464
+      height: 272
+    spriteID: b89ec3c2d7ac2354ebbeb9d58e8180f9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 948, y: 2804}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -1542136754
+    name: Player Inventory Bar
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Player Inventory Bar_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 52bc2096255a9f74b935925df0968384
+    - name: Player Inventory Bar_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 1fe927af7b3959042b6d163b57653c60
+    - name: Player Inventory Bar_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: d5dd379e9a25b094ba0c10da86814533
+    - name: Player Inventory Bar_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: de5ca1ac04662464a93c6cc414f891f6
+    - name: Player Inventory Bar_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 068c4da19b5d4084ca131f3c2c44a4d5
+    - name: Player Inventory Bar_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 3e7c9c87d05d57849bcf273fc426ab72
+    - name: Player Inventory Bar_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 0be0fae265cbd664ba42127a2323eb84
+    - name: Player Inventory Bar_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 0a738e7208a228b4d8f0d7041909e52a
+    - name: Player Inventory Bar_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 35733f9f872ab7e4fbbe28e475e42e54
+    - name: Player Inventory Bar_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 3483ad8d2ec329f48894d2d804ce6a14
+    - name: Player Inventory Bar_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 110f476c989e48f48b758b1a88c2709c
+    - name: Player Inventory Bar_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 24bfc242bb4141748b222a40b6ada456
+    - name: Player Inventory Bar_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 656d21acc42f42f4685bf2436b1ae373
+    - name: Player Inventory Bar_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: ee3a2e1a66d92d943b5e782cf2bbc085
+    - name: Player Inventory Bar_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 1576ed94dfbdb6048895bbc0d8edc59c
+    - name: Player Inventory Bar_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: ffd842c20baf32349a7f7f55dee38c91
+    - name: Player Inventory Bar_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 9cb07bfe7aff8774e904c92064c6082e
+    - name: Player Inventory Bar_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 24c87a4dd837ded46b43d36b2bccb981
+    - name: Player Inventory Bar_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: c034d7d778b44eb428923698484a1a86
+    - name: Player Inventory Bar_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: fd7e3206fbc1f9840a9980a0c0e56a45
+    - name: Player Inventory Bar_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 002b54a04550135438006ddfbaa47b33
+    - name: Player Inventory Bar_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 0113a3b013fb51e438c9d33c3b604947
+    - name: Player Inventory Bar_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: fa89ff058e8bac14aa74fd4776f4cd7f
+    - name: Player Inventory Bar_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: c2b9cba01cd3d4140b1f870b1e9c184e
+    - name: Player Inventory Bar_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 47c8d6bd784c4064b9d5660f9d3789a0
+    - name: Player Inventory Bar_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 113fb1be040034945b17993009516807
+    - name: Player Inventory Bar_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: ad6cfef897406ab48b39f8886bab5e58
+    - name: Player Inventory Bar_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: f9976db86a245c242858990e500bd5c8
+    - name: Player Inventory Bar_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 67b87aea1c1333243a08b81d208a953d
+    - name: Player Inventory Bar_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 3a6922de5e1aeed4fa4cd0506853b0c9
+    - name: Player Inventory Bar_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 7104f74a0bdce2945aa011f4ac57eb90
+    - name: Player Inventory Bar_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: a1335427367df7e4d8609fced299db13
+    - name: Player Inventory Bar_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: b2866dd592768174c91e6a3a8291a9fd
+    - name: Player Inventory Bar_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: dd4fc07c694bc6d4aa2d71e779625a95
+    - name: Player Inventory Bar_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 39f1622b6bbd2ea4da2f4817f57146e0
+    - name: Player Inventory Bar_Frame_35
+      frameIndex: 35
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: f1e4fcf9f6e64f6488e0bdb61e29c416
+    - name: Player Inventory Bar_Frame_36
+      frameIndex: 36
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 72851b74719cefe4d9636374fc3a85d8
+    - name: Player Inventory Bar_Frame_37
+      frameIndex: 37
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 159b7203744e0ec4fa5960283b7926fc
+    - name: Player Inventory Bar_Frame_38
+      frameIndex: 38
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 4ccca7c7b8799f2479cdd25f085c64d7
+    - name: Player Inventory Bar_Frame_39
+      frameIndex: 39
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: a4bb7d6c4a9f3fe43a49c1966e4b6b9c
+    - name: Player Inventory Bar_Frame_40
+      frameIndex: 40
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 72cc5e06de2beeb429b92e8a26376836
+    - name: Player Inventory Bar_Frame_41
+      frameIndex: 41
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 86c5b23fee1b12e499f46ffec4cc7260
+    - name: Player Inventory Bar_Frame_42
+      frameIndex: 42
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 040a52c388feaaa4b9eb1d6e933df1a8
+    - name: Player Inventory Bar_Frame_43
+      frameIndex: 43
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 3839d6c0c61f43348803dd337d8aa7f3
+    - name: Player Inventory Bar_Frame_44
+      frameIndex: 44
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 56b2020994274f142afd9976c0e4f276
+    - name: Player Inventory Bar_Frame_45
+      frameIndex: 45
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 803a6a7d92e9b2e40934d40e341c597c
+    - name: Player Inventory Bar_Frame_46
+      frameIndex: 46
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 3f9bad32b5ac173429c512e4ddf8dd42
+    - name: Player Inventory Bar_Frame_47
+      frameIndex: 47
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 40c4dfc80cdabb344931a8c44cb1f2be
+    - name: Player Inventory Bar_Frame_48
+      frameIndex: 48
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 8336ecf08de7542409a28cc6195a726f
+    - name: Player Inventory Bar_Frame_49
+      frameIndex: 49
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: d31117120a6d832418ac0df797714513
+    - name: Player Inventory Bar_Frame_50
+      frameIndex: 50
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 635ef29148b95184fbbb6305df436731
+    - name: Player Inventory Bar_Frame_51
+      frameIndex: 51
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: b93e39888588880489de6810b741294c
+    - name: Player Inventory Bar_Frame_52
+      frameIndex: 52
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 9ffff9daa7905964cb27ea96711f9036
+    - name: Player Inventory Bar_Frame_53
+      frameIndex: 53
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 804cd6ba5bdb5284aab3efadc97ac558
+    - name: Player Inventory Bar_Frame_54
+      frameIndex: 54
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: e045a990c26b3e642983727da8ab47f4
+    - name: Player Inventory Bar_Frame_55
+      frameIndex: 55
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: e22bccfc1b431964ea5aedf368a9354e
+    - name: Player Inventory Bar_Frame_56
+      frameIndex: 56
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: a732bd06edc81a842af62e5ba8d70bbd
+    - name: Player Inventory Bar_Frame_57
+      frameIndex: 57
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 4b8d51b3b70f2844684a67867582e30c
+    - name: Player Inventory Bar_Frame_58
+      frameIndex: 58
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: bf6cd129464960944b0e69abca012993
+    - name: Player Inventory Bar_Frame_59
+      frameIndex: 59
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 8fe189aa7b99c8a4c8fdda05560d3e1d
+    - name: Player Inventory Bar_Frame_60
+      frameIndex: 60
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 8f9081d51532f12418087b8b9fd4294a
+    - name: Player Inventory Bar_Frame_61
+      frameIndex: 61
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 549533efa81e9c846ba27cebd99138ba
+    - name: Player Inventory Bar_Frame_62
+      frameIndex: 62
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 1056a0ec8eabfd64ca32e5ce7308eca5
+    - name: Player Inventory Bar_Frame_63
+      frameIndex: 63
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: c4f864f3bf4222f4bafeae5d90d9be2f
+    - name: Player Inventory Bar_Frame_64
+      frameIndex: 64
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 130a12fe6015ec0438ac114a15b3a533
+    - name: Player Inventory Bar_Frame_65
+      frameIndex: 65
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 7500b3599854c004c9af5a942e1c18be
+    - name: Player Inventory Bar_Frame_66
+      frameIndex: 66
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 75db108608eaefc478ffdd296ea5afa3
+    - name: Player Inventory Bar_Frame_67
+      frameIndex: 67
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: c87ef323b4500dd4f853a63a3dd01095
+    - name: Player Inventory Bar_Frame_68
+      frameIndex: 68
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 55e887c1f2e8bc143af036e1a9dfed12
+    - name: Player Inventory Bar_Frame_69
+      frameIndex: 69
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: d32b33439cab48e498bed3dd6a4dabbf
+    - name: Player Inventory Bar_Frame_70
+      frameIndex: 70
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: ad2205a79e427ee4a8dafb548cbaa262
+    - name: Player Inventory Bar_Frame_71
+      frameIndex: 71
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 61dbf3689f37ef343b818745ad89086e
+    - name: Player Inventory Bar_Frame_72
+      frameIndex: 72
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 7d245ae3495915a4e80ba73229060e62
+    - name: Player Inventory Bar_Frame_73
+      frameIndex: 73
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: e42a8b667490b8c4cb92a0f32caaaeed
+    - name: Player Inventory Bar_Frame_74
+      frameIndex: 74
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: d1277b04d2001da40adcd297ca2636e5
+    - name: Player Inventory Bar_Frame_75
+      frameIndex: 75
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 941ffaac5fb614b4e8b7552f731000a4
+    - name: Player Inventory Bar_Frame_76
+      frameIndex: 76
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 7aace5cfe8be4494ebae9b53b6923109
+    - name: Player Inventory Bar_Frame_77
+      frameIndex: 77
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: d4eb9aaed2b81cc43a7953dfc95057a9
+    - name: Player Inventory Bar_Frame_78
+      frameIndex: 78
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: dc66263c1b0ccfa48901a5b27256df1c
+    - name: Player Inventory Bar_Frame_79
+      frameIndex: 79
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 4dcd8931dcd18374b81b616857d65b45
+    - name: Player Inventory Bar_Frame_80
+      frameIndex: 80
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: 153d2e088157ebc4fa7609769db301fd
+    - name: Player Inventory Bar_Frame_81
+      frameIndex: 81
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: ecffbce55156607428726dc7615329b4
+    - name: Player Inventory Bar_Frame_82
+      frameIndex: 82
+      cellRect:
+        x: 0
+        y: 0
+        width: 464
+        height: 272
+      spriteId: b89ec3c2d7ac2354ebbeb9d58e8180f9
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 464, y: 272}
