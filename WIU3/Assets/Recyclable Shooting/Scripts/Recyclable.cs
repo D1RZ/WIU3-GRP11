@@ -25,8 +25,7 @@ public class Recyclable : MonoBehaviour
     private AudioSource sfxAudioSrc;
     [SerializeField] private AudioClip HoopAudioClip;
     [SerializeField] private AudioClip GroundAudioClip;
-    [SerializeField] private AudioClip correctBinAudioClip;
-    [SerializeField] private AudioClip wrongBinAudioClip;
+    [SerializeField] private GameObject sfxObject;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +33,7 @@ public class Recyclable : MonoBehaviour
         sfxAudioSrc = GetComponent<AudioSource>();
 
         properlyScored = false;
-        GameManager = GameObject.Find("Score");
+        GameManager = GameObject.Find("GameManager");
 
         // Get the bounds of the parent and child
         SpriteRenderer parentRenderer = GetComponent<SpriteRenderer>();
@@ -63,19 +62,26 @@ public class Recyclable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Check if recyclable is above object
         properlyScored = transform.position.y > collision.gameObject.transform.position.y;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(properlyScored && collision.gameObject.layer == LayerMask.NameToLayer("Hoop"))
-        {   
+
+        if (properlyScored && collision.gameObject.layer == LayerMask.NameToLayer("Hoop"))
+        {
+
+            //GameObject newHoopSFX = Instantiate(sfxObject, transform);
+            //AudioSource audioSource = newHoopSFX.GetComponent<AudioSource>();
+
             Transform Hoop = collision.gameObject.transform.parent;
             
             //If recyclable goes into the correct hoop
             if (Hoop.GetComponent<Hoop>().type == data.type)
             {
-                sfxAudioSrc.PlayOneShot(correctBinAudioClip, 1.0f);
+                Debug.Log("Correct bin audio played");
+                //audioSource.PlayOneShot(correctBinAudioClip, 1.0f);
 
                 GameManager.GetComponent<RecyclingGameManager>().addScore();
 
@@ -91,11 +97,12 @@ public class Recyclable : MonoBehaviour
             }
             else
             {
-                sfxAudioSrc.PlayOneShot(wrongBinAudioClip, 1.0f);
+                Debug.Log("Wrong bin audio played");
+
+                //audioSource.PlayOneShot(wrongBinAudioClip, 1.0f);
 
                 GameManager.GetComponent<RecyclingGameManager>().minusScore();
             }
-            Debug.Log("Went through");
             Destroy(gameObject);
         }
     }

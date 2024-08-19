@@ -15,9 +15,13 @@ public class Hoop : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 1.0f;
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         //set hoop position to starting point
         transform.position = startingPoint.transform.position;
 
@@ -32,7 +36,7 @@ public class Hoop : MonoBehaviour
         transform.position = transform.position + direction * moveSpeed * Time.deltaTime;
 
         float distance = Vector3.Distance(destination, transform.position);
-        if (distance < 0.2f)
+        if (distance < 0.15f)
         {
             changeWaypoint();
         }

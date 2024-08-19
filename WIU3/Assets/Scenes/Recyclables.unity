@@ -2160,50 +2160,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
---- !u!1 &1786002015
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1786002017}
-  - component: {fileID: 1786002016}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1786002016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1786002015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 724a10fc829640d4a98c4c7aa41f5951, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1786002017
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1786002015}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 459, y: 325, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1799844784
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,7 +2378,7 @@ PrefabInstance:
     - target: {fileID: 5647101162062870645, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1786002016}
+      objectReference: {fileID: 0}
     - target: {fileID: 5647101162062870645, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadScene
@@ -2587,7 +2543,7 @@ PrefabInstance:
       objectReference: {fileID: 1412547951}
     - target: {fileID: 7284693315847825428, guid: f7601156109dc3040946f0b48994d343, type: 3}
       propertyPath: m_Name
-      value: Score
+      value: GameManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2768,10 +2724,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3946474524214110570, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
-      propertyPath: moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946474524214110570, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
       propertyPath: startingPoint
       value: 
       objectReference: {fileID: 1037391954}
@@ -2820,7 +2772,6 @@ SceneRoots:
   - {fileID: 1036191212369698423}
   - {fileID: 504026730}
   - {fileID: 1104225225}
-  - {fileID: 1786002017}
   - {fileID: 1891211760}
   - {fileID: 2130935667}
   - {fileID: 1799844785}

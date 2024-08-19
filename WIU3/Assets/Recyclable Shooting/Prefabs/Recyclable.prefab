@@ -174,8 +174,7 @@ MonoBehaviour:
   maxVelocity: 20
   HoopAudioClip: {fileID: 8300000, guid: 7be77c355d5f9a4419f1b494a66d7511, type: 3}
   GroundAudioClip: {fileID: 8300000, guid: 02efb9a29d9bcc44ea6ada4ca47ad574, type: 3}
-  correctBinAudioClip: {fileID: 8300000, guid: 84c12785ed05c2d44a51b31eb0198696, type: 3}
-  wrongBinAudioClip: {fileID: 8300000, guid: e74e7f03f19155447860373f99e7f22e, type: 3}
+  sfxObject: {fileID: 8315653839817183930, guid: 4a3e4dfc60df9d445a7b3d4e8216fc4f, type: 3}
 --- !u!82 &4445663849728767433
 AudioSource:
   m_ObjectHideFlags: 0
