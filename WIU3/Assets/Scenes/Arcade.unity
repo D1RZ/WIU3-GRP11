@@ -1476,7 +1476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29b4b3dbf161324bb58049e9efb954d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: 
+  SceneName: Receycables
 --- !u!61 &175837144
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29b4b3dbf161324bb58049e9efb954d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: 
+  SceneName: CropProtection
 --- !u!61 &336323000
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4749,7 +4749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29b4b3dbf161324bb58049e9efb954d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: 
+  SceneName: Aquarium
 --- !u!1 &724703429
 GameObject:
   m_ObjectHideFlags: 0
@@ -12663,7 +12663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29b4b3dbf161324bb58049e9efb954d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: 
+  SceneName: BaterialWater
 --- !u!61 &2101329535
 BoxCollider2D:
   m_ObjectHideFlags: 0
