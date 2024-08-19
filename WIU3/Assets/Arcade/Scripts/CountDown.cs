@@ -10,7 +10,7 @@ public class CountDown : MonoBehaviour
     public float timeRemaining;
     public TextMeshProUGUI timerText; // Reference to the UI Text component
     public Image Bar;
-
+    [SerializeField] private RandomSpawn Spawner;
     void Start()
     {
         // Initialize the timer with the specified duration
@@ -53,6 +53,7 @@ public class CountDown : MonoBehaviour
     void TimerEnded()
     {
         // Actions to perform when the timer ends
+        Spawner.EndGame();
         Debug.Log("Countdown finished!");
         // You can add more actions here, such as stopping the game or triggering an event
     }

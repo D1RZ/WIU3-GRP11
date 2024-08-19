@@ -28,11 +28,7 @@ public class RandomSpawn : MonoBehaviour
     }
     private void Update()
     {
-        if(CountDown.timeRemaining == 0)
-        {
-            Time.timeScale = 0f;
-            EndgameUi.SetActive(true);
-        }
+        
     }
     void SpawnPrefab()
     {
@@ -58,5 +54,10 @@ public class RandomSpawn : MonoBehaviour
 
         // Update the UI Text to show the percentage
         Percentage.text = string.Format("Killed Baterial: {0}/{1} ({2:F2}%)", KillCount, totalAllowedSpawns, percentage);
+    }
+    public void EndGame()
+    {
+        Time.timeScale = 0f;
+        EndgameUi.SetActive(true);
     }
 }
