@@ -31,6 +31,7 @@ public class MainMenuScript : MonoBehaviour
     }
     public void QUITGame()
     {
+        UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
     public void BackMainMenu()
