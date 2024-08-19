@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graySprite: {fileID: 21300000, guid: 0ee43eb9c40e01647afefae4190b4d53, type: 3}
   skeleSprite: {fileID: 21300000, guid: 843d4f774bd5c404cbfa444d5d905230, type: 3}
-  spawnFood: {fileID: 0}
+  spawnFood: {fileID: 5452915179451425753, guid: ba35980d3348d8d4f8a2b15d3cf498f0, type: 3}
   spawnArea: {fileID: 0}
   roamingArea: {fileID: 0}
   foodLayer:
@@ -112,7 +112,8 @@ MonoBehaviour:
   dieSpeed: 1
   slowingDistance: 0.5
   detectionRadius: 10
-  deathTime: 10
+  starveTime: 20
+  lifeSpan: 30
 --- !u!70 &8392532485311685981
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

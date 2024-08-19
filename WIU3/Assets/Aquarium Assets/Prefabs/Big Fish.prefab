@@ -111,4 +111,5 @@ MonoBehaviour:
   eatingSpeed: 3
   dieSpeed: 1
   detectionRadius: 15
-  deathTime: 20
+  starveTime: 40
+  lifeSpan: 60
