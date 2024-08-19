@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BaterialWater.unity
     guid: badfac8a356407944a539fc4e93f9735
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: ffca6e4329b43404a91e0d991fd10685
   m_configObjects: {}

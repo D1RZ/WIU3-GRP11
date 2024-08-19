@@ -5,11 +5,13 @@ using UnityEngine;
 public class PauseMenuUI : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    public static bool OtherMenuopened = false;
+    private GameObject CurrentGameMenu;
     public GameObject OptionmenuUI;
     public GameObject ControlmenuUI;
     public GameObject CreditmenuUI;
     public GameObject pauseMenuUI;
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -17,6 +19,8 @@ public class PauseMenuUI : MonoBehaviour
         {
             if (GameIsPaused)
                 Resume();
+            if (OtherMenuopened)
+                back(CurrentGameMenu);
             else
                 Pause();
         }
@@ -37,18 +41,24 @@ public class PauseMenuUI : MonoBehaviour
     }
     public void Options()
     {
+        CurrentGameMenu = OptionmenuUI;
+        OtherMenuopened = true;
         OptionmenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
         Debug.Log("Loading Options....");
     }
     public void Controls()
     {
+        CurrentGameMenu = ControlmenuUI;
+        OtherMenuopened = true;
         ControlmenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
         Debug.Log("Loading Controls....");
     }
     public void Credits()
     {
+        CurrentGameMenu = CreditmenuUI;
+        OtherMenuopened = true;
         CreditmenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
         Debug.Log("Loading Credits....");
