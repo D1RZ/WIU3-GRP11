@@ -4450,9 +4450,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5730295452523376634, guid: 9bb2d900f20ab1f42ba2325c49414b8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730295452523376634, guid: 9bb2d900f20ab1f42ba2325c49414b8f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 674252279}
+    - target: {fileID: 5730295452523376634, guid: 9bb2d900f20ab1f42ba2325c49414b8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadArcadeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730295452523376634, guid: 9bb2d900f20ab1f42ba2325c49414b8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GoBackArcade, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6065061093982462625, guid: 9bb2d900f20ab1f42ba2325c49414b8f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

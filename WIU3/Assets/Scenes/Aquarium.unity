@@ -4280,7 +4280,7 @@ MonoBehaviour:
   bannerText: {fileID: 513060459}
   MakeScreenDarkerPanel: {fileID: 275473202}
   EndGameUI: {fileID: 119904579}
-  _timeRemaining: 10
+  _timeRemaining: 150
   maxCondition: 200
   currentCondition: 0
   AudioSettingsPanel: {fileID: 500673003}
