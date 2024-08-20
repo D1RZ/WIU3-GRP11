@@ -42,9 +42,11 @@ public class Cannon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+
         if (Input.GetMouseButton(0))
         {
-
             // Check where the mouse is aiming
             AimPosition = (mousePosition() - transform.position).normalized;
 
