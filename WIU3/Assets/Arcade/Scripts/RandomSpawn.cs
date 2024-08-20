@@ -25,8 +25,12 @@ public class RandomSpawn : MonoBehaviour
         area = GetComponent<BoxCollider2D>();
         totalAllowedSpawns = Mathf.FloorToInt(CountDown.duration / spawnInterval);
         // Start the spawning process
+        for(int i =0; i < 20; i++)
+        {
+            SpawnPrefab();
+        }
         InvokeRepeating("SpawnPrefab", 0f, spawnInterval);
-        InvokeRepeating("TimesUP", 5f, DeathInterval);
+        InvokeRepeating("TimesUP", 0f, DeathInterval);
     }
     private void Update()
     {
@@ -57,9 +61,12 @@ public class RandomSpawn : MonoBehaviour
             int additionalBacteriaCount = Random.Range(1, 4); // Randomly spawn 1 to 3 additional bacteria
             for (int j = 0; j < additionalBacteriaCount; j++)
             {
-                Vector3 spawnPosition = Bacterials[i].transform.position + (Vector3)(Random.insideUnitCircle * 0.5f); // Spread them slightly
-                GameObject newBacterial = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
-                Bacterials.Add(newBacterial); // Add to the List
+                if (Bacterials[i] != null)
+                {
+                    Vector3 spawnPosition = Bacterials[i].transform.position + (Vector3)(Random.insideUnitCircle * 0.5f); // Spread them slightly
+                    GameObject newBacterial = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+                    Bacterials.Add(newBacterial); // Add to the List
+                }
             }
         }
     }

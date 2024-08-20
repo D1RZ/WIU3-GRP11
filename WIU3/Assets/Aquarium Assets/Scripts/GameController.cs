@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,27 +19,56 @@ public class GameController : MonoBehaviour
     GameObject[] Seaweeds = null;
     GameObject[] smallFishes = null;
     GameObject[] bigFishes = null;
+    GameObject[] fishFood = null;
 
+    private bool isPaused = false;
     private float _timeElapsed = 0;
     public float currentCondition;
     int SeaweedCount = 0;
     int smallFishesCount = 0;
     int bigFishesCount = 0;
 
+    [SerializeField] GameObject AudioSettingsPanel;
+
+    private AudioSettingsManager audioSettingsManager;
+
     private void Start()
     {
         GameStatus("Start");
         currentCondition = maxCondition;
+        audioSettingsManager = AudioSettingsPanel.GetComponent<AudioSettingsManager>();
+        audioSettingsManager.Load();
+        AudioSettingsPanel.SetActive(false);
     }
 
     void Update()
     {
+        audioSettingsManager.Awake();
         GameStatus("Go");
         GetCounts();
         EventTriggers();
         UpdateConditionBar();
         UpdateTimer();
         _timeElapsed += Time.deltaTime;
+
+        if(Input.GetKeyDown(KeyCode.I)) // Only works if you press I to close instead of pressing close button
+        {
+            if (!AudioSettingsPanel.activeInHierarchy)
+            {
+                isPaused = true;
+                AudioSettingsPanel.SetActive(true);
+            }
+            else
+            {
+                AudioSettingsPanel.SetActive(false);
+                isPaused = false;
+            } 
+        }
+
+        if (isPaused == true)
+            GameStatus("Stop");
+        else
+            GameStatus("Go");
     }
 
     private void GetCounts()
@@ -110,10 +140,12 @@ public class GameController : MonoBehaviour
         }
         else if (gameStatus == "Go")
         {
+            Debug.Log("Go gamestatus");
             Time.timeScale = 1;
         }
         else if (gameStatus == "Stop")
         {
+            Debug.Log("Stop gamestatus AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa");
             Time.timeScale = 0;
             // Stop music
         }
@@ -136,5 +168,10 @@ public class GameController : MonoBehaviour
         int minutes = Mathf.FloorToInt(_timeRemaining / 60);
         int seconds = Mathf.FloorToInt(_timeRemaining % 60);
         timer.text = string.Format("{0}:{1:00}", minutes, seconds);
+    }
+    
+    public void FoodSpawnReduceCondition()
+    {
+        currentCondition -= 1;
     }
 }
