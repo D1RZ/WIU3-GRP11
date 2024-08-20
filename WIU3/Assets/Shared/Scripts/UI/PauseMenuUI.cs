@@ -94,7 +94,7 @@ public class PauseMenuUI : MonoBehaviour
         foreach (char letter in fullText)
         {
             // Check if adding the next character would exceed the character limit
-            if (charCount >= 86 && letter != ' ') // Avoid breaking words
+            if (charCount >= 140 && letter != ' ') // Avoid breaking words
             {
                 DialogueTexter.text = currentLine + "\n" + "~~Press SPACE To Continue~~";
                 // Wait for user input to continue to the next line
