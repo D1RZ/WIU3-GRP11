@@ -15,6 +15,7 @@ public class RandomSpawn : MonoBehaviour
     int bacterialcount = 0, bacterialspawned;
     public int KillCount, currentSpawnIndex, totalAllowedSpawns;
     public TextMeshProUGUI Percentage;
+    private bool EndGamed = false;
     public GameObject crosshair;
     public GameObject EndgameUi;
     [SerializeField] private CountDown CountDown;
@@ -34,7 +35,11 @@ public class RandomSpawn : MonoBehaviour
     }
     private void Update()
     {
-
+        if (EndGamed == true)
+        {
+            CancelInvoke("SpawnPrefab");
+            CancelInvoke("TimesUP");
+        }
     }
     void SpawnPrefab()
     {
@@ -80,7 +85,8 @@ public class RandomSpawn : MonoBehaviour
     }
     public void EndGame()
     {
-        Time.timeScale = 0f;
+        EndGamed = true;
+        Time.timeScale = 1f;
         EndgameUi.SetActive(true);
     }
 }
