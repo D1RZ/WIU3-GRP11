@@ -113,3 +113,7 @@ MonoBehaviour:
   detectionRadius: 15
   starveTime: 40
   lifeSpan: 60
+  fishEatingSound: {fileID: 8300000, guid: ebb9feaad77d5894ab4504c3766f491e, type: 3}
+  fishDashSound: {fileID: 8300000, guid: d2f2563fa9711ed48820eebe9a1e1128, type: 3}
+  audioSettingsManager: {fileID: 0}
+  cropSoundManager: {fileID: 0}

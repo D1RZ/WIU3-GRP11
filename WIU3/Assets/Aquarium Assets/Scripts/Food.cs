@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
+    [SerializeField] private GameController gameController;
+
     [SerializeField] private float airSpeed = 3f;
     [SerializeField] private float waterSpeed = 0.5f;
     private float currentSpeed;
@@ -12,6 +14,7 @@ public class Food : MonoBehaviour
     private void Start()
     {
         currentSpeed = airSpeed;
+        gameController.FoodSpawnReduceCondition();
     }
 
     void Update()

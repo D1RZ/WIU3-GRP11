@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9d803cf9f771b9440a2019f38b50b324, type: 3}
-  m_Color: {r: 0.94609153, g: 0.89144623, b: 0.8759634, a: 1}
+  m_Color: {r: 0.38005382, g: 0.18285605, b: 0.12651384, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,8 +102,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   seaweedPrefab: {fileID: 5452915179451425753, guid: ba35980d3348d8d4f8a2b15d3cf498f0, type: 3}
-  spawnArea: {fileID: 0}
-  groundCollider: {fileID: 0}
 --- !u!58 &-821989638593157044
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -34,6 +34,11 @@ public class BigFish : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private AudioClip fishEatingSound; 
+    [SerializeField] private AudioClip fishDashSound;
+    [SerializeField] AudioSettingsManager audioSettingsManager;
+    [SerializeField] CropSoundManager cropSoundManager;
+
     private void Start()
     {
         currentState = State.ROAM;
@@ -100,13 +105,14 @@ public class BigFish : MonoBehaviour
         if (targetFood != null) // If food still exists
         {
             transform.position = Vector2.MoveTowards(transform.position, targetFood.transform.position, eatingSpeed * Time.deltaTime);
+            cropSoundManager.PlaySoundFXClip(fishDashSound, transform, audioSettingsManager.GetSFX());
 
             if (Vector2.Distance(transform.position, targetFood.transform.position) <= 0.5f) // When gets within range to eat food
             {
                 Destroy(targetFood.gameObject);
                 smallFishEaten++;
                 DropWaste();
-                if (smallFishEaten >= 4) // if ate 4 small fish, spawn new big fish
+                if (smallFishEaten >= 3) // if ate 3 small fish, spawn new big fish
                 {
                     SpawnNewBigFish();
                     smallFishEaten = 0;
@@ -116,6 +122,8 @@ public class BigFish : MonoBehaviour
                 // Reset timer since food was eaten
                 timeSinceLastEat = 0f;
                 targetFood = null; // Reset targetFood to find new food
+
+                cropSoundManager.PlaySoundFXClip(fishEatingSound, transform, audioSettingsManager.GetSFX());
             }
         }
         else

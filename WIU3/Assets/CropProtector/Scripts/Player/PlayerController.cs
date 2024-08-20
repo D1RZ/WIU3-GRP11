@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         if (instance == null)
             instance = this;
     }
-
+    
     // Start is called before the first frame update
     void Start()
     {

@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4586331281289145463}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.14, y: -2.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -113,7 +113,10 @@ MonoBehaviour:
   slowingDistance: 0.5
   detectionRadius: 10
   starveTime: 20
-  lifeSpan: 30
+  lifeSpan: 40
+  fishEatingSound: {fileID: 8300000, guid: 030f60ed09b035043a0f68dbd23c9cb1, type: 3}
+  audioSettingsManager: {fileID: 0}
+  cropSoundManager: {fileID: 0}
 --- !u!70 &8392532485311685981
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
