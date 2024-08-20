@@ -4,6 +4,7 @@ using System.Transactions;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -200,5 +201,9 @@ public class GameController : MonoBehaviour
         {
             return "Go";
         }
+    }
+    public void Replay()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

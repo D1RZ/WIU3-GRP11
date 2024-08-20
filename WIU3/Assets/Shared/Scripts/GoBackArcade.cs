@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GoBackArcade : SceneLoader
 {
-    private void LoadArcadeScene()
+ 
+    public void LoadArcadeScene()
     {
       LoadScene("Main");
     }
