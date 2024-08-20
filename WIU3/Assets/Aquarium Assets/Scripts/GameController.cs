@@ -153,7 +153,7 @@ public class GameController : MonoBehaviour
             // Stop music
         }
         else if (gameStatus == "End")
-        {
+        {  // -------------------------------------------------------------------------------------
             Time.timeScale = 1f;
             // Check score
             if (_timeRemaining >= 60) // 1 stars
