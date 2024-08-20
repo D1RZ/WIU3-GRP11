@@ -8,6 +8,6 @@ public class GoBackArcade : SceneLoader
  
     public void LoadArcadeScene()
     {
-      LoadScene("Main");
+      LoadScene("Arcade");
     }
 }
