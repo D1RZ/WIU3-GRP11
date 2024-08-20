@@ -6,6 +6,7 @@ public class ArcadePlayerMovement : MonoBehaviour
 {
     private Animator animator;
     public float movspeed;
+    private Vector2 moveDirection;//To check which direction the player is moving
     float speedx, speedy;
     Rigidbody2D rb;
     [SerializeField] private PauseMenuUI Texting;
@@ -15,8 +16,6 @@ public class ArcadePlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         Texting.TextPlay("This is the arcade in this place you can start playing our arcade games whilst playing the arcade games you will learn some topics regarding sustainability ARE YOU READY TO GET YOUR GAME ON!!!");
-        animator.SetBool("isMovingLeft", false);
-        animator.SetBool("isMovingRight", false);
     }
 
     // Update is called once per frame
@@ -24,26 +23,122 @@ public class ArcadePlayerMovement : MonoBehaviour
     {
         speedx = Input.GetAxisRaw("Horizontal") * movspeed;
         speedy = Input.GetAxisRaw("Vertical") * movspeed;
-        rb.velocity = new Vector2 (speedx, speedy);
+        rb.velocity = new Vector2(speedx, speedy);
 
-        if (Input.GetKey(KeyCode.A))
+        //GetMovement();
+        CheckDirection();
+
+        if (!Input.GetKey(KeyCode.W)
+            && !Input.GetKey(KeyCode.A)
+            && !Input.GetKey(KeyCode.S)
+            && !Input.GetKey(KeyCode.D))
         {
-            animator.SetBool("isIdle", false);
-            animator.SetBool("isMovingRight", false);
-            animator.SetBool("isMovingLeft", true);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            animator.SetBool("isIdle", false);
-            animator.SetBool("isMovingLeft", false);
-            animator.SetBool("isMovingRight", true);
+            Debug.Log("is not moving");
+            animator.SetBool("IsMoving", false);
         }
         else
         {
-            // Reset both booleans to return to idle
-            animator.SetBool("isMovingLeft", false);
-            animator.SetBool("isMovingRight", false);
-            animator.SetBool("isIdle", true);
+            Debug.Log("is moving");
+            animator.SetBool("IsMoving", true);
         }
+
+        animator.SetFloat("Horizontal", moveDirection.x);
+        animator.SetFloat("Vertical", moveDirection.y);
+
+
+
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    animator.SetBool("isIdle", false);
+        //    animator.SetBool("isMovingRight", false);
+        //    animator.SetBool("isMovingLeft", true);
+        //}
+        //else if (Input.GetKey(KeyCode.D))
+        //{
+        //    animator.SetBool("isIdle", false);
+        //    animator.SetBool("isMovingLeft", false);
+        //    animator.SetBool("isMovingRight", true);
+        //}
+        //else
+        //{
+        //    // Reset both booleans to return to idle
+        //    animator.SetBool("isMovingLeft", false);
+        //    animator.SetBool("isMovingRight", false);
+        //    animator.SetBool("isIdle", true);
+        //}
+    }
+
+    private void GetMovement()
+    {
+        //speedx = Input.GetAxisRaw("Horizontal") * movspeed;
+        //if (speedx != 0)
+        //{
+        //    speedy = Input.GetAxisRaw("Vertical") * movspeed;
+        //}
+        //rb.velocity = new Vector2(speedx, speedy);
+    }
+    private void CheckDirection()
+    {
+        ////Check up key
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    moveDirection += Vector2.up;
+        //}
+        //else if (Input.GetKeyUp(KeyCode.W))
+        //{
+        //    moveDirection -= Vector2.up;
+        //}
+
+        ////Check left key
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    moveDirection += Vector2.left;
+        //}
+        //else if (Input.GetKeyUp(KeyCode.A))
+        //{
+        //    moveDirection -= Vector2.left;
+        //}
+
+        ////Check down key
+        //if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    moveDirection += Vector2.down;
+        //}
+        //else if (Input.GetKeyUp(KeyCode.S))
+        //{
+        //    moveDirection -= Vector2.down;
+        //}
+
+        ////Check right key
+        //if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    moveDirection += Vector2.right;
+        //}
+        //else if (Input.GetKeyUp(KeyCode.D))
+        //{
+        //    moveDirection -= Vector2.right;
+        //}
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            moveDirection = Vector2.up;
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            moveDirection = Vector2.left;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            moveDirection = Vector2.down;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            moveDirection = Vector2.right;
+        }
+
+        //Debug.Log(moveDirection);
     }
 }
