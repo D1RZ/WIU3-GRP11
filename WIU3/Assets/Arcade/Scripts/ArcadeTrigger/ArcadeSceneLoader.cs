@@ -30,13 +30,13 @@ public class ArcadeSceneLoader : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         isEnter = true;
-        Debug.Log("Enter OnTriggerEnter2D");
+        //Debug.Log("Enter OnTriggerEnter2D");
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
         isEnter = false;
-        Debug.Log("Exit OnTrigger");
+        //Debug.Log("Exit OnTrigger");
     }
 
     private IEnumerator DelaySeconds(float delayAmt)
