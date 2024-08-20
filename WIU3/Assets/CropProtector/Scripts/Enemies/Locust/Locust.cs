@@ -62,6 +62,10 @@ public class Locust : Enemy
     public bool _isEating = false;
 
     private float _timeElapsed;
+
+    private float FinalMovementSpeed;
+
+    private float DashTimer;
     
     public override void Start()
     {
@@ -69,6 +73,8 @@ public class Locust : Enemy
         currentState = State.Move;
         health = 100;
         MaxHealth = 100;
+        FinalMovementSpeed = movementSpeed + Random.Range(-0.5f, 0.5f);
+        DashTimer = dashTimer;
     }
     
     public void Update()
@@ -110,7 +116,9 @@ public class Locust : Enemy
                     transform.rotation = desiredAngle;
                  }
 
-                 transform.position = transform.position + Vector3.down * movementSpeed * Time.deltaTime;
+                 Debug.Log(FinalMovementSpeed);
+
+                 transform.position = transform.position + Vector3.down * FinalMovementSpeed * Time.deltaTime;
               }
               else
               {
@@ -123,8 +131,7 @@ public class Locust : Enemy
               break;
           
           case State.Chase:
-
-               if (Vector2.Distance(Player.transform.position, transform.position) >= 3.5f) // player outside of chase range
+               if (Vector2.Distance(Player.transform.position, transform.position) >= 2.0f) // player outside of chase range
                {
                    currentState = State.Move;
                }
@@ -143,8 +150,6 @@ public class Locust : Enemy
               break;
 
           case State.EnterAttack:
-
-
 
                 RotateTowardsPlayer();
 
@@ -167,16 +172,16 @@ public class Locust : Enemy
 
                 totalDistance += Vector2.Distance(PrevPosition, transform.position);
                 
-                if (totalDistance >= 1.8f && Vector3.Distance(Player.transform.position,transform.position) <= 2.0f)
+                if (totalDistance >= 1.5f && Vector3.Distance(Player.transform.position,transform.position) <= 1.0f)
                 {
                     totalDistance = 0;
-                    dashTimer = 0.5f;
+                    dashTimer = DashTimer;
                     currentState = State.EnterAttack;
                 }
-                else if(totalDistance >= 1.8f && Vector3.Distance(Player.transform.position, transform.position) >= 2.0f)
+                else if(totalDistance >= 1.5f && Vector3.Distance(Player.transform.position, transform.position) >= 1.0f)
                 {
                     totalDistance = 0;
-                    dashTimer = 0.5f;
+                    dashTimer = DashTimer;
                     currentState = State.Chase;
                 }
 
@@ -198,7 +203,7 @@ public class Locust : Enemy
                 {
                     currentState = State.EnterAttack;
                     totalDistance = 0;
-                    dashTimer = 0.5f;
+                    dashTimer = DashTimer;
                 }
 
                 break;
@@ -235,7 +240,7 @@ public class Locust : Enemy
         if (collision.gameObject.layer == 6 && currentState == State.Attack)
         {
             totalDistance = 0;
-            dashTimer = 0.5f;
+            dashTimer = DashTimer;
             _PlayerController.playerData.health -= 20;
             PlayerSprite.color = Color.red;
             CropSoundManager.instance.PlaySoundFXClip(PlayerHurt,_PlayerController.gameObject.transform,AudioSettingsManager.instance.GetSFX());

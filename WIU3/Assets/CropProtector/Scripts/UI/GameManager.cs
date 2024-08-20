@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject Star3;
 
+    [SerializeField] private int LocusWave2MaxCount;
+
     private AudioSettingsManager audioSettingsManager;
 
     public int LocustSpawnCount = 0;
@@ -166,8 +168,11 @@ public class GameManager : MonoBehaviour
         {
             CurrentWave += 1;
             currentWave.text = CurrentWave.ToString();
+            LocustMaxCount = LocusWave2MaxCount;
             LocustCount = LocustMaxCount;
             LocustSpawnCount = 0;
+            enemySpawners[1].SetActive(true);
+            enemySpawners[4].SetActive(true);
         }
         else if(LocustCount == 0 && CurrentWave == 2)
         {

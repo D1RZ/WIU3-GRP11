@@ -152,9 +152,6 @@ public class PlayerController : MonoBehaviour
 
         movementController.MovePosition(direction, playerData.movementSpeed);
 
-        if (Input.GetKeyDown(KeyCode.F))
-            Time.timeScale = 0;
-
         if (Input.mouseScrollDelta.y > 0 && currentEquippedGun != Gun.Pistol && !hasScrolled)
         {
             if (currentEquippedGun == Gun.Shotgun)
