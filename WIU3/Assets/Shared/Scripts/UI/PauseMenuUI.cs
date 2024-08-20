@@ -16,11 +16,6 @@ public class PauseMenuUI : MonoBehaviour
     public GameObject CreditmenuUI;
     public GameObject pauseMenuUI;
     public GameObject DialogueUI;
-    private int CurrentMusicIndex = 0;
-    public List<AudioClip> AudioList = new List<AudioClip>();
-    public GameObject BGMObj;
-    private AudioSource AudioSource;
-    public List<GameObject> MusicContainer = new List<GameObject>();
     public TextMeshProUGUI DialogueTexter;
     
     // Update is called once per frame
@@ -35,8 +30,6 @@ public class PauseMenuUI : MonoBehaviour
             else
                 Pause();
         }
-        AudioSource = BGMObj.GetComponent<AudioSource>();
-        Debug.Log("Current Music :" + AudioList[CurrentMusicIndex] + "&" +  AudioSource.clip);
     }
     public void Resume()
     {
@@ -133,49 +126,6 @@ public class PauseMenuUI : MonoBehaviour
         while (!Input.GetKeyDown(KeyCode.Space)) // Change KeyCode.Space to any key you prefer
         {
             yield return null; // Wait until the input is detected
-        }
-    }
-    public void NextMusic()
-    {
-        MusicContainer[CurrentMusicIndex].SetActive(false);
-        CurrentMusicIndex++;
-        if (CurrentMusicIndex >= AudioList.Count)
-        {
-            CurrentMusicIndex = 0; // Loop back to the start
-        }
-        PlayCurrentMusic();
-    }
-
-    public void PreviousMusic()
-    {
-        MusicContainer[CurrentMusicIndex].SetActive(false);
-        CurrentMusicIndex--;
-        if (CurrentMusicIndex < 0)
-        {
-            CurrentMusicIndex = AudioList.Count - 1; // Loop to the last track
-        }
-        PlayCurrentMusic();
-    }
-
-    public void PlayMusic()
-    {
-        PlayCurrentMusic();
-    }
-
-    public void StopMusic()
-    {
-        AudioSource.Stop();
-    }
-
-    private void PlayCurrentMusic()
-    {
-        if (AudioList.Count > 0 && MusicContainer.Count > 0) // Check if there are any audio clips
-        {
-            AudioSource.clip = AudioList[CurrentMusicIndex];
-            MusicContainer[CurrentMusicIndex].SetActive(true);
-            AudioSource.loop = true;
-            AudioSource.volume = 1;
-            AudioSource.Play();
         }
     }
 }
