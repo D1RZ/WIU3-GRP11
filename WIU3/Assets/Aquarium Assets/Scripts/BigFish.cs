@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BigFish : MonoBehaviour
@@ -39,6 +41,8 @@ public class BigFish : MonoBehaviour
     [SerializeField] AudioSettingsManager audioSettingsManager;
     [SerializeField] CropSoundManager cropSoundManager;
 
+    [SerializeField] private GameController gameController;
+
     private void Start()
     {
         currentState = State.ROAM;
@@ -51,11 +55,14 @@ public class BigFish : MonoBehaviour
     private enum State
     {
         ROAM,
-        EAT
+        EAT,
     }
 
     private void Update()
     {
+        if (gameController.GetGameStatus() == "End")
+            return;
+
         // Update timer - for starving to death
         if (currentState == State.ROAM)
         {
@@ -112,7 +119,7 @@ public class BigFish : MonoBehaviour
                 Destroy(targetFood.gameObject);
                 smallFishEaten++;
                 DropWaste();
-                if (smallFishEaten >= 3) // if ate 3 small fish, spawn new big fish
+                if (smallFishEaten >= 4) // if ate 4 small fish, spawn new big fish
                 {
                     SpawnNewBigFish();
                     smallFishEaten = 0;

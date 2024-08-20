@@ -36,6 +36,8 @@ public class SmallFish : MonoBehaviour
     [SerializeField] AudioSettingsManager audioSettingsManager;
     [SerializeField] CropSoundManager cropSoundManager;
 
+    [SerializeField] private GameController gameController;
+
     private enum State
     {
         ROAM,
@@ -55,6 +57,8 @@ public class SmallFish : MonoBehaviour
 
     private void Update()
     {
+        if (gameController.GetGameStatus() == "End")
+            return;
         // Update timer - for starving to death
         timeSinceLastEat += Time.deltaTime;
         if (timeSinceLastEat >= starveTime)

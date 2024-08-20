@@ -13,8 +13,13 @@ public class Waste : MonoBehaviour
     private int maxSeaweedSpawn = 3; // Maximum seaweed that can be spawned
     private float fixedYPosition = -4.05f; // Fixed y-position for spawning
 
+    [SerializeField] GameController gameController;
+
     private void Update()
     {
+        if (gameController.GetGameStatus() == "End")
+            return;
+
         if (!hasReachedBottom)
         {
             // Move waste downwards
@@ -58,14 +63,6 @@ public class Waste : MonoBehaviour
             // Get a random x-offset within 0.1 to 1f distance from the waste object
             float xOffset = Random.Range(0.1f, 1f) * (Random.value > 0.5f ? 1 : -1); // Randomly move left or right
             float spawnX = transform.position.x + xOffset;
-
-            //// Ensure the x-position is within the bounds of the spawn area
-            //Transform spawnTransform = spawnArea.transform;
-            //spawnX = Mathf.Clamp(
-            //    spawnX,
-            //    spawnTransform.position.x - spawnTransform.localScale.x / 2,
-            //    spawnTransform.position.x + spawnTransform.localScale.x / 2
-            //);
 
             Vector3 spawnPosition = new Vector3(spawnX, fixedYPosition, 0);
 

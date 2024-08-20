@@ -5,7 +5,6 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
     [SerializeField] private GameController gameController;
-
     [SerializeField] private float airSpeed = 3f;
     [SerializeField] private float waterSpeed = 0.5f;
     private float currentSpeed;
@@ -15,10 +14,16 @@ public class Food : MonoBehaviour
     {
         currentSpeed = airSpeed;
         gameController.FoodSpawnReduceCondition();
+
+        // Randomize between red, green, and blue
+        RandomizeColor();
     }
 
     void Update()
     {
+        if (gameController.GetGameStatus() == "End")
+            return;
+
         // Move food downwards
         transform.Translate(Vector3.down * currentSpeed * Time.deltaTime);
     }
@@ -33,5 +38,17 @@ public class Food : MonoBehaviour
                 currentSpeed = waterSpeed;
             }
         }
+    }
+
+    private void RandomizeColor()
+    {
+        // Reference the SpriteRenderer component
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Array of predefined colors (red, green, blue)
+        Color[] colors = { Color.red, Color.green, Color.blue };
+
+        // Select a random color from the array
+        spriteRenderer.color = colors[Random.Range(0, colors.Length)];
     }
 }

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SpawnFloatingPlant : MonoBehaviour
 {
-    [SerializeField] private GameObject floatingPlant; // The prefab to spawn
-    [SerializeField] private GameObject spawnArea; // The GameObject defining the spawn area
-    [SerializeField] private float minSpawnInterval = 6f; // Minimum time between spawns
-    [SerializeField] private float maxSpawnInterval = 12f; // Maximum time between spawns
+    [SerializeField] private GameController gameController;
+    [SerializeField] private GameObject floatingPlant;
+    [SerializeField] private GameObject spawnArea;
+    [SerializeField] private float minSpawnInterval = 6f;
+    [SerializeField] private float maxSpawnInterval = 12f;
 
     private void Start()
     {
@@ -16,6 +17,9 @@ public class SpawnFloatingPlant : MonoBehaviour
             Debug.LogError("floatingPlant or SpawnArea is not assigned!");
             return;
         }
+
+        if (gameController.GetGameStatus() == "End")
+            return;
 
         StartCoroutine(SpawnObjects());
     }

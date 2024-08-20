@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Transactions;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject MakeScreenDarkerPanel;
     [SerializeField] GameObject EndGameUI;
 
-    [SerializeField] private float _timeRemaining = 120; // Game time = 120 seconds
+    [SerializeField] private float _timeRemaining = 120;
     [SerializeField] public float maxCondition = 200f;
     GameObject[] Seaweeds = null;
     GameObject[] smallFishes = null;
@@ -39,12 +40,12 @@ public class GameController : MonoBehaviour
         audioSettingsManager = AudioSettingsPanel.GetComponent<AudioSettingsManager>();
         audioSettingsManager.Load();
         AudioSettingsPanel.SetActive(false);
+        GameStatus("Go");
     }
 
     void Update()
     {
         audioSettingsManager.Awake();
-        GameStatus("Go");
         GetCounts();
         EventTriggers();
         UpdateConditionBar();
@@ -67,7 +68,7 @@ public class GameController : MonoBehaviour
 
         if (isPaused == true)
             GameStatus("Stop");
-        else
+        else if (isPaused == false)
             GameStatus("Go");
     }
 
@@ -105,7 +106,8 @@ public class GameController : MonoBehaviour
         {
             // Call end screen
             bannerText.text = "Better luck next time!";
-            GameStatus("Stop");
+            isPaused = true;
+            //GameStatus("Stop");
             GameStatus("End");
         }
 
@@ -114,7 +116,8 @@ public class GameController : MonoBehaviour
         {
             // Call end screen
             bannerText.text = "Well Done!";
-            GameStatus("Stop");
+            //isPaused = true;
+            //GameStatus("Stop");
             GameStatus("End");
         }
     }
@@ -151,6 +154,14 @@ public class GameController : MonoBehaviour
         }
         else if (gameStatus == "End")
         {
+            Time.timeScale = 1f;
+            // Check score
+            if (_timeRemaining >= 60) // 1 stars
+                Debug.Log("1 star loser");
+            else if (_timeRemaining > 20 && _timeRemaining <= 60) // 2 stars
+                Debug.Log("kys but good try");
+            else if (_timeRemaining <= 20) // 3 stars
+                Debug.Log("Ok tryhard");
             // Show Endgame Screen
             MakeScreenDarkerPanel.SetActive(true);
             EndGameUI.SetActive(true);
@@ -173,5 +184,21 @@ public class GameController : MonoBehaviour
     public void FoodSpawnReduceCondition()
     {
         currentCondition -= 1;
+    }
+
+    public string GetGameStatus()
+    {
+        if (isPaused)
+        {
+            return "Stop";
+        }
+        else if (currentCondition <= 0 || _timeRemaining <= 0)
+        {
+            return "End";
+        }
+        else
+        {
+            return "Go";
+        }
     }
 }

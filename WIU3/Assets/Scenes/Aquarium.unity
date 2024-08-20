@@ -628,6 +628,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &178486963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7913847531410049720, guid: 720f8b89512267641908162f6acaf931, type: 3}
+  m_PrefabInstance: {fileID: 561416816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &188844355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1158,10 @@ PrefabInstance:
       propertyPath: spawnArea
       value: 
       objectReference: {fileID: 1334301930}
+    - target: {fileID: 290854519457302488, guid: 720f8b89512267641908162f6acaf931, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2000198144}
     - target: {fileID: 2425264924677736605, guid: 720f8b89512267641908162f6acaf931, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.430503
@@ -1271,9 +1280,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 212223233}
     - target: {fileID: 5257702538658696989, guid: 80f2769ae9120b94c81f24f9db67ab31, type: 3}
+      propertyPath: wastePrefab
+      value: 
+      objectReference: {fileID: 178486963}
+    - target: {fileID: 5257702538658696989, guid: 80f2769ae9120b94c81f24f9db67ab31, type: 3}
       propertyPath: fishDashSound
       value: 
-      objectReference: {fileID: 8300000, guid: d2f2563fa9711ed48820eebe9a1e1128, type: 3}
+      objectReference: {fileID: 8300000, guid: 3a4d6085a2126ae40851632f993ecfbe, type: 3}
+    - target: {fileID: 5257702538658696989, guid: 80f2769ae9120b94c81f24f9db67ab31, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2000198144}
     - target: {fileID: 5257702538658696989, guid: 80f2769ae9120b94c81f24f9db67ab31, type: 3}
       propertyPath: cropSoundManager
       value: 
@@ -1682,6 +1699,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 212223233}
     - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: wastePrefab
+      value: 
+      objectReference: {fileID: 178486963}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2000198144}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
       propertyPath: cropSoundManager
       value: 
       objectReference: {fileID: 559317376}
@@ -1945,6 +1970,14 @@ PrefabInstance:
       propertyPath: roamingArea
       value: 
       objectReference: {fileID: 212223233}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: wastePrefab
+      value: 
+      objectReference: {fileID: 178486963}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2000198144}
     - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
       propertyPath: cropSoundManager
       value: 
@@ -2561,6 +2594,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 212223233}
     - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: wastePrefab
+      value: 
+      objectReference: {fileID: 178486963}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2000198144}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
       propertyPath: cropSoundManager
       value: 
       objectReference: {fileID: 559317376}
@@ -2891,6 +2932,14 @@ PrefabInstance:
       propertyPath: roamingArea
       value: 
       objectReference: {fileID: 212223233}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: wastePrefab
+      value: 
+      objectReference: {fileID: 178486963}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2000198144}
     - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
       propertyPath: cropSoundManager
       value: 
@@ -3316,6 +3365,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 212223233}
     - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: wastePrefab
+      value: 
+      objectReference: {fileID: 178486963}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2000198144}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
       propertyPath: cropSoundManager
       value: 
       objectReference: {fileID: 559317376}
@@ -3702,6 +3759,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 212223233}
     - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: wastePrefab
+      value: 
+      objectReference: {fileID: 178486963}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2000198144}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
       propertyPath: cropSoundManager
       value: 
       objectReference: {fileID: 559317376}
@@ -3774,6 +3839,14 @@ PrefabInstance:
       propertyPath: roamingArea
       value: 
       objectReference: {fileID: 212223233}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: wastePrefab
+      value: 
+      objectReference: {fileID: 178486963}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2000198144}
     - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
       propertyPath: cropSoundManager
       value: 
@@ -4071,6 +4144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d89c0a296e70d14d8f191c7345c4b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 2000198144}
   food: {fileID: 1361980441}
 --- !u!4 &2000198141
 Transform:
@@ -4099,6 +4173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5779166a6cdfb0845a0659aa72adb3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   floatingPlant: {fileID: 5452915179451425753, guid: ba35980d3348d8d4f8a2b15d3cf498f0, type: 3}
   spawnArea: {fileID: 1334301930}
   minSpawnInterval: 6
@@ -4141,7 +4216,7 @@ MonoBehaviour:
   bannerText: {fileID: 513060459}
   MakeScreenDarkerPanel: {fileID: 275473202}
   EndGameUI: {fileID: 119904579}
-  _timeRemaining: 120
+  _timeRemaining: 10
   maxCondition: 200
   currentCondition: 0
   AudioSettingsPanel: {fileID: 500673003}
@@ -4217,6 +4292,14 @@ PrefabInstance:
       propertyPath: roamingArea
       value: 
       objectReference: {fileID: 212223233}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: wastePrefab
+      value: 
+      objectReference: {fileID: 178486963}
+    - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2000198144}
     - target: {fileID: 8524434322454468796, guid: 670bba3c6d2389344b00d6a970b610cb, type: 3}
       propertyPath: cropSoundManager
       value: 
