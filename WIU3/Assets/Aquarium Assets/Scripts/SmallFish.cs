@@ -30,7 +30,11 @@ public class SmallFish : MonoBehaviour
     [SerializeField] private float slowingDistance = 0.5f;
     [SerializeField] private float detectionRadius = 10f;
     [SerializeField] private float starveTime = 20f;
-    [SerializeField] private float lifeSpan = 30f;
+    [SerializeField] private float lifeSpan = 40f;
+
+    [SerializeField] private AudioClip fishEatingSound;
+    [SerializeField] AudioSettingsManager audioSettingsManager;
+    [SerializeField] CropSoundManager cropSoundManager;
 
     private enum State
     {
@@ -129,6 +133,7 @@ public class SmallFish : MonoBehaviour
                 // Reset timer since food was eaten
                 timeSinceLastEat = 0f;
                 targetFood = null; // Reset targetFood to find new food
+                cropSoundManager.PlaySoundFXClip(fishEatingSound,transform,audioSettingsManager.GetSFX());
             }
         }
         else

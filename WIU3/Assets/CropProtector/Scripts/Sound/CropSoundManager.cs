@@ -27,6 +27,8 @@ public class CropSoundManager : MonoBehaviour
             }
         }
 
+        //When the player walking
+
         // assign the audioClip
         audioSource.clip = soundEffect;
 
