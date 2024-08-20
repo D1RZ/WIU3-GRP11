@@ -90,7 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d899e4ede7ac4f844971c5003e0fe1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameManager: {fileID: 0}
+  starEffect: {fileID: 3691427939056575734, guid: 6f9574cdebf570b41a937d866cbffd0e, type: 3}
   correctBinAudioClip: {fileID: 8300000, guid: 84c12785ed05c2d44a51b31eb0198696, type: 3}
+  correctBinDoublePointsAudioClip: {fileID: 8300000, guid: c2e600a6e4a5a674fb6b196586b92c30, type: 3}
   wrongBinAudioClip: {fileID: 8300000, guid: e74e7f03f19155447860373f99e7f22e, type: 3}
 --- !u!1 &2999946895495452249
 GameObject:

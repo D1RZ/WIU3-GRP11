@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class HoopTrigger : MonoBehaviour
 {
+    [SerializeField] private GameObject GameManager;
+    [SerializeField] private GameObject starEffect;
+
     [SerializeField] private AudioClip correctBinAudioClip;
+    [SerializeField] private AudioClip correctBinDoublePointsAudioClip;
     [SerializeField] private AudioClip wrongBinAudioClip;
     private GameObject Hoop;
     private AudioSource audioSource;
     private bool properlyScored;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,16 +40,36 @@ public class HoopTrigger : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Recyclable")
             && properlyScored)
         {
+            //object gets into the correct hoop
             if (collision.gameObject.GetComponent<Recyclable>().data.type == Hoop.GetComponent<Hoop>().type)
             {
-                audioSource.clip = correctBinAudioClip;
+                GameManager.GetComponent<RecyclingGameManager>().addScore();
+
+                Vector2 offset = new Vector2(0.0f, -0.7f);
+
+                GameObject newStarEffect = Instantiate(starEffect, Hoop.transform);
+
+                // Set the local position with the offset applied
+                newStarEffect.transform.localPosition = offset;
+
+                if (GameManager.GetComponent<RecyclingGameManager>().doublePoints)
+                {
+                    audioSource.PlayOneShot(correctBinDoublePointsAudioClip, 1.0f);
+                }
+                else
+                {
+                    audioSource.PlayOneShot(correctBinAudioClip, 1.0f);
+                }
             }
+            //object gets into the wrong hoop
             else
             {
-                audioSource.clip = wrongBinAudioClip;
-            }
-        }
+                GameManager.GetComponent<RecyclingGameManager>().minusScore();
 
-        audioSource.Play();
+                audioSource.PlayOneShot(wrongBinAudioClip, 1.0f);
+            }
+
+            Destroy(collision.gameObject);
+        }
     }
 }

@@ -535,7 +535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: -20.727}
+  m_AnchoredPosition: {x: 32, y: -38.999992}
   m_SizeDelta: {x: 216.0432, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &453380962
@@ -899,6 +899,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &590780684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4765965140633652704, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
+  m_PrefabInstance: {fileID: 699042588}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &633686878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1149,6 +1154,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 767548219247260195, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 818936939}
     - target: {fileID: 3714299443333687706, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.79
@@ -1378,6 +1387,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 174001816324431460, guid: 614d00027ae0b534196ecb02fe3c453c, type: 3}
   m_PrefabInstance: {fileID: 633686878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &818936939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7284693315847825428, guid: f7601156109dc3040946f0b48994d343, type: 3}
+  m_PrefabInstance: {fileID: 1036191212369698423}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &932480897
 GameObject:
@@ -1875,8 +1889,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278726633
-  m_fontColor: {r: 0.91194963, g: 0.18247858, b: 0.031545322, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1956,6 +1970,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 767548219247260195, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 818936939}
     - target: {fileID: 3714299443333687706, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.36
@@ -2442,6 +2460,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 767548219247260195, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 818936939}
     - target: {fileID: 3714299443333687706, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.03
@@ -2531,6 +2553,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
+--- !u!1 &1595059963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4765965140633652704, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
+  m_PrefabInstance: {fileID: 1387776844}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1799844784
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,6 +2830,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4739758495694863246, guid: 05ce136a684ac7a4ba327ba7b5dbd575, type: 3}
   m_PrefabInstance: {fileID: 747723705}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2061455377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4765965140633652704, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
+  m_PrefabInstance: {fileID: 4775045166286536841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2130935665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2887,6 +2919,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2134008660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4765965140633652704, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
+  m_PrefabInstance: {fileID: 1583732820}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1036191212369698423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2957,7 +2994,47 @@ PrefabInstance:
       objectReference: {fileID: 1412547951}
     - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
       propertyPath: _timeRemaining
-      value: 90
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: Hoops.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: quotes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: Hoops.Array.data[0]
+      value: 
+      objectReference: {fileID: 2061455377}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: Hoops.Array.data[1]
+      value: 
+      objectReference: {fileID: 2134008660}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: Hoops.Array.data[2]
+      value: 
+      objectReference: {fileID: 590780684}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: Hoops.Array.data[3]
+      value: 
+      objectReference: {fileID: 1595059963}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: quotes.Array.data[0]
+      value: Try again, you will get better!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: quotes.Array.data[1]
+      value: You are getting pretty good at this!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: quotes.Array.data[2]
+      value: You managed to beat my high score, great job!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: quotes.Array.data[3]
+      value: You really sweating this huh?
       objectReference: {fileID: 0}
     - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
       propertyPath: MakeScreenDarkerPanel
@@ -3105,6 +3182,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 767548219247260195, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 818936939}
     - target: {fileID: 3714299443333687706, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.49

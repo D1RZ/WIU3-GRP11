@@ -16,15 +16,27 @@ public class RecyclingGameManager : MonoBehaviour
     private float _timeElapsed = 0.0f;
     [SerializeField] private TMP_Text timer;
 
+    [SerializeField] private GameObject[] Hoops;
+
     private float score;
+    public bool doublePoints;
     [SerializeField] private TMP_Text scoreDisplay;
     [SerializeField] private float addScoreAmount;
     [SerializeField] private float minusScoreAmount;
 
+    [SerializeField] private string[] quotes;
+
     // Start is called before the first frame update
     void Start()
     {
+        doublePoints = false;
+
         score = 0;
+
+        for (int i = 0; i < Hoops.Length; i++)
+        {
+            Hoops[i].GetComponent<Hoop>().moveSpeed = 0;
+        }
     }
 
     // Update is called once per frame
@@ -33,12 +45,20 @@ public class RecyclingGameManager : MonoBehaviour
         //Debug.Log(score);
         scoreDisplay.text = "Score: " + score;
         UpdateTimer();
+        ChangeHoopsSpeed();
         CheckGameEnded();
     }
 
     public void addScore()
     {
-        score += addScoreAmount;
+        if (doublePoints)
+        {
+            score += addScoreAmount * 2;
+        }
+        else
+        {
+            score += addScoreAmount;
+        }
     }
 
     public void minusScore()
@@ -63,13 +83,58 @@ public class RecyclingGameManager : MonoBehaviour
     {
         if(_timeRemaining <= 0)
         {
+            timer.text = string.Format("{0}:{1:00}", 0, 0);
             Time.timeScale = 0;
+            WhichQuote();
+            finalScore.text = "Score: " + score;
             MakeScreenDarkerPanel.SetActive(true);
             EndGameUI.SetActive(true);
         }
         else
         {
             Time.timeScale = 1;
+        }
+    }
+
+    private void WhichQuote()
+    {
+        if (score <= 15)
+        {
+            bannerText.text = quotes[0];
+        }
+        else if (score > 15)
+        {
+            bannerText.text = quotes[1];
+        }
+        else if (score > 35)
+        {
+            bannerText.text = quotes[2];
+        }
+        else if (score >= 65)
+        {
+            bannerText.text = quotes[3];
+        }
+    }
+
+    private void ChangeHoopsSpeed()
+    {
+        if (_timeRemaining < 90)
+        {
+            for (int i = 0; i < Hoops.Length; i++)
+            {
+                Hoops[i].GetComponent<Hoop>().moveSpeed = 0.3f;
+            }
+        }
+        if (_timeRemaining < 30)
+        {
+            doublePoints = true;
+
+            timer.color = Color.red;
+
+            for (int i = 0; i < Hoops.Length; i++)
+            {
+                Hoops[i].GetComponent<Hoop>().moveSpeed = 0.65f;
+            }
         }
     }
 }

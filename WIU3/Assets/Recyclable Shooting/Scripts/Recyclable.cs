@@ -63,48 +63,48 @@ public class Recyclable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Check if recyclable is above object
-        properlyScored = transform.position.y > collision.gameObject.transform.position.y;
+        //properlyScored = transform.position.y > collision.gameObject.transform.position.y;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
 
-        if (properlyScored && collision.gameObject.layer == LayerMask.NameToLayer("Hoop"))
-        {
+        //if (properlyScored && collision.gameObject.layer == LayerMask.NameToLayer("Hoop"))
+        //{
 
-            //GameObject newHoopSFX = Instantiate(sfxObject, transform);
-            //AudioSource audioSource = newHoopSFX.GetComponent<AudioSource>();
+        //    //GameObject newHoopSFX = Instantiate(sfxObject, transform);
+        //    //AudioSource audioSource = newHoopSFX.GetComponent<AudioSource>();
 
-            Transform Hoop = collision.gameObject.transform.parent;
+        //    Transform Hoop = collision.gameObject.transform.parent;
             
-            //If recyclable goes into the correct hoop
-            if (Hoop.GetComponent<Hoop>().type == data.type)
-            {
-                Debug.Log("Correct bin audio played");
-                //audioSource.PlayOneShot(correctBinAudioClip, 1.0f);
+        //    //If recyclable goes into the correct hoop
+        //    if (Hoop.GetComponent<Hoop>().type == data.type)
+        //    {
+        //        Debug.Log("Correct bin audio played");
+        //        //audioSource.PlayOneShot(correctBinAudioClip, 1.0f);
 
-                GameManager.GetComponent<RecyclingGameManager>().addScore();
+        //        GameManager.GetComponent<RecyclingGameManager>().addScore();
 
-                //get parent of the hoop
-                Transform hoop = collision.gameObject.transform.parent;
+        //        //get parent of the hoop
+        //        Transform hoop = collision.gameObject.transform.parent;
 
-                Vector2 offset = new Vector2(0.0f, -0.7f);
+        //        Vector2 offset = new Vector2(0.0f, -0.7f);
 
-                GameObject newStarEffect = Instantiate(starEffect, hoop);
+        //        GameObject newStarEffect = Instantiate(starEffect, hoop);
 
-                // Set the local position with the offset applied
-                newStarEffect.transform.localPosition = offset;
-            }
-            else
-            {
-                Debug.Log("Wrong bin audio played");
+        //        // Set the local position with the offset applied
+        //        newStarEffect.transform.localPosition = offset;
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("Wrong bin audio played");
 
-                //audioSource.PlayOneShot(wrongBinAudioClip, 1.0f);
+        //        //audioSource.PlayOneShot(wrongBinAudioClip, 1.0f);
 
-                GameManager.GetComponent<RecyclingGameManager>().minusScore();
-            }
-            Destroy(gameObject);
-        }
+        //        GameManager.GetComponent<RecyclingGameManager>().minusScore();
+        //    }
+        //    Destroy(gameObject);
+        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

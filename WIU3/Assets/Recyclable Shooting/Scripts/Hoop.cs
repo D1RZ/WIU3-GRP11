@@ -13,7 +13,7 @@ public class Hoop : MonoBehaviour
     Vector3 direction;
     int index = 0;
 
-    [SerializeField] private float moveSpeed = 1.0f;
+    public float moveSpeed = 1.0f;
 
     private AudioSource audioSource;
 
