@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using TMPro;
 using UnityEngine;
@@ -10,7 +11,8 @@ public class RandomSpawn : MonoBehaviour
     public float spawnInterval = 2f; // Time interval between spawns
     public float DeathInterval = 2f;
     private BoxCollider2D area; // The area within which to spawn the prefab
-    private GameObject Tobedeleted;
+    public List<GameObject> Bacterials = new List<GameObject>(); // Use a List to hold spawned bacteria
+    int bacterialcount = 0, bacterialspawned;
     public int KillCount, currentSpawnIndex, totalAllowedSpawns;
     public TextMeshProUGUI Percentage;
     public GameObject crosshair;
@@ -28,7 +30,7 @@ public class RandomSpawn : MonoBehaviour
     }
     private void Update()
     {
-        
+
     }
     void SpawnPrefab()
     {
@@ -41,19 +43,33 @@ public class RandomSpawn : MonoBehaviour
 
         // Instantiate the prefab at the random position
         Debug.Log("Spawned");
-        Tobedeleted = Instantiate(prefabToSpawn, randomPosition, Quaternion.identity);
+        GameObject newBacterial = Instantiate(prefabToSpawn, randomPosition, Quaternion.identity);
+        Bacterials.Add(newBacterial); // Add to the List
+        bacterialspawned++;
     }
+
     void TimesUP()
     {
-        Destroy(Tobedeleted);
+        // Spawn multiple bacteria based on the current number of spawned bacteria
+        for (int i = 0; i < bacterialspawned; i++)
+        {
+            // Determine how many additional bacteria to spawn from each existing bacteria
+            int additionalBacteriaCount = Random.Range(1, 4); // Randomly spawn 1 to 3 additional bacteria
+            for (int j = 0; j < additionalBacteriaCount; j++)
+            {
+                Vector3 spawnPosition = Bacterials[i].transform.position + (Vector3)(Random.insideUnitCircle * 0.5f); // Spread them slightly
+                GameObject newBacterial = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+                Bacterials.Add(newBacterial); // Add to the List
+            }
+        }
     }
     public void UpdatePercentageText()
     {
         // Calculate the spawn percentage
-        float percentage = (float)KillCount / totalAllowedSpawns * 100;
-
+        float percentage = (float)KillCount / Bacterials.Count() * 100;
+        Debug.Log(Bacterials.Count());
         // Update the UI Text to show the percentage
-        Percentage.text = string.Format("Killed Baterial: {0}/{1} ({2:F2}%)", KillCount, totalAllowedSpawns, percentage);
+        Percentage.text = string.Format("Killed Baterial: {0}/{1} ({2:F2}%)", KillCount, Bacterials.Count(), percentage);
     }
     public void EndGame()
     {
