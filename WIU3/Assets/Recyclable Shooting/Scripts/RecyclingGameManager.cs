@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RecyclingGameManager : MonoBehaviour
 {
@@ -136,5 +137,9 @@ public class RecyclingGameManager : MonoBehaviour
                 Hoops[i].GetComponent<Hoop>().moveSpeed = 0.65f;
             }
         }
+    }
+    public void Replay()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
