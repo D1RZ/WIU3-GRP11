@@ -336,8 +336,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabToSpawn: {fileID: 4134371671262320343, guid: 280d4c76c93271046bdf8138791afa31, type: 3}
-  spawnInterval: 1
-  DeathInterval: 2
+  spawnInterval: 2
+  DeathInterval: 3
+  Bacterials: []
   KillCount: 0
   currentSpawnIndex: 0
   totalAllowedSpawns: 24
@@ -711,6 +712,7 @@ MonoBehaviour:
   timeRemaining: 0
   timerText: {fileID: 1488913057}
   Bar: {fileID: 903943771}
+  Spawner: {fileID: 0}
 --- !u!1 &1395624016
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,6 +3855,8 @@ MonoBehaviour:
   ControlmenuUI: {fileID: 1587783691628950065}
   CreditmenuUI: {fileID: 7593777346245958836}
   pauseMenuUI: {fileID: 6549250252430623757}
+  DialogueUI: {fileID: 0}
+  DialogueTexter: {fileID: 0}
 --- !u!222 &1818620168675333240
 CanvasRenderer:
   m_ObjectHideFlags: 0

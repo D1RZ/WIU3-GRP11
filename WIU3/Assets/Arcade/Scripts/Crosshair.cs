@@ -7,45 +7,102 @@ using UnityEngine.SceneManagement;
 public class Crosshair : MonoBehaviour
 {
     private bool IsShooting = false;
-    private GameObject baterialInsight;
-    private bool isEnter = false;
-    [SerializeField]private RandomSpawn Percentage;
+    private List<GameObject> bacterialInsights = new List<GameObject>(); // List to track targetable objects
+    private bool isEnter = false; // Check if the mouse is over a target
+
+    [SerializeField] private RandomSpawn Percentage;
+
     void Update()
     {
         IsShooting = Input.GetMouseButtonDown(0);
+
         // Get the mouse position in screen coordinates
         Vector3 mousePos = Input.mousePosition;
 
         // Convert the mouse position to world coordinates
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
-        // Set the Z position to the same as the sprite (2D game)
-        mousePos.z = 0;
+        mousePos.z = 0; // Set the Z position to the same as the sprite (2D game)
 
         // Center the sprite on the mouse cursor
         transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
 
+        // Attempt to shoot if conditions are met
+        TryShoot();
+    }
+
+    private void TryShoot()
+    {
         if (isEnter && IsShooting)
         {
-            Percentage.KillCount++;
-            Percentage.UpdatePercentageText();
-            Destroy(baterialInsight);
-        }
-    }
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.gameObject.CompareTag("SpawnArea"))
-        {
-            baterialInsight = other.gameObject;
-            isEnter = true;
-            Debug.Log("Enter OnTriggerEnter2D");
+            // Log the count of bacterialInsights before accessing it
+            Debug.Log("Bacterial Count Before Shooting: " + bacterialInsights.Count);
+
+            // Check if there are any objects in the list before accessing
+            if (bacterialInsights.Count > 0)
+            {
+                try
+                {
+                    GameObject targetBacterial = bacterialInsights[0]; // Get the first object in the list
+                    Percentage.KillCount++;
+                    Percentage.UpdatePercentageText();
+                    Destroy(targetBacterial);
+                    bacterialInsights.RemoveAt(0); // Remove the destroyed object from the list
+                    Debug.Log("Destroyed: " + targetBacterial.name);
+                }
+                catch (System.ArgumentOutOfRangeException ex)
+                {
+                    //Debug.LogError("ArgumentOutOfRangeException: " + ex.Message);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No bacterial objects to destroy.");
+            }
         }
     }
 
-    public void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        baterialInsight = null;
-        isEnter = false;
-        Debug.Log("Exit OnTrigger");
+        // Check for collision with objects that are not the spawn area
+        if (!other.gameObject.CompareTag("SpawnArea"))
+        {
+            // Only add the object if it's not already in the list
+            if (!bacterialInsights.Contains(other.gameObject))
+            {
+                bacterialInsights.Add(other.gameObject);
+                isEnter = true;
+                Debug.Log("Enter OnTriggerEnter2D: " + other.gameObject.name);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // Remove the object from the list when it exits the collider
+        if (bacterialInsights.Contains(collision.gameObject))
+        {
+            bacterialInsights.Remove(collision.gameObject);
+            Debug.Log("Exit OnTrigger: " + collision.gameObject.name);
+        }
+
+        // If there are no more objects in the list, set isEnter to false
+        if (bacterialInsights.Count == 0)
+        {
+            isEnter = false;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        // Continuously check for new objects entering the collider
+        if (!other.gameObject.CompareTag("SpawnArea"))
+        {
+            // Only add the object if it's not already in the list
+            if (!bacterialInsights.Contains(other.gameObject))
+            {
+                bacterialInsights.Add(other.gameObject);
+                Debug.Log("Stay OnTriggerStay2D: " + other.gameObject.name);
+            }
+        }
     }
 }
