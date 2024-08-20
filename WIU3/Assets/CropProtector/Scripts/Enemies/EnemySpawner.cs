@@ -8,16 +8,15 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private float EnemySpawnRate;
 
-    private GameManager gameManager;
+    [SerializeField] private GameManager gameManager;
 
     private float SpawnTimer;
 
     private void Start()
     {
-        gameManager = GameObject.Find("CropGameManager").GetComponent<GameManager>();
         SpawnTimer = EnemySpawnRate;
         Instantiate(Locust, transform.position, Quaternion.identity);
-        gameManager.LocustSpawnCount++;
+        gameManager.LocustSpawnCount += 1;
     }
 
     // Update is called once per frame
@@ -27,10 +26,10 @@ public class EnemySpawner : MonoBehaviour
         {
             SpawnTimer -= Time.deltaTime;
 
-            if (SpawnTimer <= 0)
+            if (SpawnTimer <= 0 && gameManager.LocustSpawnCount != gameManager.LocustMaxCount)
             {
                 Instantiate(Locust, transform.position, Quaternion.identity);
-                gameManager.LocustSpawnCount++;
+                gameManager.LocustSpawnCount += 1;
                 SpawnTimer = EnemySpawnRate;
             }
         }

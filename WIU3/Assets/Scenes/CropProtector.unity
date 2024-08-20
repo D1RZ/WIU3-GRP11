@@ -172,6 +172,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: Locust
+      value: 
+      objectReference: {fileID: 423627366}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 674252278}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
       propertyPath: EnemySpawnRate
       value: 10
       objectReference: {fileID: 0}
@@ -478,12 +486,98 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1676291177}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &423627365
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2421615643677127529, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_Name
+      value: LocustPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659198184858658674, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: Crops
+      value: 
+      objectReference: {fileID: 667047010}
+    - target: {fileID: 3659198184858658674, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 2142859396}
+    - target: {fileID: 3659198184858658674, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 674252278}
+    - target: {fileID: 3659198184858658674, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: PlayerSprite
+      value: 
+      objectReference: {fileID: 1937110814}
+    - target: {fileID: 6694296220812109003, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694296220812109003, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694296220812109003, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694296220812109003, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694296220812109003, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694296220812109003, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694296220812109003, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694296220812109003, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694296220812109003, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694296220812109003, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712742482332619832, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712742482332619832, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+--- !u!1 &423627366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2421615643677127529, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+  m_PrefabInstance: {fileID: 423627365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &479928424 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6323409741464815174, guid: 4758a71f3ca8ba54f8e1b80ea96313ac, type: 3}
   m_PrefabInstance: {fileID: 1478808333323938475}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2142859396}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b0ef632201452b48926a0df46caae1a, type: 3}
@@ -494,7 +588,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3414344663156007101, guid: 4758a71f3ca8ba54f8e1b80ea96313ac, type: 3}
   m_PrefabInstance: {fileID: 1478808333323938475}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2142859396}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 165c6b8bbcba7fe41aa946b6a95d4dc3, type: 3}
@@ -919,13 +1013,16 @@ MonoBehaviour:
   EndGameUI: {fileID: 1849767910}
   GameOverSound: {fileID: 8300000, guid: 73ec427583058854e8cd1a4af7216e67, type: 3}
   WinGameSound: {fileID: 8300000, guid: 3df861cec0bd9c44ea153e57d5f54d13, type: 3}
-  InGameBGM: {fileID: 0}
+  InGameBGM: {fileID: 1227292523}
   VictoryBGM: {fileID: 217340859}
   AudioSettingsPanel: {fileID: 732578063}
   cropSoundManager: {fileID: 1938328449}
+  Star1: {fileID: 1098436628}
+  Star2: {fileID: 1042207375}
+  Star3: {fileID: 916953436}
   LocustSpawnCount: 0
-  LocustMaxCount: 5
-  LocustCount: 5
+  LocustMaxCount: 4
+  LocustCount: 4
 --- !u!114 &674252279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,6 +1280,11 @@ RectTransform:
   m_AnchoredPosition: {x: 141.4, y: -57.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &916953436 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8011500204437348794, guid: 9bb2d900f20ab1f42ba2325c49414b8f, type: 3}
+  m_PrefabInstance: {fileID: 1900254137}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963380177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3470,6 +3572,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: Locust
+      value: 
+      objectReference: {fileID: 423627366}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 674252278}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
       propertyPath: EnemySpawnRate
       value: 18
       objectReference: {fileID: 0}
@@ -3627,6 +3737,16 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &1042207375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6333693667549978407, guid: 9bb2d900f20ab1f42ba2325c49414b8f, type: 3}
+  m_PrefabInstance: {fileID: 1900254137}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1098436628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1097989656463805678, guid: 9bb2d900f20ab1f42ba2325c49414b8f, type: 3}
+  m_PrefabInstance: {fileID: 1900254137}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1214836223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3675,6 +3795,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: Locust
+      value: 
+      objectReference: {fileID: 423627366}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 674252278}
     - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
       propertyPath: EnemySpawnRate
       value: 10
@@ -4453,6 +4581,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: Locust
+      value: 
+      objectReference: {fileID: 423627366}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 674252278}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
       propertyPath: EnemySpawnRate
       value: 18
       objectReference: {fileID: 0}
@@ -4502,9 +4638,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 35193158}
     m_Modifications:
+    - target: {fileID: 644625234822457251, guid: bb8e4760c35e7764e889822da553cfc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227264385252765349, guid: bb8e4760c35e7764e889822da553cfc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722449097154463414, guid: bb8e4760c35e7764e889822da553cfc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774976408085577554, guid: bb8e4760c35e7764e889822da553cfc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562062124174266565, guid: bb8e4760c35e7764e889822da553cfc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7458590760798386992, guid: bb8e4760c35e7764e889822da553cfc1, type: 3}
       propertyPath: m_Name
       value: SoundMenuUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540936077673934609, guid: bb8e4760c35e7764e889822da553cfc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549902490725307770, guid: bb8e4760c35e7764e889822da553cfc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8496533589028804784, guid: bb8e4760c35e7764e889822da553cfc1, type: 3}
       propertyPath: m_Pivot.x
@@ -4584,6 +4748,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8496533589028804784, guid: bb8e4760c35e7764e889822da553cfc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875104622555796601, guid: bb8e4760c35e7764e889822da553cfc1, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5159,6 +5327,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DmgFlashTime: 0.1
+--- !u!212 &1937110814 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3668647479285099167, guid: 4758a71f3ca8ba54f8e1b80ea96313ac, type: 3}
+  m_PrefabInstance: {fileID: 1478808333323938475}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1938328448
 GameObject:
   m_ObjectHideFlags: 0
@@ -5261,6 +5434,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: Locust
+      value: 
+      objectReference: {fileID: 423627366}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 674252278}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
       propertyPath: EnemySpawnRate
       value: 13
       objectReference: {fileID: 0}
@@ -5281,6 +5462,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+--- !u!1 &2142859396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2482564904195522927, guid: 4758a71f3ca8ba54f8e1b80ea96313ac, type: 3}
+  m_PrefabInstance: {fileID: 1478808333323938475}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2145770907
 GameObject:
   m_ObjectHideFlags: 0
@@ -5583,6 +5769,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: Locust
+      value: 
+      objectReference: {fileID: 423627366}
+    - target: {fileID: 4977367759344653145, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 674252278}
     - target: {fileID: 6822348134743871728, guid: 542d493a5aad5b946abb047e21a4f5cb, type: 3}
       propertyPath: m_Name
       value: EnemySpawn1
@@ -5613,3 +5807,4 @@ SceneRoots:
   - {fileID: 1227292525}
   - {fileID: 963380179}
   - {fileID: 217340860}
+  - {fileID: 423627365}

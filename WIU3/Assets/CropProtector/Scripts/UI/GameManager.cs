@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour
                     AnimCooldownTimer = 1;
                 }
             }
-            else if(Star1AnimFinished && !Star2AnimFinished && AnimCooldownTimer <= 0)
+            else if(Star1AnimFinished && !Star2AnimFinished && AnimCooldownTimer <= 0 && Crop.CropCurrentHealth >= 50)
             {
                 Star2.SetActive(true);
 
@@ -236,7 +236,7 @@ public class GameManager : MonoBehaviour
                     AnimCooldownTimer = 1;
                 }
             }
-            else if (Star2AnimFinished && !Star3AnimFinished && AnimCooldownTimer <= 0)
+            else if (Star2AnimFinished && !Star3AnimFinished && AnimCooldownTimer <= 0 && Crop.CropCurrentHealth >= 90)
             {
                 Star3.SetActive(true);
 

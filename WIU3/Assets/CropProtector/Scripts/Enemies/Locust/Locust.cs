@@ -49,6 +49,10 @@ public class Locust : Enemy
 
     [SerializeField] private AudioClip PlayerHurt;
 
+    [SerializeField] private GameObject Crops;
+
+    [SerializeField] private SpriteRenderer PlayerSprite;
+
     private Vector2 PrevPosition;
 
     private float totalDistance;
@@ -58,10 +62,6 @@ public class Locust : Enemy
     public bool _isEating = false;
 
     private float _timeElapsed;
-
-    private GameObject Crops;
-
-    private SpriteRenderer PlayerSprite;
     
     public override void Start()
     {
@@ -69,8 +69,6 @@ public class Locust : Enemy
         currentState = State.Move;
         health = 100;
         MaxHealth = 100;
-        Crops = GameObject.Find("Crops");
-        PlayerSprite = GameObject.Find("PlayerGraphics").GetComponent<SpriteRenderer>();
     }
     
     public void Update()
@@ -92,11 +90,8 @@ public class Locust : Enemy
 
         if (_isEating)
         {
-            Debug.Log("Activated");
             currentState = State.Eating;
         }
-
-        Debug.Log(currentState);
         
         switch (currentState)
         {
