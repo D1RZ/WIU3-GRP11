@@ -712,7 +712,7 @@ MonoBehaviour:
   timeRemaining: 0
   timerText: {fileID: 1488913057}
   Bar: {fileID: 903943771}
-  Spawner: {fileID: 0}
+  Spawner: {fileID: 496562065}
 --- !u!1 &1395624016
 GameObject:
   m_ObjectHideFlags: 0
