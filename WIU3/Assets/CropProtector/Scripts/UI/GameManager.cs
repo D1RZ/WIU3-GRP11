@@ -40,6 +40,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject BGM;
 
+    [SerializeField] GameObject AudioSettingsPanel;
+
+    private AudioSettingsManager audioSettingsManager;
+
     public int LocustSpawnCount = 0;
 
     public int LocustMaxCount = 10;
@@ -57,18 +61,26 @@ public class GameManager : MonoBehaviour
         bannerText.text = "";
 
         LocustCountText.text = LocustCount.ToString();
+
+        audioSettingsManager = AudioSettingsPanel.gameObject.GetComponent<AudioSettingsManager>();
+
+        audioSettingsManager.Load();
+
+        AudioSettingsPanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        audioSettingsManager.Awake();
+
         if (Crop.CropCurrentHealth <= 0 || playerData.health <= 0)
         {
             if (!GameOver)
             {
                 BGM.SetActive(false);
 
-                CropSoundManager.instance.PlaySoundFXClip(GameOverSound, transform);
+                CropSoundManager.instance.PlaySoundFXClip(GameOverSound, transform,audioSettingsManager.GetSFX());
 
                 GameOver = true;
             }

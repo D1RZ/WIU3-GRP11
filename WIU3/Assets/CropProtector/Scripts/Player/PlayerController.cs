@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public static PlayerController instance;
 
     [SerializeField] private MovementController movementController;
@@ -63,6 +62,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float GunSwapDelay;
 
     [SerializeField] AudioClip WeaponSwapAudio;
+
+    [SerializeField] AudioSettingsManager audioSettingsManager;
 
     public enum Gun
     {
@@ -158,7 +159,7 @@ public class PlayerController : MonoBehaviour
         {
             if (currentEquippedGun == Gun.Shotgun)
             {
-                CropSoundManager.instance.PlaySoundFXClip(WeaponSwapAudio, transform);
+                CropSoundManager.instance.PlaySoundFXClip(WeaponSwapAudio, transform, audioSettingsManager.GetSFX());
                 GunSpriteRenderer.sprite = PistolSprite;
                 currentEquippedGun = Gun.Pistol;
                 lastMouseScrollTime = Time.time;
@@ -166,7 +167,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (currentEquippedGun == Gun.AR)
             {
-                CropSoundManager.instance.PlaySoundFXClip(WeaponSwapAudio, transform);
+                CropSoundManager.instance.PlaySoundFXClip(WeaponSwapAudio, transform, audioSettingsManager.GetSFX());
                 GunSpriteRenderer.sprite = ShotgunSprite;
                 currentEquippedGun = Gun.Shotgun;
                 lastMouseScrollTime = Time.time;
@@ -177,7 +178,7 @@ public class PlayerController : MonoBehaviour
         {
             if (currentEquippedGun == Gun.Pistol)
             {
-                CropSoundManager.instance.PlaySoundFXClip(WeaponSwapAudio, transform);
+                CropSoundManager.instance.PlaySoundFXClip(WeaponSwapAudio, transform, audioSettingsManager.GetSFX());
                 GunSpriteRenderer.sprite = ShotgunSprite;
                 currentEquippedGun = Gun.Shotgun;
                 lastMouseScrollTime = Time.time;
@@ -185,7 +186,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (currentEquippedGun == Gun.Shotgun)
             {
-                CropSoundManager.instance.PlaySoundFXClip(WeaponSwapAudio, transform);
+                CropSoundManager.instance.PlaySoundFXClip(WeaponSwapAudio, transform, audioSettingsManager.GetSFX());
                 GunSpriteRenderer.sprite = AssaultRifleSprite;
                 currentEquippedGun = Gun.AR;
                 lastMouseScrollTime = Time.time;
@@ -204,10 +205,10 @@ public class PlayerController : MonoBehaviour
                 canShoot = false;
                 hasShot = true;
                 if (currentEquippedGun == Gun.Pistol) // plays pistol gunshot sound
-                    CropSoundManager.instance.PlaySoundFXClip(PistolShotAudio, transform);
+                    CropSoundManager.instance.PlaySoundFXClip(PistolShotAudio, transform,audioSettingsManager.GetSFX());
 
                 if (currentEquippedGun == Gun.Shotgun)
-                    CropSoundManager.instance.PlaySoundFXClip(ShotgunShotAudio, transform);
+                    CropSoundManager.instance.PlaySoundFXClip(ShotgunShotAudio,transform,audioSettingsManager.GetSFX());
             }
 
             if (Time.time >= ShotBulletTime + GunFireRate && !canShoot)
@@ -226,7 +227,7 @@ public class PlayerController : MonoBehaviour
                         Rigidbody2D bulletRB = _lastSpawnedARBullet.GetComponent<Rigidbody2D>();
                         bulletRB.velocity = lookDir * ARbulletMovementSpeed;
                         InstantiatedBulletTime = Time.time;
-                        CropSoundManager.instance.PlaySoundFXClip(ARShotAudio, transform);
+                        CropSoundManager.instance.PlaySoundFXClip(ARShotAudio, transform, audioSettingsManager.GetSFX());
                     }
                 }
             }

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class AudioSettingsManager : MonoBehaviour
 {
+    public static AudioSettingsManager instance;
+
     [SerializeField] private AudioMixer mixer;
     [SerializeField] private Slider MasterSlider;
     [SerializeField] private Slider BGMSlider;
@@ -16,6 +18,12 @@ public class AudioSettingsManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI BGMVolumeTxt;
     [SerializeField] private TextMeshProUGUI SFXVolumeTxt;
     [SerializeField] private TextMeshProUGUI VoicesVolumeTxt;
+
+    public void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     private void Start()
     {
@@ -33,18 +41,18 @@ public class AudioSettingsManager : MonoBehaviour
 
     public void SetBGMVolume()
     {
-        mixer.SetFloat("BGMVolume", Mathf.Log10(BGMSlider.value) * 20);
+        mixer.SetFloat("BGMVolume", Mathf.Log10(BGMSlider.value) * 20 * MasterSlider.value);
         BGMVolumeTxt.text = Mathf.RoundToInt((BGMSlider.value / 1 * 100)).ToString();
     }
 
     public void SetSFXVolume()
     {
-        mixer.SetFloat("SFXVolume", Mathf.Log10(SFXSlider.value) * 20);
+        mixer.SetFloat("SFXVolume",Mathf.Log10(SFXSlider.value) * 20 * MasterSlider.value);
         SFXVolumeTxt.text = Mathf.RoundToInt((SFXSlider.value / 1 * 100)).ToString();
     }
     public void SetVoicesVolume()
     {
-        mixer.SetFloat("VoicesVolume", Mathf.Log10(VoicesSlider.value) * 20);
+        mixer.SetFloat("VoicesVolume", Mathf.Log10(VoicesSlider.value) * 20 * MasterSlider.value);
         VoicesVolumeTxt.text = Mathf.RoundToInt((VoicesSlider.value / 1 * 100)).ToString();
     }
 
@@ -88,6 +96,26 @@ public class AudioSettingsManager : MonoBehaviour
     public void SaveVoices()
     {
         PlayerPrefs.SetFloat("VoicesVolume", VoicesSlider.value);
+    }
+
+    public float GetMaster()
+    {
+        return PlayerPrefs.GetFloat("MasterVolume");
+    }
+
+    public float GetSFX()
+    {
+        return PlayerPrefs.GetFloat("SFXVolume") * PlayerPrefs.GetFloat("MasterVolume");
+    }
+
+    public float GetBGM()
+    {
+        return PlayerPrefs.GetFloat("BGMVolume") * PlayerPrefs.GetFloat("MasterVolume");
+    }
+
+    public float GetVoices()
+    {
+        return PlayerPrefs.GetFloat("VoicesVolume") * PlayerPrefs.GetFloat("MasterVolume");
     }
 
     public void Load()

@@ -243,7 +243,7 @@ public class Locust : Enemy
             dashTimer = 0.5f;
             _PlayerController.playerData.health -= 20;
             PlayerSprite.color = Color.red;
-            CropSoundManager.instance.PlaySoundFXClip(PlayerHurt,_PlayerController.gameObject.transform);
+            CropSoundManager.instance.PlaySoundFXClip(PlayerHurt,_PlayerController.gameObject.transform,AudioSettingsManager.instance.GetSFX());
             currentState = State.ExitAttack;
         }
 

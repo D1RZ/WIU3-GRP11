@@ -46,7 +46,7 @@ public class Bullet : MonoBehaviour
                    }
                 }
 
-                CropSoundManager.instance.PlaySoundFXClip(DamageSound,transform);
+                CropSoundManager.instance.PlaySoundFXClip(DamageSound,transform,AudioSettingsManager.instance.GetSFX());
                 Destroy(gameObject);
             }
         }

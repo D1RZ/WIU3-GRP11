@@ -15,7 +15,7 @@ public class CropSoundManager : MonoBehaviour
             instance = this;
     }
 
-    public void PlaySoundFXClip(AudioClip soundEffect, Transform soundSourceLocation)
+    public void PlaySoundFXClip(AudioClip soundEffect, Transform soundSourceLocation,float volume)
     {
         // spawn in gameObject
         for (int i = 0; i < soundFXObject.Count; i++)
@@ -30,6 +30,8 @@ public class CropSoundManager : MonoBehaviour
         // assign the audioClip
         audioSource.clip = soundEffect;
 
+        audioSource.volume = volume;
+        
         // play sound
         audioSource.Play();
 
