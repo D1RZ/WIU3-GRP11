@@ -14,7 +14,7 @@ public class Crosshair : MonoBehaviour
     [SerializeField] private AudioClip ShootClip;
     [SerializeField] AudioSettingsManager audioSettingsManager;
     [SerializeField] CropSoundManager cropSoundManager;
-    [SerializeField] private RandomSpawn Percentage;
+    [SerializeField] public RandomSpawn Percentage;
     [SerializeField] private GameState gameState;
     void Update()
     {

@@ -10,6 +10,7 @@ public class GameState : MonoBehaviour
     [SerializeField] private AudioClip StartGameClip;
     [SerializeField] AudioSettingsManager audioSettingsManager;
     [SerializeField] CropSoundManager cropSoundManager;
+    [SerializeField] GameObject AudioSettingsPanel;
     private void Start()
     {
         GameStartUI.SetActive(true);
@@ -18,6 +19,17 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (!AudioSettingsPanel.activeInHierarchy)
+            {
+                AudioSettingsPanel.SetActive(true);
+            }
+            else
+            {
+                AudioSettingsPanel.SetActive(false);
+            }
+        }
         SpaceClicked = Input.GetKeyDown(KeyCode.Space);
         if(SpaceClicked )
             StartGame();

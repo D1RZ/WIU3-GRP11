@@ -1522,6 +1522,7 @@ MonoBehaviour:
   StartGameClip: {fileID: 8300000, guid: c1afd0c17f947324cb2fd706efaf9a57, type: 3}
   audioSettingsManager: {fileID: 842582384}
   cropSoundManager: {fileID: 864677798}
+  AudioSettingsPanel: {fileID: 842582383}
 --- !u!114 &1164167612
 MonoBehaviour:
   m_ObjectHideFlags: 0
