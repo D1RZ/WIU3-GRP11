@@ -11,7 +11,6 @@ public class Bullet : MonoBehaviour
     private float instantiatedTime;
 
     private Vector2 instantiatedPosition;
-
     private void Start()
     {
         instantiatedTime = Time.time;
@@ -46,7 +45,32 @@ public class Bullet : MonoBehaviour
                    }
                 }
 
+                locust.currentState = Locust.State.Hit;
+
                 CropSoundManager.instance.PlaySoundFXClip(DamageSound,transform,AudioSettingsManager.instance.GetSFX());
+                Destroy(gameObject);
+            }
+            else if(collision.gameObject.transform.parent.gameObject.tag == "Mosquito")
+            {
+                Mosquito mosquito = collision.gameObject.transform.parent.gameObject.GetComponent<Mosquito>();
+
+                if (PlayerController.instance.currentEquippedGun == PlayerController.Gun.Pistol || PlayerController.instance.currentEquippedGun == PlayerController.Gun.AR)
+                    mosquito.Health -= 25;
+                else if (PlayerController.instance.currentEquippedGun == PlayerController.Gun.Shotgun)
+                {
+                    if (Vector2.Distance(transform.position, instantiatedPosition) < 1.8f)
+                    {
+                        mosquito.Health -= 25;
+                    }
+                    else
+                    {
+                        mosquito.Health -= 2;
+                    }
+                }
+
+                mosquito.currentState = Mosquito.State.Hit;
+
+                CropSoundManager.instance.PlaySoundFXClip(DamageSound, transform, AudioSettingsManager.instance.GetSFX());
                 Destroy(gameObject);
             }
         }

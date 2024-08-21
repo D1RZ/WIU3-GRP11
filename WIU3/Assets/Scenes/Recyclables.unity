@@ -379,6 +379,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257702470}
   m_CullTransparentMesh: 1
+--- !u!1 &283654404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6214225425157572776, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+  m_PrefabInstance: {fileID: 1924168967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &284787466
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb9d9f0ee7d1484ab6052061553281b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameIsPaused: 0
   ControlmenuUI: {fileID: 1130921611}
   CreditmenuUI: {fileID: 1130921610}
   ScrollCs: {fileID: 0}
@@ -776,6 +782,7 @@ MonoBehaviour:
   DialogueTexter: {fileID: 0}
   AutoScrollEnabled: 0
   AudioMenuUI: {fileID: 1130921609}
+  cooldownTimer: 0
 --- !u!1 &505755514
 GameObject:
   m_ObjectHideFlags: 0
@@ -3179,6 +3186,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4765965140633652704, guid: 688035ed4a9abfb4c9dc1a75f19961aa, type: 3}
   m_PrefabInstance: {fileID: 1387776844}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1766323825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1073059622909565793, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+  m_PrefabInstance: {fileID: 1924168967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1799844784
 GameObject:
   m_ObjectHideFlags: 0
@@ -3214,6 +3226,11 @@ Transform:
   - {fileID: 1016052426}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1810997144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7995579502261958197, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+  m_PrefabInstance: {fileID: 1924168967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1891211758
 GameObject:
   m_ObjectHideFlags: 0
@@ -3334,6 +3351,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1073059622909565793, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_Name
+      value: Star1
+      objectReference: {fileID: 0}
     - target: {fileID: 3323367279626017520, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 32
@@ -3446,6 +3467,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GoBackArcade, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 6214225425157572776, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_Name
+      value: Star2
+      objectReference: {fileID: 0}
     - target: {fileID: 6703929573857076213, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 3.0009766
@@ -3473,6 +3498,10 @@ PrefabInstance:
     - target: {fileID: 7675405586489740414, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995579502261958197, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_Name
+      value: Star3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3633,6 +3662,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: Star1
+      value: 
+      objectReference: {fileID: 1766323825}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: Star2
+      value: 
+      objectReference: {fileID: 283654404}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
+      propertyPath: Star3
+      value: 
+      objectReference: {fileID: 1810997144}
+    - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
       propertyPath: timer
       value: 
       objectReference: {fileID: 1348103928}
@@ -3666,7 +3707,7 @@ PrefabInstance:
       objectReference: {fileID: 505755514}
     - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
       propertyPath: _timeRemaining
-      value: 150
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
       propertyPath: Hoops.Array.size

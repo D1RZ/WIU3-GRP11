@@ -14,6 +14,7 @@ TagManager:
   - Ground
   - Seaweed
   - SpawnArea
+  - Mosquito
   layers:
   - Default
   - TransparentFX

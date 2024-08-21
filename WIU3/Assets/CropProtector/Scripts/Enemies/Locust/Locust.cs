@@ -6,7 +6,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class Locust : Enemy
 {
-    private State currentState;
+    public State currentState;
     
     private float health;
 
@@ -53,6 +53,8 @@ public class Locust : Enemy
 
     [SerializeField] private SpriteRenderer PlayerSprite;
 
+    private float HitTimer;
+
     private Vector2 PrevPosition;
 
     private float totalDistance;
@@ -66,6 +68,8 @@ public class Locust : Enemy
     private float FinalMovementSpeed;
 
     private float DashTimer;
+
+    private bool EnterHit = false;
     
     public override void Start()
     {
@@ -207,12 +211,33 @@ public class Locust : Enemy
                 }
 
                 break;
-
+                
             case State.Eating:
 
                 _timeElapsed += Time.deltaTime;
 
                 Crops.GetComponent<Crop>().CropCurrentHealth -= 0.01f * _timeElapsed;
+
+                break;
+
+            case State.Hit:
+
+                if (HitTimer > 0)
+                    HitTimer -= Time.deltaTime;
+
+                if (!EnterHit)
+                {
+                    EnemyGraphic.color = Color.red;
+                    HitTimer = 0.2f;
+                    EnterHit = true;
+                }
+
+                if(HitTimer < 0)
+                {
+                    EnemyGraphic.color = Color.white;
+                    EnterHit = false;
+                    currentState = State.Move;
+                }
 
                 break;
 

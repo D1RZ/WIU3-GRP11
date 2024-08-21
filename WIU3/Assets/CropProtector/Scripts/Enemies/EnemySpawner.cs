@@ -12,25 +12,37 @@ public class EnemySpawner : MonoBehaviour
 
     private float SpawnTimer;
 
+    public enum EnemySpawnType
+    {
+        Locust,
+        Mosquito
+    }
+
+    public EnemySpawnType currentSpawnType;
+
     private void Start()
     {
         SpawnTimer = EnemySpawnRate;
         Instantiate(Locust, transform.position, Quaternion.identity);
         gameManager.LocustSpawnCount += 1;
+        currentSpawnType = EnemySpawnType.Locust;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.LocustSpawnCount != gameManager.LocustMaxCount)
+        if (currentSpawnType == EnemySpawnType.Locust)
         {
-            SpawnTimer -= Time.deltaTime;
-
-            if (SpawnTimer <= 0 && gameManager.LocustSpawnCount != gameManager.LocustMaxCount)
+            if (gameManager.LocustSpawnCount != gameManager.LocustMaxCount)
             {
-                Instantiate(Locust, transform.position, Quaternion.identity);
-                gameManager.LocustSpawnCount += 1;
-                SpawnTimer = EnemySpawnRate;
+                SpawnTimer -= Time.deltaTime;
+
+                if (SpawnTimer <= 0 && gameManager.LocustSpawnCount != gameManager.LocustMaxCount)
+                {
+                    Instantiate(Locust, transform.position, Quaternion.identity);
+                    gameManager.LocustSpawnCount += 1;
+                    SpawnTimer = EnemySpawnRate;
+                }
             }
         }
     }
