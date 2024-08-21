@@ -44,7 +44,7 @@ public class Cannon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.GetComponent<RecyclingGameManager>().stopActions)
+        if (GameManager.GetComponent<RecyclingGameManager>().stopActions || Time.timeScale == 0)
             return;
 
         if (Input.GetMouseButton(0))
