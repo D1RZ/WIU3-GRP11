@@ -8,7 +8,7 @@ public class SpawnFloatingPlant : MonoBehaviour
     [SerializeField] private GameObject floatingPlant;
     [SerializeField] private GameObject spawnArea;
     [SerializeField] private float minSpawnInterval = 6f;
-    [SerializeField] private float maxSpawnInterval = 12f;
+    [SerializeField] private float maxSpawnInterval = 8f;
 
     private void Start()
     {
@@ -18,16 +18,14 @@ public class SpawnFloatingPlant : MonoBehaviour
             return;
         }
 
-        if (gameController.GetGameStatus() == "End")
-            return;
-
-        StartCoroutine(SpawnObjects());
+            StartCoroutine(SpawnObjects());
     }
 
-    private System.Collections.IEnumerator SpawnObjects()
+    private IEnumerator SpawnObjects()
     {
         while (true)
         {
+            Debug.Log("SpawnSeaweed");
             float waitTime = Random.Range(minSpawnInterval, maxSpawnInterval);
             yield return new WaitForSeconds(waitTime);
             Spawn();
@@ -36,6 +34,9 @@ public class SpawnFloatingPlant : MonoBehaviour
 
     private void Spawn()
     {
+        if (gameController.GetGameStatus() == "End")
+            return;
+
         // Access the Transform component of the spawnArea GameObject
         Transform spawnTransform = spawnArea.transform;
 

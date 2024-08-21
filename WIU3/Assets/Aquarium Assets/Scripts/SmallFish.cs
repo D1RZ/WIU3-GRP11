@@ -278,8 +278,11 @@ public class SmallFish : MonoBehaviour
         // Wait for 10 seconds
         yield return new WaitForSeconds(10f);
 
-        // Instantiate waste at the fish's current position
-        Instantiate(wastePrefab, transform.position, Quaternion.identity);
+        if (gameObject != null)
+        {
+            // Instantiate waste at the fish's current position
+            Instantiate(wastePrefab, transform.position, Quaternion.identity);
+        }
     }
 
     private void DropWaste()

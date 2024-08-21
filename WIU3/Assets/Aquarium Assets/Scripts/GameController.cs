@@ -144,25 +144,24 @@ public class GameController : MonoBehaviour
         }
         else if (gameStatus == "Go")
         {
-            Debug.Log("Go gamestatus");
             Time.timeScale = 1;
         }
         else if (gameStatus == "Stop")
         {
-            Debug.Log("Stop gamestatus AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa");
             Time.timeScale = 0;
-            // Stop music
         }
         else if (gameStatus == "End")
         {  // -------------------------------------------------------------------------------------
             Time.timeScale = 1f;
+
             // Check score
             if (_timeRemaining >= 60) // 1 stars
-                Debug.Log("1 star loser");
+                Debug.Log("gimme 1 star");
             else if (_timeRemaining > 20 && _timeRemaining <= 60) // 2 stars
-                Debug.Log("kys but good try");
+                Debug.Log("gimme 2 star");
             else if (_timeRemaining <= 20) // 3 stars
-                Debug.Log("Ok tryhard");
+                Debug.Log("gimme 3 star");
+
             // Show Endgame Screen
             MakeScreenDarkerPanel.SetActive(true);
             EndGameUI.SetActive(true);

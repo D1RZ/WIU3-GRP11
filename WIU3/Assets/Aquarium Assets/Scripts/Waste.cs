@@ -6,7 +6,6 @@ public class Waste : MonoBehaviour
 {
     [SerializeField] private LayerMask seaweedLayer; // Layer for detecting seaweed
     [SerializeField] private GameObject seaweedPrefab; // Seaweed prefab to spawn
-    //[SerializeField] private GameObject spawnArea; // Spawn area object
 
     private bool hasReachedBottom = false;
     private int seaweedSpawned = 0; // Counter for tracking spawned seaweed
@@ -17,16 +16,13 @@ public class Waste : MonoBehaviour
 
     private void Update()
     {
-        if (gameController.GetGameStatus() == "End")
-            return;
-
         if (!hasReachedBottom)
         {
             // Move waste downwards
             transform.Translate(Vector3.down * 1f * Time.deltaTime);
 
-            // Check if waste reaches the bottom (y <= -5 as an example, adjust as needed)
-            if (transform.position.y <= -4.4f) // Adjust this value based on your floor level
+            // Check if waste reaches the bottom
+            if (transform.position.y <= -4.4f)
             {
                 hasReachedBottom = true;
                 CheckForSeaweed();
