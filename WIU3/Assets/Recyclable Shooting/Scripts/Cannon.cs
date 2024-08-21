@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class Cannon : MonoBehaviour
 {
+    [SerializeField] private GameObject GameManager;
     [SerializeField] private RecyclableData[] recyclableDatas;
     [SerializeField] private GameObject shootPosition;
     [SerializeField] private GameObject RecyclableObject;
@@ -43,7 +44,7 @@ public class Cannon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale == 0)
+        if (GameManager.GetComponent<RecyclingGameManager>().stopActions)
             return;
 
         if (Input.GetMouseButton(0))
