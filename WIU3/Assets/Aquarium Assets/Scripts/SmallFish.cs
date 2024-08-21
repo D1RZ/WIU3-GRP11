@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SmallFish : MonoBehaviour
@@ -278,17 +279,20 @@ public class SmallFish : MonoBehaviour
         // Wait for 10 seconds
         yield return new WaitForSeconds(10f);
 
-        if (gameObject != null)
-        {
-            // Instantiate waste at the fish's current position
-            Instantiate(wastePrefab, transform.position, Quaternion.identity);
-        }
+        if (gameObject == null)
+            yield break;
+
+        // Instantiate waste at the fish's current position
+        Instantiate(wastePrefab, transform.position, Quaternion.identity);
     }
 
     private void DropWaste()
     {
-        // Start the coroutine to spawn waste after 10 seconds
-        StartCoroutine(SpawnWaste());
+        if (gameObject != null)
+        {
+            // Start the coroutine to spawn waste after 10 seconds
+            StartCoroutine(SpawnWaste());
+        }
     }
 
     private void PickRandomPoint()
