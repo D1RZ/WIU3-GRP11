@@ -13,6 +13,7 @@ public class ArcadePlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1.0f;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         //Texting.TextPlay("This is the arcade in this place you can start playing our arcade games whilst playing the arcade games you will learn some topics regarding sustainability ARE YOU READY TO GET YOUR GAME ON!!!");
