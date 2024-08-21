@@ -17,6 +17,7 @@ public class CountDown : MonoBehaviour
     [SerializeField] CropSoundManager cropSoundManager;
     [SerializeField] private RandomSpawn Spawner;
     [SerializeField] private GameState gameState;
+    private bool firsttime = true;
     [SerializeField] GameObject Star1;
     [SerializeField] GameObject Star2;
     [SerializeField] GameObject Star3;
@@ -32,25 +33,33 @@ public class CountDown : MonoBehaviour
     {
         if (gameState.GameStart)
         {
-            // Check if there is time remaining
-            if (timeRemaining > 0)
+            if (firsttime)
             {
-                // Decrease the remaining time
-                timeRemaining -= Time.deltaTime;
-
-                // Clamp the time to avoid negative values
-                timeRemaining = Mathf.Max(0, timeRemaining);
-
-                // Update the displayed timer text
-                Bar.fillAmount = Mathf.Clamp(timeRemaining / duration, 0, 1);
-                UpdateTimerText();
+                firsttime = false;
+                timeRemaining = SetDuration;
             }
-            if (timeRemaining == 3)
-                cropSoundManager.PlaySoundFXClip(CountdownClip, transform, audioSettingsManager.GetSFX());
-            if (timeRemaining == 0 && SetDuration <= 0)
+            else
             {
-                // Optional: Actions to take when the countdown reaches zero
-                TimerEnded();
+                // Check if there is time remaining
+                if (timeRemaining > 0)
+                {
+                    // Decrease the remaining time
+                    timeRemaining -= Time.deltaTime;
+
+                    // Clamp the time to avoid negative values
+                    timeRemaining = Mathf.Max(0, timeRemaining);
+
+                    // Update the displayed timer text
+                    Bar.fillAmount = Mathf.Clamp(timeRemaining / duration, 0, 1);
+                    UpdateTimerText();
+                }
+                if (timeRemaining == 3)
+                    cropSoundManager.PlaySoundFXClip(CountdownClip, transform, audioSettingsManager.GetSFX());
+                if (timeRemaining == 0)
+                {
+                    // Optional: Actions to take when the countdown reaches zero
+                    TimerEnded();
+                }
             }
         }
     }
@@ -86,6 +95,7 @@ public class CountDown : MonoBehaviour
     }
     public void Replay()
     {
+        firsttime = true;
         duration = SetDuration;
         // Initialize the timer with the specified duration
         timeRemaining = duration;
