@@ -14,7 +14,6 @@ public class PauseMenuUI : MonoBehaviour
     public static bool GameIsPaused = false;
     public static bool OtherMenuopened = false;
     private GameObject CurrentGameMenu;
-    public GameObject OptionmenuUI;
     public GameObject ControlmenuUI;
     public GameObject CreditmenuUI;
     public AutoScroll ScrollCs;
@@ -22,6 +21,7 @@ public class PauseMenuUI : MonoBehaviour
     public GameObject DialogueUI;
     public TextMeshProUGUI DialogueTexter;
     public bool AutoScrollEnabled = false;
+    [SerializeField] private GameObject AudioMenuUI;
     // Update is called once per frame
     void Update()
     {
@@ -51,9 +51,9 @@ public class PauseMenuUI : MonoBehaviour
     }
     public void Options()
     {
-        CurrentGameMenu = OptionmenuUI;
+        CurrentGameMenu = AudioMenuUI;
         OtherMenuopened = true;
-        OptionmenuUI.SetActive(true);
+        AudioMenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
         Debug.Log("Loading Options....");
     }

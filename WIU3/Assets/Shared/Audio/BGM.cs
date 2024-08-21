@@ -5,9 +5,10 @@ using UnityEngine;
 public class BGM : MonoBehaviour
 {
     private AudioSource audio;
+    public bool gameFinished;
     void Start()
     {
-
+        gameFinished = false;
         StartCoroutine(LoopAudio());
     }
 
@@ -16,7 +17,7 @@ public class BGM : MonoBehaviour
         audio = GetComponent<AudioSource>();
         float length = audio.clip.length;
 
-        while (true)
+        while (gameFinished == false)
         {
             audio.Play();
             yield return new WaitForSeconds(length);

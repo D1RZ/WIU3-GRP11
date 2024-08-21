@@ -31,8 +31,24 @@ public class GameController : MonoBehaviour
     int bigFishesCount = 0;
 
     [SerializeField] GameObject AudioSettingsPanel;
+    [SerializeField] GameObject Star1;
+    [SerializeField] GameObject Star2;
+    [SerializeField] GameObject Star3;
+
+    [SerializeField] GameObject InGameBGM;
+    [SerializeField] GameObject VictoryBGM;
 
     private AudioSettingsManager audioSettingsManager;
+
+    bool Star1AnimFinished = false;
+
+    bool Star2AnimFinished = false;
+
+    bool Star3AnimFinished = false;
+
+    float animTimeElapsed = 0;
+
+    float AnimCooldownTimer = 0.5f;
 
     private void Start()
     {
@@ -154,17 +170,125 @@ public class GameController : MonoBehaviour
         {  // -------------------------------------------------------------------------------------
             Time.timeScale = 1f;
 
-            // Check score
-            if (_timeRemaining >= 60) // 1 stars
-                Debug.Log("gimme 1 star");
-            else if (_timeRemaining > 20 && _timeRemaining <= 60) // 2 stars
-                Debug.Log("gimme 2 star");
-            else if (_timeRemaining <= 20) // 3 stars
-                Debug.Log("gimme 3 star");
+            InGameBGM.SetActive(false);
+            VictoryBGM.SetActive(true);
 
             // Show Endgame Screen
             MakeScreenDarkerPanel.SetActive(true);
             EndGameUI.SetActive(true);
+
+            if (AnimCooldownTimer > 0)
+                AnimCooldownTimer -= Time.deltaTime;
+
+            // Check score
+            if (_timeRemaining <= 0 && !Star1AnimFinished && AnimCooldownTimer <= 0) // 1 stars
+            {
+                Star1.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star1.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star1AnimFinished = true;
+                    animTimeElapsed = 0;
+                    AnimCooldownTimer = 1;
+                }
+                Debug.Log("gimme 1 star");
+            }
+            else if (_timeRemaining > 20 && _timeRemaining <= 60) // 2 stars
+            {
+                if (!Star1AnimFinished && AnimCooldownTimer <= 0)
+                {
+                    Star1.SetActive(true);
+
+                    animTimeElapsed += Time.deltaTime;
+
+                    if (animTimeElapsed < 1)
+                    {
+                        Star1.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                    }
+                    else
+                    {
+                        Star1AnimFinished = true;
+                        animTimeElapsed = 0;
+                        AnimCooldownTimer = 1;
+                    }
+                }
+                else if (Star1AnimFinished && !Star2AnimFinished && AnimCooldownTimer <= 0)
+                {
+                    Star2.SetActive(true);
+
+                    animTimeElapsed += Time.deltaTime;
+
+                    if (animTimeElapsed < 1)
+                    {
+                        Star2.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                    }
+                    else
+                    {
+                        Star2AnimFinished = true;
+                        animTimeElapsed = 0;
+                        AnimCooldownTimer = 1;
+                    }
+                }
+            }
+            else if (_timeRemaining <= 20) // 3 stars
+            {
+                if (!Star1AnimFinished && AnimCooldownTimer <= 0)
+                {
+                    Star1.SetActive(true);
+
+                    animTimeElapsed += Time.deltaTime;
+
+                    if (animTimeElapsed < 1)
+                    {
+                        Star1.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                    }
+                    else
+                    {
+                        Star1AnimFinished = true;
+                        animTimeElapsed = 0;
+                        AnimCooldownTimer = 1;
+                    }
+                }
+                else if (Star1AnimFinished && !Star2AnimFinished && AnimCooldownTimer <= 0)
+                {
+                    Star2.SetActive(true);
+
+                    animTimeElapsed += Time.deltaTime;
+
+                    if (animTimeElapsed < 1)
+                    {
+                        Star2.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                    }
+                    else
+                    {
+                        Star2AnimFinished = true;
+                        animTimeElapsed = 0;
+                        AnimCooldownTimer = 1;
+                    }
+                }
+                else if (Star2AnimFinished && !Star3AnimFinished && AnimCooldownTimer <= 0)
+                {
+                    Star3.SetActive(true);
+
+                    animTimeElapsed += Time.deltaTime;
+
+                    if (animTimeElapsed < 1)
+                    {
+                        Star3.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                    }
+                    else
+                    {
+                        Star3AnimFinished = true;
+                        animTimeElapsed = 0;
+                    }
+                }
+            }
         }
     }
 
