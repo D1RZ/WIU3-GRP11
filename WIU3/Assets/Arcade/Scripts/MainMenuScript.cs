@@ -20,7 +20,6 @@ public class MainMenuScript : MonoBehaviour
     }
     public void Options()
     {
-        mainMenuUI.SetActive(false);
         OptionsUI.SetActive(true);
         OptionsMenuopened = true;
     }
@@ -36,7 +35,6 @@ public class MainMenuScript : MonoBehaviour
     }
     public void BackMainMenu()
     {
-        mainMenuUI.SetActive(true);
         OptionsUI.SetActive(false);
         OptionsMenuopened = false;
     }

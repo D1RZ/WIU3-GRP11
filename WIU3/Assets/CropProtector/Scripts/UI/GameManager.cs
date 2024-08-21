@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviour
             if (AnimCooldownTimer > 0)
             AnimCooldownTimer -= Time.deltaTime;
 
-            if (!Star1AnimFinished)
+            if (!Star1AnimFinished && AnimCooldownTimer <= 0)
             {
                 Star1.SetActive(true);
 
