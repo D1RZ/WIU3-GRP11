@@ -7,6 +7,7 @@ public class MainMenuScript : MonoBehaviour
 {
     public GameObject mainMenuUI;
     public GameObject OptionsUI;
+    public GameObject AudioUI;
     public static bool OptionsMenuopened;
     private void Update()
     {
@@ -14,8 +15,8 @@ public class MainMenuScript : MonoBehaviour
         {
             if(OptionsMenuopened)
                 BackMainMenu();
-            else
-                QUITGame();
+            //else
+            //    QUITGame();
         }
     }
     public void Options()
@@ -35,7 +36,8 @@ public class MainMenuScript : MonoBehaviour
     }
     public void BackMainMenu()
     {
-        OptionsUI.SetActive(false);
+        AudioUI.SetActive(false);
+        OptionsUI.SetActive(true);
         OptionsMenuopened = false;
     }
 }
