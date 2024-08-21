@@ -26,6 +26,6 @@ public class GameState : MonoBehaviour
     {
         GameStart = true;
         GameStartUI.SetActive(false);
-        //cropSoundManager.PlaySoundFXClip(StartGameClip, transform, audioSettingsManager.GetSFX());
+        cropSoundManager.PlaySoundFXClip(StartGameClip, transform, audioSettingsManager.GetSFX());
     }
 }

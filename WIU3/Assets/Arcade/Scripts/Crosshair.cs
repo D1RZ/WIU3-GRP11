@@ -44,7 +44,7 @@ public class Crosshair : MonoBehaviour
     {
         if(IsShooting)
         {
-            //cropSoundManager.PlaySoundFXClip(ShootClip, transform, audioSettingsManager.GetSFX());
+            cropSoundManager.PlaySoundFXClip(ShootClip, transform, audioSettingsManager.GetSFX());
         }
         if (isEnter && IsShooting)
         {

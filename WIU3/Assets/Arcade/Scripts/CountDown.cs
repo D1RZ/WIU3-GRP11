@@ -41,9 +41,9 @@ public class CountDown : MonoBehaviour
                 Bar.fillAmount = Mathf.Clamp(timeRemaining / duration, 0, 1);
                 UpdateTimerText();
             }
-            //if (timeRemaining == 3)
-                //cropSoundManager.PlaySoundFXClip(CountdownClip, transform, audioSettingsManager.GetSFX());
-            else
+            if (timeRemaining == 3)
+                cropSoundManager.PlaySoundFXClip(CountdownClip, transform, audioSettingsManager.GetSFX());
+            if (timeRemaining == 0 && SetDuration <= 0)
             {
                 // Optional: Actions to take when the countdown reaches zero
                 TimerEnded();

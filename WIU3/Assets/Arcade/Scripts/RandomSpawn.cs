@@ -20,6 +20,7 @@ public class RandomSpawn : MonoBehaviour
     public GameObject EndgameUi;
     [SerializeField] private CountDown CountDown;
     [SerializeField] private AudioClip BacterialClip;
+    [SerializeField] private AudioClip EndgameClip;
     [SerializeField] AudioSettingsManager audioSettingsManager;
     [SerializeField] CropSoundManager cropSoundManager;
     [SerializeField] private GameState gameState;
@@ -59,7 +60,7 @@ public class RandomSpawn : MonoBehaviour
         // Instantiate the prefab at the random position
         Debug.Log("Spawned");
         GameObject newBacterial = Instantiate(prefabToSpawn, randomPosition, Quaternion.identity);
-        //cropSoundManager.PlaySoundFXClip(BacterialClip, transform, audioSettingsManager.GetSFX());
+        cropSoundManager.PlaySoundFXClip(BacterialClip, transform, audioSettingsManager.GetSFX());
         Bacterials.Add(newBacterial); // Add to the List
         bacterialspawned++;
     }
@@ -76,6 +77,7 @@ public class RandomSpawn : MonoBehaviour
                 if (Bacterials[i] != null)
                 {
                     Vector3 spawnPosition = Bacterials[i].transform.position + (Vector3)(Random.insideUnitCircle * 0.5f); // Spread them slightly
+                    cropSoundManager.PlaySoundFXClip(BacterialClip, transform, audioSettingsManager.GetSFX());
                     GameObject newBacterial = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
                     Bacterials.Add(newBacterial); // Add to the List
                 }
@@ -92,6 +94,7 @@ public class RandomSpawn : MonoBehaviour
     }
     public void EndGame()
     {
+        cropSoundManager.PlaySoundFXClip(EndgameClip, transform, audioSettingsManager.GetSFX());
         EndGamed = true;
         Time.timeScale = 1f;
         EndgameUi.SetActive(true);
@@ -99,7 +102,7 @@ public class RandomSpawn : MonoBehaviour
     public void StartGame()
     {
         EndgameUi.SetActive(false);
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 10; i++)
         {
             SpawnPrefab();
         }
