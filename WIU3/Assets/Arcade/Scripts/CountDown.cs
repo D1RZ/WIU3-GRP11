@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,6 +17,9 @@ public class CountDown : MonoBehaviour
     [SerializeField] CropSoundManager cropSoundManager;
     [SerializeField] private RandomSpawn Spawner;
     [SerializeField] private GameState gameState;
+    [SerializeField] GameObject Star1;
+    [SerializeField] GameObject Star2;
+    [SerializeField] GameObject Star3;
     void Start()
     {
         // Initialize the timer with the specified duration
@@ -64,6 +68,18 @@ public class CountDown : MonoBehaviour
     void TimerEnded()
     {
         // Actions to perform when the timer ends
+        if((float)Spawner.KillCount / Spawner.Bacterials.Count * 100 <= 50)
+        {
+            // Input Star1
+        }
+        else if((float)Spawner.KillCount / Spawner.Bacterials.Count * 100 <= 75)
+        {
+            // Input Star2
+        }
+        else
+        {
+            //input Star 3
+        }
         Spawner.EndGame();
         Debug.Log("Countdown finished!");
         // You can add more actions here, such as stopping the game or triggering an event
