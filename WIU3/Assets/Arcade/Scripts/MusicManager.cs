@@ -72,7 +72,7 @@ public class MusicManager : MonoBehaviour
     }
     public void RandomisedMusic()
     {
-        int randomInt = Random.Range(0, 1);
+        int randomInt = Random.Range(0, musics.Count() - 1);
         foreach (var m in musics)
         {
             if (m.MusicId == randomInt)

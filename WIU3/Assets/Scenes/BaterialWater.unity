@@ -670,12 +670,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527433896}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fba71c0a52c736f4aa603a9f43ee1827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSettingsManager: {fileID: 0}
+  audioSettingsManager: {fileID: 842582384}
 --- !u!82 &527433898
 AudioSource:
   m_ObjectHideFlags: 0
@@ -683,7 +683,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527433896}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5a55952bab1100247a6f9097b9d8cfd5, type: 3}
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527433896}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa25aba5716c54a449f9bd89e7000c30, type: 3}
   m_Name: 
@@ -807,17 +807,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527433896}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da7d28398e82f3347af4e7a2a944c033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MusicText: {fileID: 0}
   musics:
-  - MusicId: 1
+  - MusicId: 0
     clip: {fileID: 8300000, guid: 5a55952bab1100247a6f9097b9d8cfd5, type: 3}
     source: {fileID: 0}
-  - MusicId: 2
+  - MusicId: 1
     clip: {fileID: 8300000, guid: 19850051ce9f2524eb32c90e423e8546, type: 3}
     source: {fileID: 0}
 --- !u!82 &527433902
@@ -831,10 +831,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 19850051ce9f2524eb32c90e423e8546, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31534b7343816e64a969855793dc3662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 120
+  duration: 10
   timeRemaining: 0
   timerText: {fileID: 1488913057}
   Bar: {fileID: 903943771}
@@ -1505,6 +1505,9 @@ MonoBehaviour:
   cropSoundManager: {fileID: 864677798}
   Spawner: {fileID: 496562065}
   gameState: {fileID: 1164167611}
+  Star1: {fileID: 0}
+  Star2: {fileID: 0}
+  Star3: {fileID: 0}
 --- !u!114 &1164167611
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class CallMusicFunc : MonoBehaviour
         }
         else
         {
-            if (InGameBgm.CheckCurrentMusicHasStopped())
+            if (!InGameBgm.CheckCurrentMusicHasStopped())
                 InGameBgm.RandomisedMusic();
         }
     }
