@@ -11,7 +11,9 @@ using UnityEngine.UI;
 
 public class PauseMenuUI : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
+    public static PauseMenuUI instance;
+
+    public  bool GameIsPaused = false;
     public static bool OtherMenuopened = false;
     private GameObject CurrentGameMenu;
     public GameObject ControlmenuUI;
@@ -22,12 +24,24 @@ public class PauseMenuUI : MonoBehaviour
     public TextMeshProUGUI DialogueTexter;
     public bool AutoScrollEnabled = false;
     [SerializeField] private GameObject AudioMenuUI;
+    
+    public float cooldownTimer = 0f;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (cooldownTimer > 0)
+            cooldownTimer -= Time.deltaTime;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused)
+            if (GameIsPaused && CurrentGameMenu == pauseMenuUI)
                 Resume();
             else if (OtherMenuopened)
                 back(CurrentGameMenu);
@@ -37,13 +51,16 @@ public class PauseMenuUI : MonoBehaviour
     }
     public void Resume()
     {
+        CurrentGameMenu = null; 
         Debug.Log("Activated Resume");
+        cooldownTimer = 0.2f;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
     private void Pause()
     {
+        CurrentGameMenu = pauseMenuUI;
         Debug.Log("Activated Pause");
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
@@ -77,7 +94,7 @@ public class PauseMenuUI : MonoBehaviour
     public void QuitGame()
     {
         Resume();
-        SceneManager.LoadScene("Main", LoadSceneMode.Single);
+        //SceneManager.LoadScene("Main", LoadSceneMode.Single);
         Debug.Log("Quiting Game....");
     }
     public void back(GameObject CurrentGameMenuUI)

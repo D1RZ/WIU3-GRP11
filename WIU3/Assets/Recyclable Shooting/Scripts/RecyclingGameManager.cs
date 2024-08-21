@@ -30,9 +30,11 @@ public class RecyclingGameManager : MonoBehaviour
     [SerializeField] private TMP_Text scoreDisplay;
     [SerializeField] private float addScoreAmount;
     [SerializeField] private float minusScoreAmount;
+    [SerializeField] GameObject AudioSettingsPanel;
 
     [SerializeField] private string[] quotes;
 
+    private AudioSettingsManager audioSettingsManager;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,12 @@ public class RecyclingGameManager : MonoBehaviour
         {
             Hoops[i].GetComponent<Hoop>().moveSpeed = 0;
         }
+
+        audioSettingsManager = AudioSettingsPanel.GetComponent<AudioSettingsManager>();
+
+        audioSettingsManager.Load();
+
+        AudioSettingsPanel.SetActive(false);
     }
 
     // Update is called once per frame

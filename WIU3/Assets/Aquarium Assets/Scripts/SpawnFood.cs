@@ -8,7 +8,7 @@ public class SpawnFood : MonoBehaviour
     public GameObject food;
     void Update()
     {
-        if (gameController.GetGameStatus() == "End")
+        if (gameController.GetGameStatus() == "End" || PauseMenuUI.instance.GameIsPaused)
             return;
         if (Input.GetMouseButtonDown(0))
         {

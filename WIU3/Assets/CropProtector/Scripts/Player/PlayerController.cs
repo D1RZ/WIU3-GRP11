@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerData.health <= 0)
+        if (playerData.health <= 0 || PauseMenuUI.instance.GameIsPaused)
             return;
 
         if (Input.GetKeyDown(KeyCode.I) && audioSettingsPanel.active == false)
