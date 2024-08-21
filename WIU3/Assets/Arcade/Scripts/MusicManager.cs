@@ -21,7 +21,7 @@ public class MusicManager : MonoBehaviour
     }
     private void Update()
     {
-        MusicText.text = musics[CurrentMusicID].clip.ToString();
+        //MusicText.text = musics[CurrentMusicID].clip.ToString();
     }
 
     public void NextMusic()
@@ -69,5 +69,21 @@ public class MusicManager : MonoBehaviour
                 break;
             }
         }
+    }
+    public void RandomisedMusic()
+    {
+        int randomInt = Random.Range(1, 2);
+        foreach (var m in musics)
+        {
+            if (m.MusicId == randomInt)
+            {
+                m.source.Play();
+                break;
+            }
+        }
+    }
+    public bool CheckCurrentMusicHasStopped()
+    {
+        return musics[CurrentMusicID].source.isPlaying;
     }
 }

@@ -11,7 +11,11 @@ public class CountDown : MonoBehaviour
     public float timeRemaining;
     public TextMeshProUGUI timerText; // Reference to the UI Text component
     public Image Bar;
+    [SerializeField] private AudioClip CountdownClip;
+    [SerializeField] AudioSettingsManager audioSettingsManager;
+    [SerializeField] CropSoundManager cropSoundManager;
     [SerializeField] private RandomSpawn Spawner;
+    [SerializeField] private GameState gameState;
     void Start()
     {
         // Initialize the timer with the specified duration
@@ -22,23 +26,28 @@ public class CountDown : MonoBehaviour
 
     void Update()
     {
-        // Check if there is time remaining
-        if (timeRemaining > 0)
+        if (gameState.GameStart)
         {
-            // Decrease the remaining time
-            timeRemaining -= Time.deltaTime;
+            // Check if there is time remaining
+            if (timeRemaining > 0)
+            {
+                // Decrease the remaining time
+                timeRemaining -= Time.deltaTime;
 
-            // Clamp the time to avoid negative values
-            timeRemaining = Mathf.Max(0, timeRemaining);
+                // Clamp the time to avoid negative values
+                timeRemaining = Mathf.Max(0, timeRemaining);
 
-            // Update the displayed timer text
-            Bar.fillAmount = Mathf.Clamp(timeRemaining / duration, 0, 1);
-            UpdateTimerText();
-        }
-        else
-        {
-            // Optional: Actions to take when the countdown reaches zero
-            TimerEnded();
+                // Update the displayed timer text
+                Bar.fillAmount = Mathf.Clamp(timeRemaining / duration, 0, 1);
+                UpdateTimerText();
+            }
+            //if (timeRemaining == 3)
+                //cropSoundManager.PlaySoundFXClip(CountdownClip, transform, audioSettingsManager.GetSFX());
+            else
+            {
+                // Optional: Actions to take when the countdown reaches zero
+                TimerEnded();
+            }
         }
     }
 

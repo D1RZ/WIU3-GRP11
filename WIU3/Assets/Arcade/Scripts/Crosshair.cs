@@ -11,32 +11,41 @@ public class Crosshair : MonoBehaviour
     private List<GameObject> bacterialInsights = new List<GameObject>(); // List to track targetable objects
     private bool isEnter = false; // Check if the mouse is over a target
     [SerializeField] private CountDown countdown;
-
+    [SerializeField] private AudioClip ShootClip;
+    [SerializeField] AudioSettingsManager audioSettingsManager;
+    [SerializeField] CropSoundManager cropSoundManager;
     [SerializeField] private RandomSpawn Percentage;
-
+    [SerializeField] private GameState gameState;
     void Update()
     {
-        IsShooting = Input.GetMouseButtonDown(0);
-
-        // Get the mouse position in screen coordinates
-        Vector3 mousePos = Input.mousePosition;
-
-        // Convert the mouse position to world coordinates
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        mousePos.z = 0; // Set the Z position to the same as the sprite (2D game)
-
-        // Center the sprite on the mouse cursor
-        transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
-
-        if (countdown.timeRemaining != 0)
+        if (gameState.GameStart)
         {
-            // Attempt to shoot if conditions are met
-            TryShoot();
+            IsShooting = Input.GetMouseButtonDown(0);
+
+            // Get the mouse position in screen coordinates
+            Vector3 mousePos = Input.mousePosition;
+
+            // Convert the mouse position to world coordinates
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            mousePos.z = 0; // Set the Z position to the same as the sprite (2D game)
+
+            // Center the sprite on the mouse cursor
+            transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
+
+            if (countdown.timeRemaining != 0)
+            {
+                // Attempt to shoot if conditions are met
+                TryShoot();
+            }
         }
     }
 
     private void TryShoot()
     {
+        if(IsShooting)
+        {
+            //cropSoundManager.PlaySoundFXClip(ShootClip, transform, audioSettingsManager.GetSFX());
+        }
         if (isEnter && IsShooting)
         {
             // Log the count of bacterialInsights before accessing it

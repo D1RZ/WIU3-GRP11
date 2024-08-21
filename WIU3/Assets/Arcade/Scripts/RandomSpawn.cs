@@ -19,17 +19,28 @@ public class RandomSpawn : MonoBehaviour
     public GameObject crosshair;
     public GameObject EndgameUi;
     [SerializeField] private CountDown CountDown;
-
+    [SerializeField] private AudioClip BacterialClip;
+    [SerializeField] AudioSettingsManager audioSettingsManager;
+    [SerializeField] CropSoundManager cropSoundManager;
+    [SerializeField] private GameState gameState;
+    private bool onetime = true;
     void Start()
     {
         // Get the BoxCollider attached to the GameObject this script is attached to
         area = GetComponent<BoxCollider2D>();
         totalAllowedSpawns = Mathf.FloorToInt(CountDown.duration / spawnInterval);
         // Start the spawning process
-        StartGame();
     }
     private void Update()
     {
+        if (onetime)
+        {
+            if (gameState.GameStart)
+            {
+                StartGame();
+                onetime =false;
+            }
+        }
         if (EndGamed == true)
         {
             CancelInvoke("SpawnPrefab");
@@ -48,6 +59,7 @@ public class RandomSpawn : MonoBehaviour
         // Instantiate the prefab at the random position
         Debug.Log("Spawned");
         GameObject newBacterial = Instantiate(prefabToSpawn, randomPosition, Quaternion.identity);
+        //cropSoundManager.PlaySoundFXClip(BacterialClip, transform, audioSettingsManager.GetSFX());
         Bacterials.Add(newBacterial); // Add to the List
         bacterialspawned++;
     }
@@ -87,7 +99,7 @@ public class RandomSpawn : MonoBehaviour
     public void StartGame()
     {
         EndgameUi.SetActive(false);
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 4; i++)
         {
             SpawnPrefab();
         }

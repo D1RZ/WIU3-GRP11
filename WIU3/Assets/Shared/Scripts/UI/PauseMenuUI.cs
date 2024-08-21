@@ -137,4 +137,8 @@ public class PauseMenuUI : MonoBehaviour
             yield return null; // Wait until the input is detected
         }
     }
+    public void BackToArcade()
+    {
+        SceneManager.LoadScene("Arcade", LoadSceneMode.Single);
+    }
 }
