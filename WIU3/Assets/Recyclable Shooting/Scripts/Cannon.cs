@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ public class Cannon : MonoBehaviour
         ChangeRecyclableData();
 
         lr = GetComponent<LineRenderer>();
-        AimPosition = Vector2.zero;
+        AimPosition = Vector2.right;
         shotPower = 0;
         RecyclableRigidBody2D = RecyclableObject.GetComponent<Rigidbody2D>();
     }
@@ -49,6 +50,8 @@ public class Cannon : MonoBehaviour
         {
             // Check where the mouse is aiming
             AimPosition = (mousePosition() - transform.position).normalized;
+
+            Debug.Log(AimPosition);
 
             // Increase the shot power over time
             shotPower = Mathf.Lerp(shotPower, maxPower, maxPowerSpeed * Time.deltaTime);
@@ -97,7 +100,7 @@ public class Cannon : MonoBehaviour
 
     public void ChangeRecyclableData()
     {
-        int randomIndex = Random.Range(0, recyclableDatas.Length);
+        int randomIndex = UnityEngine.Random.Range(0, recyclableDatas.Length);
         currentRecyclableData = recyclableDatas[randomIndex];
         currentRecyclableImage.GetComponent<Image>().sprite = currentRecyclableData.Image;
     }
