@@ -20,6 +20,17 @@ public class CountDown : MonoBehaviour
     [SerializeField] GameObject Star1;
     [SerializeField] GameObject Star2;
     [SerializeField] GameObject Star3;
+
+    bool Star1AnimFinished = false;
+
+    bool Star2AnimFinished = false;
+
+    bool Star3AnimFinished = false;
+
+    float animTimeElapsed = 0;
+
+    float AnimCooldownTimer = 0.5f;
+
     void Start()
     {
         // Initialize the timer with the specified duration
@@ -67,23 +78,125 @@ public class CountDown : MonoBehaviour
 
     void TimerEnded()
     {
+        if (AnimCooldownTimer > 0)
+            AnimCooldownTimer -= Time.deltaTime;
+
         // Actions to perform when the timer ends
-        if((float)Spawner.KillCount / Spawner.Bacterials.Count * 100 <= 50)
+        if ((float)Spawner.KillCount / Spawner.Bacterials.Count * 100 <= 50)
         {
-            // Input Star1
+            if (!Star1AnimFinished && AnimCooldownTimer <= 0) // 1 stars
+            {
+                Star1.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star1.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star1AnimFinished = true;
+                    animTimeElapsed = 0;
+                    AnimCooldownTimer = 1;
+                }
+            }
         }
         else if((float)Spawner.KillCount / Spawner.Bacterials.Count * 100 <= 75)
         {
-            // Input Star2
+            if (!Star1AnimFinished && AnimCooldownTimer <= 0)
+            {
+                Star1.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star1.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star1AnimFinished = true;
+                    animTimeElapsed = 0;
+                    AnimCooldownTimer = 1;
+                }
+            }
+            else if (Star1AnimFinished && !Star2AnimFinished && AnimCooldownTimer <= 0)
+            {
+                Star2.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star2.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star2AnimFinished = true;
+                    animTimeElapsed = 0;
+                    AnimCooldownTimer = 1;
+                }
+            }
         }
         else
         {
-            //input Star 3
+            if (!Star1AnimFinished && AnimCooldownTimer <= 0)
+            {
+                Star1.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star1.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star1AnimFinished = true;
+                    animTimeElapsed = 0;
+                    AnimCooldownTimer = 1;
+                }
+            }
+            else if (Star1AnimFinished && !Star2AnimFinished && AnimCooldownTimer <= 0)
+            {
+                Star2.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star2.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star2AnimFinished = true;
+                    animTimeElapsed = 0;
+                    AnimCooldownTimer = 1;
+                }
+            }
+            else if (Star2AnimFinished && !Star3AnimFinished && AnimCooldownTimer <= 0)
+            {
+                Star3.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star3.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star3AnimFinished = true;
+                    animTimeElapsed = 0;
+                }
+            }
         }
         Spawner.EndGame();
         Debug.Log("Countdown finished!");
         // You can add more actions here, such as stopping the game or triggering an event
     }
+
     public void Replay()
     {
         duration = SetDuration;

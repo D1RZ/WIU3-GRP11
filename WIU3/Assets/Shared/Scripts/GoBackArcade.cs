@@ -8,6 +8,7 @@ public class GoBackArcade : SceneLoader
  
     public void LoadArcadeScene()
     {
+        Time.timeScale = 1f;
       LoadScene("Arcade");
     }
 }
