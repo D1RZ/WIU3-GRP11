@@ -180,7 +180,7 @@ public class GameController : MonoBehaviour
             if (AnimCooldownTimer > 0)
                 AnimCooldownTimer -= Time.deltaTime;
 
-            // Check score
+            // Check score and give stars
             if (_timeRemaining <= 0 && !Star1AnimFinished && AnimCooldownTimer <= 0) // 1 stars
             {
                 Star1.SetActive(true);
