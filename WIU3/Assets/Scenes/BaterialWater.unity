@@ -260,6 +260,11 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &154514425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 174001816324431460, guid: 614d00027ae0b534196ecb02fe3c453c, type: 3}
+  m_PrefabInstance: {fileID: 624228941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &200178077
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +529,7 @@ MonoBehaviour:
   Percentage: {fileID: 2044755038}
   crosshair: {fileID: 1506295027}
   EndgameUi: {fileID: 304360507}
+  DarkEndGameUI: {fileID: 154514425}
   CountDown: {fileID: 1164167610}
   BacterialClip: {fileID: 8300000, guid: db095e3374ad5a842810703fa10922e5, type: 3}
   EndgameClip: {fileID: 8300000, guid: d52dc65dc0423e54ea3ffbfe0481adb5, type: 3}
