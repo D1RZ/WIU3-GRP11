@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class RecyclingGameManager : MonoBehaviour
 {
+    public bool stopActions;
 
     [SerializeField] private GameObject BGMObject;
     [SerializeField] private GameObject EndSoundObject;
@@ -36,6 +37,7 @@ public class RecyclingGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stopActions = false;
         doublePoints = false;
 
         score = 0;
@@ -92,7 +94,7 @@ public class RecyclingGameManager : MonoBehaviour
         if(_timeRemaining <= 0)
         {
             timer.text = string.Format("{0}:{1:00}", 0, 0);
-            Time.timeScale = 0;
+            stopActions = true;
             WhichQuote();
             ChangeMusic();
             finalScore.text = "Score: " + score;
@@ -101,7 +103,7 @@ public class RecyclingGameManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1;
+            stopActions = false;
         }
     }
 

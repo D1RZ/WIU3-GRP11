@@ -3394,7 +3394,7 @@ PrefabInstance:
       objectReference: {fileID: 505755514}
     - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
       propertyPath: _timeRemaining
-      value: 150
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
       propertyPath: Hoops.Array.size
@@ -3561,6 +3561,10 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: -3347509419915923913, guid: b8e9ec182f9092849bceb7dd8f088bf9, type: 2}
+    - target: {fileID: 7598260908173697035, guid: fb35d9cef3e11ea44ac350c6e4d2cce0, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 818936939}
     - target: {fileID: 7598260908173697035, guid: fb35d9cef3e11ea44ac350c6e4d2cce0, type: 3}
       propertyPath: currentRecyclableImage
       value: 
