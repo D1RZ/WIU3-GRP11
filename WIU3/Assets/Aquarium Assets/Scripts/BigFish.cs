@@ -26,6 +26,7 @@ public class BigFish : MonoBehaviour
     private int smallFishEaten = 0;
     private float timeSinceLastEat = 0f; // Timer for tracking time since last eat
     private float timeAlive;
+    private bool isChasing = false;
 
     [SerializeField] private float roamingSpeed = 1f;
     [SerializeField] private float eatingSpeed = 3f; // Burst speed when chasing small fish
@@ -105,6 +106,8 @@ public class BigFish : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
         if (distanceToTarget <= 0.01f) // Start waiting when fish reach target position
             StartCoroutine(WaitBeforeNextMove());
+
+        isChasing = false;
     }
 
     private void Eat()
@@ -112,8 +115,11 @@ public class BigFish : MonoBehaviour
         if (targetFood != null) // If food still exists
         {
             transform.position = Vector2.MoveTowards(transform.position, targetFood.transform.position, eatingSpeed * Time.deltaTime);
-            cropSoundManager.PlaySoundFXClip(fishDashSound, transform, audioSettingsManager.GetSFX());
-
+            if (isChasing == false)
+            {
+                cropSoundManager.PlaySoundFXClip(fishDashSound, transform, audioSettingsManager.GetSFX());
+                isChasing = true;
+            }
             if (Vector2.Distance(transform.position, targetFood.transform.position) <= 0.5f) // When gets within range to eat food
             {
                 Destroy(targetFood.gameObject);

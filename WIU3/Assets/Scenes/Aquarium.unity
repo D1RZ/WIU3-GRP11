@@ -1168,7 +1168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2425264924677736605, guid: 720f8b89512267641908162f6acaf931, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.5913239
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 2425264924677736605, guid: 720f8b89512267641908162f6acaf931, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4406,7 +4406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5779166a6cdfb0845a0659aa72adb3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  gameController: {fileID: 2000198144}
   floatingPlant: {fileID: 5452915179451425753, guid: ba35980d3348d8d4f8a2b15d3cf498f0, type: 3}
   spawnArea: {fileID: 1334301930}
   minSpawnInterval: 6
