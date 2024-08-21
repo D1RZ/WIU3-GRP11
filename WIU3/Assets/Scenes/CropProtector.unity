@@ -935,10 +935,10 @@ MonoBehaviour:
   Star1: {fileID: 1098436628}
   Star2: {fileID: 1042207375}
   Star3: {fileID: 916953436}
-  LocusWave2MaxCount: 10
+  LocusWave2MaxCount: 5
   LocustSpawnCount: 0
-  LocustMaxCount: 5
-  LocustCount: 5
+  LocustMaxCount: 4
+  LocustCount: 4
 --- !u!114 &674252279
 MonoBehaviour:
   m_ObjectHideFlags: 0

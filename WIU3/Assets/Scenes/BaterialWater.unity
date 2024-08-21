@@ -1563,6 +1563,11 @@ PrefabInstance:
     - target: {fileID: 7450556004697938630, guid: 614d00027ae0b534196ecb02fe3c453c, type: 3}
       propertyPath: m_SizeDelta.y
       value: -54.66165
+      value: 0.00012207
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450556004697938630, guid: 614d00027ae0b534196ecb02fe3c453c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.0020142
       objectReference: {fileID: 0}
     - target: {fileID: 7450556004697938630, guid: 614d00027ae0b534196ecb02fe3c453c, type: 3}
       propertyPath: m_LocalScale.x
@@ -1606,11 +1611,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7450556004697938630, guid: 614d00027ae0b534196ecb02fe3c453c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0025024414
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 7450556004697938630, guid: 614d00027ae0b534196ecb02fe3c453c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0025024414
+      value: 0.0009765625
       objectReference: {fileID: 0}
     - target: {fileID: 7450556004697938630, guid: 614d00027ae0b534196ecb02fe3c453c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2012,6 +2017,9 @@ RectTransform:
   m_AnchoredPosition: {x: 69.001015, y: -86}
   m_SizeDelta: {x: 358.31, y: 26.229599}
   m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 74.206055, y: -70}
+  m_SizeDelta: {x: 358.31, y: 26.229614}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &903943771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2377,6 +2385,11 @@ RectTransform:
   m_AnchoredPosition: {x: 357.5, y: -88.5}
   m_SizeDelta: {x: 63.929703, y: 21.822998}
   m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -192.95776, y: -60}
+  m_SizeDelta: {x: 63.9297, y: 21.822998}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1488913057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2887,6 +2900,9 @@ RectTransform:
   m_AnchoredPosition: {x: 69, y: -86}
   m_SizeDelta: {x: 358.3071, y: 26.229599}
   m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 74.20459, y: -70}
+  m_SizeDelta: {x: 358.3071, y: 26.229614}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1879919444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3120,9 +3136,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 46.084015, y: -116}
-  m_SizeDelta: {x: 110.81, y: 15.354599}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 42, y: -103}
+  m_SizeDelta: {x: 110.81, y: 15.354614}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2044755038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3407,7 +3423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5175849200609019719, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -144.61874
+      value: -197
       objectReference: {fileID: 0}
     - target: {fileID: 5175849200609019719, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3422,12 +3438,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5647101162062870645, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647101162062870645, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1164167612}
     - target: {fileID: 5647101162062870645, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadArcadeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647101162062870645, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GoBackArcade, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5647101162062870645, guid: f1938f3fa49c30e42a7f11721e4fe84a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -5798,6 +5822,7 @@ MonoBehaviour:
   DialogueTexter: {fileID: 0}
   AutoScrollEnabled: 0
   AudioMenuUI: {fileID: 842582383}
+  AudioMenuUI: {fileID: 0}
 --- !u!222 &1818620168675333240
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11633,9 +11658,11 @@ RectTransform:
   - {fileID: 1893739704}
   - {fileID: 842582382}
   - {fileID: 1879919443}
-  - {fileID: 903943770}
   - {fileID: 2044755037}
+  - {fileID: 903943770}
   - {fileID: 1488913056}
+  - {fileID: 781205003}
+  - {fileID: 1893739704}
   - {fileID: 2931136753406776102}
   - {fileID: 1541701928202456893}
   - {fileID: 1587307340563630174}
