@@ -6726,6 +6726,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 848152546364441210, guid: 627859b315e2a7149a559ce1681c9bed, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 956760824351974529, guid: 627859b315e2a7149a559ce1681c9bed, type: 3}
       propertyPath: m_Name
       value: MusicManager
@@ -6734,6 +6738,18 @@ PrefabInstance:
       propertyPath: MusicText
       value: 
       objectReference: {fileID: 375630818869346296}
+    - target: {fileID: 2813163291603077877, guid: 627859b315e2a7149a559ce1681c9bed, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701023990899579046, guid: 627859b315e2a7149a559ce1681c9bed, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6287002530844819277, guid: 627859b315e2a7149a559ce1681c9bed, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9100744585556201515, guid: 627859b315e2a7149a559ce1681c9bed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 356.8658

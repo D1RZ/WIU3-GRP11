@@ -21,7 +21,10 @@ public class MusicManager : MonoBehaviour
     }
     private void Update()
     {
-        //MusicText.text = musics[CurrentMusicID].clip.ToString();
+        if(MusicText != null)
+        {
+            MusicText.text = musics[CurrentMusicID].clip.ToString();
+        }
     }
 
     public void NextMusic()

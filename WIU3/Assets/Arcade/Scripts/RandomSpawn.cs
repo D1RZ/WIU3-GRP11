@@ -18,6 +18,7 @@ public class RandomSpawn : MonoBehaviour
     private bool EndGamed = false;
     public GameObject crosshair;
     public GameObject EndgameUi;
+    public GameObject DarkEndGameUI;
     [SerializeField] private CountDown CountDown;
     [SerializeField] private AudioClip BacterialClip;
     [SerializeField] private AudioClip EndgameClip;
@@ -97,10 +98,12 @@ public class RandomSpawn : MonoBehaviour
         cropSoundManager.PlaySoundFXClip(EndgameClip, transform, audioSettingsManager.GetSFX());
         EndGamed = true;
         Time.timeScale = 1f;
+        DarkEndGameUI.SetActive(true);
         EndgameUi.SetActive(true);
     }
     public void StartGame()
     {
+        DarkEndGameUI.SetActive(false);
         EndgameUi.SetActive(false);
         for (int i = 0; i < 10; i++)
         {
