@@ -103,6 +103,16 @@ public class GameManager : MonoBehaviour
         Star2.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
 
         Star3.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+
+         for (int i = 0; i < enemySpawners.Count; i++)
+         {
+             enemySpawners[i].SetActive(false);
+         }
+         
+         for (int i = 0; i < 3; i++)
+         {
+             enemySpawners[i].SetActive(true);
+         }
     }
 
     // Update is called once per frame
@@ -171,8 +181,11 @@ public class GameManager : MonoBehaviour
             LocustMaxCount = LocusWave2MaxCount;
             LocustCount = LocustMaxCount;
             LocustSpawnCount = 0;
-            enemySpawners[1].SetActive(true);
-            enemySpawners[4].SetActive(true);
+            if(CurrentWave == 2)
+            {
+                enemySpawners[3].SetActive(true);
+                enemySpawners[4].SetActive(true);
+            }
         }
         else if(LocustCount == 0 && CurrentWave == 2)
         {
