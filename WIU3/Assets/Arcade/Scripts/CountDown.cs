@@ -23,6 +23,10 @@ public class CountDown : MonoBehaviour
     [SerializeField] GameObject Star2;
     [SerializeField] GameObject Star3;
 
+    [SerializeField] GameObject IngameBGM;
+
+    [SerializeField] GameObject VictoryBGM;
+
     bool Star1AnimFinished = false;
 
     bool Star2AnimFinished = false;
@@ -69,6 +73,8 @@ public class CountDown : MonoBehaviour
                     cropSoundManager.PlaySoundFXClip(CountdownClip, transform, audioSettingsManager.GetSFX());
                 if (timeRemaining == 0)
                 {
+                    IngameBGM.SetActive(false);
+                    VictoryBGM.SetActive(true);
                     // Optional: Actions to take when the countdown reaches zero
                     TimerEnded();
                 }

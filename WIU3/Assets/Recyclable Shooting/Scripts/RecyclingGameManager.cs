@@ -36,6 +36,22 @@ public class RecyclingGameManager : MonoBehaviour
 
     private AudioSettingsManager audioSettingsManager;
 
+    [SerializeField] GameObject Star1;
+
+    [SerializeField] GameObject Star2;
+
+    [SerializeField] GameObject Star3;
+
+    bool Star1AnimFinished = false;
+
+    bool Star2AnimFinished = false;
+
+    bool Star3AnimFinished = false;
+
+    float animTimeElapsed = 0;
+
+    float AnimCooldownTimer = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,11 +119,11 @@ public class RecyclingGameManager : MonoBehaviour
         {
             timer.text = string.Format("{0}:{1:00}", 0, 0);
             stopActions = true;
-            WhichQuote();
             ChangeMusic();
             finalScore.text = "Score: " + score;
             MakeScreenDarkerPanel.SetActive(true);
             EndGameUI.SetActive(true);
+            WhichQuote();
         }
         else
         {
@@ -117,6 +133,9 @@ public class RecyclingGameManager : MonoBehaviour
 
     private void WhichQuote()
     {
+        if (AnimCooldownTimer > 0)
+            AnimCooldownTimer -= Time.deltaTime;
+
         if (score < 15)
         {
             bannerText.text = quotes[0];
@@ -125,16 +144,118 @@ public class RecyclingGameManager : MonoBehaviour
         {
             bannerText.text = quotes[1];
 
+            if (!Star1AnimFinished && AnimCooldownTimer <= 0)
+            {
+                Star1.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star1.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star1AnimFinished = true;
+                    animTimeElapsed = 0;
+                    AnimCooldownTimer = 1;
+                }
+            }
         }
         else if (score >= 35 && score < 65)
         {
             bannerText.text = quotes[2];
 
+            if (!Star1AnimFinished && AnimCooldownTimer <= 0)
+            {
+                Star1.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star1.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star1AnimFinished = true;
+                    animTimeElapsed = 0;
+                    AnimCooldownTimer = 1;
+                }
+            }
+            else if (Star1AnimFinished && !Star2AnimFinished && AnimCooldownTimer <= 0)
+            {
+                Star2.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star2.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star2AnimFinished = true;
+                    animTimeElapsed = 0;
+                    AnimCooldownTimer = 1;
+                }
+            }
         }
         else if (score >= 65)
         {
             bannerText.text = quotes[3];
 
+
+            if (!Star1AnimFinished && AnimCooldownTimer <= 0)
+            {
+                Star1.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star1.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star1AnimFinished = true;
+                    animTimeElapsed = 0;
+                    AnimCooldownTimer = 1;
+                }
+            }
+            else if (Star1AnimFinished && !Star2AnimFinished && AnimCooldownTimer <= 0)
+            {
+                Star2.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star2.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star2AnimFinished = true;
+                    animTimeElapsed = 0;
+                    AnimCooldownTimer = 1;
+                }
+            }
+            else if (Star2AnimFinished && !Star3AnimFinished && AnimCooldownTimer <= 0)
+            {
+                Star3.SetActive(true);
+
+                animTimeElapsed += Time.deltaTime;
+
+                if (animTimeElapsed < 1)
+                {
+                    Star3.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(new Vector2(0, 0), new Vector2(100, 100), animTimeElapsed / 1);
+                }
+                else
+                {
+                    Star3AnimFinished = true;
+                    animTimeElapsed = 0;
+                }
+            }
         }
     }
 
@@ -163,11 +284,9 @@ public class RecyclingGameManager : MonoBehaviour
 
     private void ChangeMusic()
     {
-        BGMObject.GetComponent<AudioSource>().Stop();
         BGMObject.SetActive(false);
 
         EndSoundObject.SetActive(true);
-        EndSoundObject.GetComponent<AudioSource>().Play();
     }
     public void Replay()
     {
