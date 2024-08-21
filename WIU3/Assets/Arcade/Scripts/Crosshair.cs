@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class Crosshair : MonoBehaviour
     private bool IsShooting = false;
     private List<GameObject> bacterialInsights = new List<GameObject>(); // List to track targetable objects
     private bool isEnter = false; // Check if the mouse is over a target
+    [SerializeField] private CountDown countdown;
 
     [SerializeField] private RandomSpawn Percentage;
 
@@ -26,8 +28,11 @@ public class Crosshair : MonoBehaviour
         // Center the sprite on the mouse cursor
         transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
 
-        // Attempt to shoot if conditions are met
-        TryShoot();
+        if (countdown.timeRemaining != 0)
+        {
+            // Attempt to shoot if conditions are met
+            TryShoot();
+        }
     }
 
     private void TryShoot()

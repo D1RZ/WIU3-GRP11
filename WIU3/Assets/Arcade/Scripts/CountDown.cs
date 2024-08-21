@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour
 {
+    private float SetDuration;
     public float duration = 60f; // Set the countdown duration in seconds
     public float timeRemaining;
     public TextMeshProUGUI timerText; // Reference to the UI Text component
@@ -14,6 +15,7 @@ public class CountDown : MonoBehaviour
     void Start()
     {
         // Initialize the timer with the specified duration
+        SetDuration = duration;
         timeRemaining = duration;
         UpdateTimerText();
     }
@@ -56,5 +58,17 @@ public class CountDown : MonoBehaviour
         Spawner.EndGame();
         Debug.Log("Countdown finished!");
         // You can add more actions here, such as stopping the game or triggering an event
+    }
+    public void Replay()
+    {
+        duration = SetDuration;
+        // Initialize the timer with the specified duration
+        timeRemaining = duration;
+        UpdateTimerText();
+        foreach (var bacterial in Spawner.Bacterials)
+        {
+            Destroy(bacterial.gameObject);
+        }
+        Spawner.StartGame();
     }
 }

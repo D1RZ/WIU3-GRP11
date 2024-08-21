@@ -26,12 +26,7 @@ public class RandomSpawn : MonoBehaviour
         area = GetComponent<BoxCollider2D>();
         totalAllowedSpawns = Mathf.FloorToInt(CountDown.duration / spawnInterval);
         // Start the spawning process
-        for(int i =0; i < 20; i++)
-        {
-            SpawnPrefab();
-        }
-        InvokeRepeating("SpawnPrefab", 0f, spawnInterval);
-        InvokeRepeating("TimesUP", 0f, DeathInterval);
+        StartGame();
     }
     private void Update()
     {
@@ -88,5 +83,16 @@ public class RandomSpawn : MonoBehaviour
         EndGamed = true;
         Time.timeScale = 1f;
         EndgameUi.SetActive(true);
+    }
+    public void StartGame()
+    {
+        EndgameUi.SetActive(false);
+        for (int i = 0; i < 20; i++)
+        {
+            SpawnPrefab();
+        }
+        KillCount = 0;
+        InvokeRepeating("SpawnPrefab", 0f, spawnInterval);
+        InvokeRepeating("TimesUP", 0f, DeathInterval);
     }
 }

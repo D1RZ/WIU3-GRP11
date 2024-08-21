@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.PlasticSCM.Editor.WebApi;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenuUI : MonoBehaviour
 {
@@ -14,10 +17,11 @@ public class PauseMenuUI : MonoBehaviour
     public GameObject OptionmenuUI;
     public GameObject ControlmenuUI;
     public GameObject CreditmenuUI;
+    public AutoScroll ScrollCs;
     public GameObject pauseMenuUI;
     public GameObject DialogueUI;
     public TextMeshProUGUI DialogueTexter;
-    
+    public bool AutoScrollEnabled = false;
     // Update is called once per frame
     void Update()
     {
@@ -25,7 +29,7 @@ public class PauseMenuUI : MonoBehaviour
         {
             if (GameIsPaused)
                 Resume();
-            if (OtherMenuopened)
+            else if (OtherMenuopened)
                 back(CurrentGameMenu);
             else
                 Pause();
@@ -66,6 +70,7 @@ public class PauseMenuUI : MonoBehaviour
         CurrentGameMenu = CreditmenuUI;
         OtherMenuopened = true;
         CreditmenuUI.SetActive(true);
+        AutoScrollEnabled = true;
         pauseMenuUI.SetActive(false);
         Debug.Log("Loading Credits....");
     }
@@ -78,6 +83,10 @@ public class PauseMenuUI : MonoBehaviour
     public void back(GameObject CurrentGameMenuUI)
     {
         Pause();
+        if (CurrentGameMenuUI == CreditmenuUI)
+        {
+            AutoScrollEnabled = false;
+        }
         CurrentGameMenuUI.SetActive(false);
     }
     public void TextPlay(string DialogueText)
