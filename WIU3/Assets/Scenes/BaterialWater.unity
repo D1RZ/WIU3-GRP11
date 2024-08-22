@@ -694,6 +694,12 @@ MonoBehaviour:
   audioSettingsManager: {fileID: 842582384}
   cropSoundManager: {fileID: 864677798}
   gameState: {fileID: 1164167611}
+  Currentspeed: 2
+  movementInterval: 2
+  move: 0.01
+  movementRange: 5
+  randomDirections: []
+  TargetPos: []
 --- !u!61 &496562066
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -781,7 +787,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2513,8 +2519,8 @@ MonoBehaviour:
   Star1: {fileID: 1540607302}
   Star2: {fileID: 1665423032}
   Star3: {fileID: 1876425506}
-  IngameBGM: {fileID: 0}
-  VictoryBGM: {fileID: 0}
+  IngameBGM: {fileID: 527433896}
+  VictoryBGM: {fileID: 313648507}
 --- !u!114 &1164167611
 MonoBehaviour:
   m_ObjectHideFlags: 0
