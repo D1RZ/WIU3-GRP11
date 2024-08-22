@@ -17,6 +17,8 @@ public class JukeBoxTrigger : MonoBehaviour
     {
         isInteract = Input.GetKeyDown(KeyCode.E);
 
+        Debug.Log(JukeboxMenu.activeSelf);
+
         if (isEnter && isInteract)
         {
             // Call Loading Screen here
@@ -25,11 +27,21 @@ public class JukeBoxTrigger : MonoBehaviour
             // Task 2c - Load the scene using SceneManager.LoadScene()
             JukeboxMenu.SetActive(true);
         }
+        else if (!isEnter)
+        {
+            JukeboxMenu.SetActive(false);
+        }
+        else if (isInteract && isEnter && JukeboxMenu.activeSelf == true)
+        {
+            JukeboxMenu.SetActive(false);
+        }
+
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
         isEnter = true;
         Debug.Log("Enter OnTriggerEnter2D");
+
     }
 
     public void OnTriggerExit2D(Collider2D collision)

@@ -48,7 +48,7 @@ public class ArcadePlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", moveDirection.y);
 
 
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
         //if (Input.GetKey(KeyCode.A))
         //{
         //    animator.SetBool("isIdle", false);
