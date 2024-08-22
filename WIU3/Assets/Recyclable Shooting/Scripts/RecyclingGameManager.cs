@@ -265,7 +265,7 @@ public class RecyclingGameManager : MonoBehaviour
         {
             for (int i = 0; i < Hoops.Length; i++)
             {
-                Hoops[i].GetComponent<Hoop>().moveSpeed = 0.3f;
+                Hoops[i].GetComponent<Hoop>().moveSpeed = 0.2f;
             }
         }
         if (_timeRemaining < 30)
@@ -277,7 +277,7 @@ public class RecyclingGameManager : MonoBehaviour
 
             for (int i = 0; i < Hoops.Length; i++)
             {
-                Hoops[i].GetComponent<Hoop>().moveSpeed = 0.65f;
+                Hoops[i].GetComponent<Hoop>().moveSpeed = 0.45f;
             }
         }
     }
