@@ -2012,6 +2012,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09aad02c78d61bd48b82c9c60bbccbbd, type: 3}
+--- !u!114 &1258318298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6557807592029689755, guid: 09aad02c78d61bd48b82c9c60bbccbbd, type: 3}
+  m_PrefabInstance: {fileID: 1258318297}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750645587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f56c71298284f843acac9e671c134f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1504877083
 GameObject:
   m_ObjectHideFlags: 0
@@ -4160,6 +4171,10 @@ PrefabInstance:
       propertyPath: MusicText
       value: 
       objectReference: {fileID: 375630818869346296}
+    - target: {fileID: 2312222724596790462, guid: 627859b315e2a7149a559ce1681c9bed, type: 3}
+      propertyPath: audioSettingsManager
+      value: 
+      objectReference: {fileID: 1258318298}
     - target: {fileID: 2813163291603077877, guid: 627859b315e2a7149a559ce1681c9bed, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0

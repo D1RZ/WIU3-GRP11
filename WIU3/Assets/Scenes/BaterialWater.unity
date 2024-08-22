@@ -823,7 +823,6 @@ GameObject:
   - component: {fileID: 527433905}
   - component: {fileID: 527433904}
   - component: {fileID: 527433903}
-  - component: {fileID: 527433909}
   - component: {fileID: 527433901}
   - component: {fileID: 527433900}
   m_Layer: 0
@@ -995,6 +994,7 @@ MonoBehaviour:
   - MusicId: 7
     clip: {fileID: 8300000, guid: ac4ece2a2ab0ea04d848ce80593d3f60, type: 3}
     source: {fileID: 0}
+  audioSettingsManager: {fileID: 116006375}
 --- !u!82 &527433902
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1667,28 +1667,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &527433909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527433896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc206a59e4bdff468844be451b84962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource:
-  - {fileID: 527433898}
-  - {fileID: 527433902}
-  - {fileID: 527433908}
-  - {fileID: 527433907}
-  - {fileID: 527433906}
-  - {fileID: 527433905}
-  - {fileID: 527433904}
-  - {fileID: 527433903}
-  audioSettingsManager: {fileID: 116006375}
 --- !u!1001 &624228941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2535,8 +2513,8 @@ MonoBehaviour:
   Star1: {fileID: 1540607302}
   Star2: {fileID: 1665423032}
   Star3: {fileID: 1876425506}
-  IngameBGM: {fileID: 527433896}
-  VictoryBGM: {fileID: 313648507}
+  IngameBGM: {fileID: 0}
+  VictoryBGM: {fileID: 0}
 --- !u!114 &1164167611
 MonoBehaviour:
   m_ObjectHideFlags: 0

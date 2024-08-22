@@ -11,7 +11,11 @@ public class MusicManager : MonoBehaviour
     public Music[] musics;
 
     private int CurrentMusicID;
-    private void Awake()
+
+    [SerializeField] AudioSettingsManager audioSettingsManager;
+
+    
+private void Awake()
     {
         foreach (var m in musics)
         {
@@ -25,6 +29,7 @@ public class MusicManager : MonoBehaviour
         {
             MusicText.text = musics[CurrentMusicID].clip.ToString();
         }
+        CheckForVolumeChange();
     }
 
     public void NextMusic()
@@ -88,5 +93,12 @@ public class MusicManager : MonoBehaviour
     public bool CheckCurrentMusicHasStopped()
     {
         return musics[CurrentMusicID].source.isPlaying;
+    }
+    private void CheckForVolumeChange()
+    {
+        foreach(var m in musics)
+        {
+            m.source.volume = audioSettingsManager.GetBGM();
+        }
     }
 }
