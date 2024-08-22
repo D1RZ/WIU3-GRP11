@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -22,16 +23,17 @@ public class SmallFish : MonoBehaviour
 
     private bool isWaiting = false;
     private bool onEatCooldown = false;
+    private bool isDying = false;
     private int foodEaten = 0;
     private float timeSinceLastEat = 0f;
     private float timeAlive;
+    private float lifeSpan;
 
     [SerializeField] private float speed = 2f;
     [SerializeField] private float slowingDistance = 0.5f;
     [SerializeField] private float dieSpeed = 1f; // Speed of the fish sinking when it dies
     [SerializeField] private float detectionRadius = 10f;
     [SerializeField] private float starveTime = 20f;
-    [SerializeField] private float lifeSpan = 40f;
 
     [SerializeField] private AudioClip fishEatingSound;
     [SerializeField] AudioSettingsManager audioSettingsManager;
@@ -54,6 +56,7 @@ public class SmallFish : MonoBehaviour
         PickRandomPoint();
 
         timeAlive = 0f;
+        lifeSpan = UnityEngine.Random.Range(40f, 50f); ;
     }
 
     private void Update()
@@ -166,7 +169,7 @@ public class SmallFish : MonoBehaviour
         onEatCooldown = true;
 
         // Wait for a random time between 3 to 5 seconds
-        float waitTime = Random.Range(3f, 5f);
+        float waitTime = UnityEngine.Random.Range(3f, 5f);
         yield return new WaitForSeconds(waitTime);
 
         onEatCooldown = false;
@@ -210,7 +213,7 @@ public class SmallFish : MonoBehaviour
         isWaiting = true;
 
         // Wait for a random time between 0.2 to 1 seconds
-        float waitTime = Random.Range(0.2f, 1f);
+        float waitTime = UnityEngine.Random.Range(0.2f, 1f);
         yield return new WaitForSeconds(waitTime);
 
         // After waiting, pick a new random point to move to
@@ -243,8 +246,8 @@ public class SmallFish : MonoBehaviour
                     Transform spawnTransform = spawnArea.transform;
 
                     // Get the fish's position and determine a random direction and distance within a 3f radius
-                    Vector2 randomDirection = Random.insideUnitCircle.normalized;
-                    float randomDistance = Random.Range(0.5f, 3f); // Choose a distance within the 3f radius
+                    Vector2 randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
+                    float randomDistance = UnityEngine.Random.Range(1f, 3f); // Choose a distance within the 3f radius
                     Vector2 potentialSpawnPosition = (Vector2)transform.position + randomDirection * randomDistance;
 
                     // Ensure the spawn position is within the bounds of the spawn area
@@ -288,6 +291,9 @@ public class SmallFish : MonoBehaviour
 
     private void DropWaste()
     {
+        if (isDying == true)
+            return;
+
         if (gameObject != null)
         {
             // Start the coroutine to spawn waste after 10 seconds
@@ -300,14 +306,16 @@ public class SmallFish : MonoBehaviour
         if (roamingArea != null)
         {
             Bounds bounds = roamingArea.bounds;
-            float x = Random.Range(bounds.min.x + 1f, bounds.max.x - 1f);
-            float y = Random.Range(bounds.min.y + 1f, bounds.max.y - 1f);
+            float x = UnityEngine.Random.Range(bounds.min.x + 1f, bounds.max.x - 1f);
+            float y = UnityEngine.Random.Range(bounds.min.y + 1f, bounds.max.y - 1f);
             targetPosition = new Vector2(x, y);
         }
     }
 
     private void Die()
     {
+        isDying = true;
+
         // Change the sprite to the gray one
         spriteRenderer.sprite = graySprite;
 

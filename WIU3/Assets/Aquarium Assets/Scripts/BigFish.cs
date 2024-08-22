@@ -23,10 +23,11 @@ public class BigFish : MonoBehaviour
 
     private bool isWaiting = false;
     private bool onEatCooldown = false;
+    private bool isChasing = false;
+    private bool isDying = false;
     private int smallFishEaten = 0;
     private float timeSinceLastEat = 0f; // Timer for tracking time since last eat
     private float timeAlive;
-    private bool isChasing = false;
 
     [SerializeField] private float roamingSpeed = 1f;
     [SerializeField] private float eatingSpeed = 3f; // Burst speed when chasing small fish
@@ -285,6 +286,9 @@ public class BigFish : MonoBehaviour
 
     private void DropWaste()
     {
+        if (isDying == true)
+            return;
+
         // Start the coroutine to spawn waste after 10 seconds
         StartCoroutine(SpawnWaste());
     }
@@ -300,6 +304,8 @@ public class BigFish : MonoBehaviour
 
     private void Die()
     {
+        isDying = true;
+
         // Change the sprite to the gray one
         spriteRenderer.sprite = graySprite;
 
