@@ -23,6 +23,11 @@ public class EnemyHealthBar : MonoBehaviour
             maxHealth = transform.root.gameObject.GetComponent<Mosquito>().MaxHealth;
             currentHealth = transform.root.gameObject.GetComponent<Mosquito>().Health;
         }
+        else if (transform.root.gameObject.tag == "Firefly")
+        {
+            maxHealth = transform.root.gameObject.GetComponent<Firefly>().MaxHealth;
+            currentHealth = transform.root.gameObject.GetComponent<Firefly>().Health;
+        }
 
         slider.value = currentHealth / maxHealth;
     }

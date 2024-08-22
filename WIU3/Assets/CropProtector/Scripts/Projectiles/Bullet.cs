@@ -81,6 +81,33 @@ public class Bullet : MonoBehaviour
                 CropSoundManager.instance.PlaySoundFXClip(DamageSound, transform, AudioSettingsManager.instance.GetSFX());
                 Destroy(gameObject);
             }
+            else if (collision.gameObject.transform.parent.gameObject.tag == "Firefly")
+            {
+                Firefly firefly = collision.gameObject.transform.parent.gameObject.GetComponent<Firefly>();
+
+                if (PlayerController.instance.currentEquippedGun == PlayerController.Gun.Pistol)
+                    firefly.Health -= 25;
+                else if (PlayerController.instance.currentEquippedGun == PlayerController.Gun.Shotgun)
+                {
+                    if (Vector2.Distance(gameObject.transform.position, instantiatedPosition) < 0.5f)
+                        firefly.Health -= 50;
+                    else if (Vector2.Distance(gameObject.transform.position, instantiatedPosition) < 1.5f)
+                        firefly.Health -= 16.67f;
+                    else if (Vector2.Distance(gameObject.transform.position, instantiatedPosition) < 2f)
+                        firefly.Health -= 8.3f;
+                    else if (Vector2.Distance(gameObject.transform.position, instantiatedPosition) < 3f)
+                        firefly.Health -= 5f;
+                    else
+                        firefly.Health -= 1;
+                }
+                else if (PlayerController.instance.currentEquippedGun == PlayerController.Gun.AR)
+                    firefly.Health -= 35;
+
+                firefly.currentState = Firefly.State.Hit;
+
+                CropSoundManager.instance.PlaySoundFXClip(DamageSound, transform, AudioSettingsManager.instance.GetSFX());
+                Destroy(gameObject);
+            }
         }
     }
 }

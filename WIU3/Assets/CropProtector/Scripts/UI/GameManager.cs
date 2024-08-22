@@ -60,9 +60,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int MosquitoWave2MaxCount;
 
+    [SerializeField] private int FireflyWave2MaxCount;
+
     [SerializeField] private int LocusWave3MaxCount;
 
     [SerializeField] private int MosquitoWave3MaxCount;
+
+    [SerializeField] private int FireflyWave3MaxCount;
 
     [SerializeField] private int MaxNoOfWaves;
 
@@ -79,6 +83,12 @@ public class GameManager : MonoBehaviour
     public int MosquitoMaxCount = 0;
 
     public int MosquitoCount = 0;
+
+    public int FireflySpawnCount = 0;
+
+    public int FireflyMaxCount = 0;
+
+    public int FireflyCount = 0;
 
     private float CurrentWave = 1;
 
@@ -125,11 +135,11 @@ public class GameManager : MonoBehaviour
              enemySpawners[i].SetActive(false);
          }
          
-         for (int i = 0; i < 3; i++)
-         {
-             enemySpawners[i].GetComponent<EnemySpawner>().currentSpawnType = EnemySpawner.EnemySpawnType.Locust;
-             enemySpawners[i].SetActive(true);
-         }
+         //for (int i = 0; i < 3; i++)
+         //{
+         //    enemySpawners[i].GetComponent<EnemySpawner>().currentSpawnType = EnemySpawner.EnemySpawnType.Locust;
+         //    enemySpawners[i].SetActive(true);
+         //}
     }
 
     // Update is called once per frame
