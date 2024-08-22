@@ -60,6 +60,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int MosquitoWave2MaxCount;
 
+    [SerializeField] private int LocusWave3MaxCount;
+
+    [SerializeField] private int MosquitoWave3MaxCount;
+
     [SerializeField] private int MaxNoOfWaves;
 
     private AudioSettingsManager audioSettingsManager;
@@ -204,6 +208,16 @@ public class GameManager : MonoBehaviour
                 }
                 enemySpawners[1].GetComponent<EnemySpawner>().currentSpawnType = EnemySpawner.EnemySpawnType.Mosquito;
             }
+            else if(CurrentWave == 3)
+            {
+                LocustMaxCount = LocusWave3MaxCount;
+                MosquitoMaxCount = MosquitoWave3MaxCount;
+                for (int i = 5; i < 7; i++)
+                {
+                    enemySpawners[i].GetComponent<EnemySpawner>().currentSpawnType = EnemySpawner.EnemySpawnType.Mosquito;
+                    enemySpawners[i].SetActive(true);
+                }
+            }
             LocustCount = LocustMaxCount;
             MosquitoCount = MosquitoMaxCount;
             LocustSpawnCount = 0;
@@ -233,11 +247,17 @@ public class GameManager : MonoBehaviour
                }
             }
 
-            bannerText.text = "Well Done!";
-            
+            if (Crop.CropCurrentHealth < 50)
+                bannerText.text = "Good try!";
+            else if (Crop.CropCurrentHealth < 150)
+                bannerText.text = "Almost there!";
+            else
+                bannerText.text = "Well done!";
+
             MakeScreenDarkerPanel.SetActive(true);
             
             EndGameUI.SetActive(true);
+
 
             if (AnimCooldownTimer > 0)
             AnimCooldownTimer -= Time.deltaTime;
@@ -259,7 +279,7 @@ public class GameManager : MonoBehaviour
                     AnimCooldownTimer = 1;
                 }
             }
-            else if(Star1AnimFinished && !Star2AnimFinished && AnimCooldownTimer <= 0 && Crop.CropCurrentHealth >= 50)
+            else if(Star1AnimFinished && !Star2AnimFinished && AnimCooldownTimer <= 0 && Crop.CropCurrentHealth >= 100)
             {
                 Star2.SetActive(true);
 
@@ -276,7 +296,7 @@ public class GameManager : MonoBehaviour
                     AnimCooldownTimer = 1;
                 }
             }
-            else if (Star2AnimFinished && !Star3AnimFinished && AnimCooldownTimer <= 0 && Crop.CropCurrentHealth >= 90)
+            else if (Star2AnimFinished && !Star3AnimFinished && AnimCooldownTimer <= 0 && Crop.CropCurrentHealth >= 150)
             {
                 Star3.SetActive(true);
 

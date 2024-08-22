@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     public EnemySpawnType currentSpawnType;
 
-    private void Start()
+    public void Start()
     {
         SpawnTimer = EnemySpawnRate;
         if (currentSpawnType == EnemySpawnType.Locust)

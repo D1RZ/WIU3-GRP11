@@ -1232,7 +1232,9 @@ MonoBehaviour:
   Star3: {fileID: 916953436}
   LocusWave2MaxCount: 10
   MosquitoWave2MaxCount: 4
-  MaxNoOfWaves: 2
+  LocusWave3MaxCount: 15
+  MosquitoWave3MaxCount: 8
+  MaxNoOfWaves: 3
   LocustSpawnCount: 0
   LocustMaxCount: 5
   LocustCount: 5
