@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,37 +11,42 @@ public class MoveAi : MonoBehaviour
 
     private Vector2 randomDirection;           // Random direction to move
     private float timer;                       // Timer for changing direction
-    [SerializeField] public BoxCollider2D Area;
-    void Start()
+    [SerializeField] private BoxCollider2D Area;
+    public GameObject Spawn;
+    [SerializeField] private GameState game;
+    public void Start()
     {
-        // Initialize the random direction
-        SetRandomDirection();
-    }
-
-    void Update()
-    {
-        // Move the enemy in the random direction
-        transform.Translate(randomDirection * speed * Time.deltaTime);
-        while (Area.OverlapPoint(transform.position))
+        if (game.GameStart)
         {
+            Area = Spawn.GetComponent<BoxCollider2D>();
+            // Initialize the random direction
             SetRandomDirection();
         }
-        // Update the timer
-        timer += Time.deltaTime;
+    }
 
-        // Check if it's time to change direction
-        if (timer >= movementInterval)
+    public void Update()
+    {
+        if(game.GameStart)
         {
-            SetRandomDirection();
-            timer = 0;  // Reset timer
+            // Move the enemy in the random direction
+            transform.position = Vector2.MoveTowards(transform.position, randomDirection, speed * Time.deltaTime);
+
+            // Update the timer
+            timer += Time.deltaTime;
+
+            // Check if it's time to change direction
+            if (timer >= movementInterval)
+            {
+                SetRandomDirection();
+                timer = 0;  // Reset timer
+            }
         }
     }
 
     void SetRandomDirection()
     {
-        // Generate a random point within the movement range
-        float randomX = Random.Range(-movementRange, movementRange);
-        float randomY = Random.Range(-movementRange, movementRange);
-        randomDirection = new Vector2(randomX, randomY).normalized; // Normalize to ensure consistent speed
+        Bounds bounds = Area.bounds;
+        randomDirection.x = Mathf.Clamp(randomDirection.x, bounds.min.x, bounds.max.x);
+        randomDirection.y = Mathf.Clamp(randomDirection.y, bounds.min.y, bounds.max.y);
     }
 }

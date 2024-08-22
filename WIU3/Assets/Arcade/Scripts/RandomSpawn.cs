@@ -26,6 +26,7 @@ public class RandomSpawn : MonoBehaviour
     [SerializeField] AudioSettingsManager audioSettingsManager;
     [SerializeField] CropSoundManager cropSoundManager;
     [SerializeField] private GameState gameState;
+    private MoveAi Move;
     public float Currentspeed = 2f;                  // Speed of the enemy
     public float movementInterval = 2f;       // Time interval to change direction
     public float move = 0.01f;
@@ -53,7 +54,6 @@ public class RandomSpawn : MonoBehaviour
         }
         if (EndGamed == true)
         {
-            CancelInvoke("BaterialMoment");
             CancelInvoke("SpawnPrefab");
             CancelInvoke("TimesUP");
         }
@@ -70,6 +70,7 @@ public class RandomSpawn : MonoBehaviour
         // Instantiate the prefab at the random position
         Debug.Log("Spawned");
         GameObject newBacterial = Instantiate(prefabToSpawn, randomPosition, Quaternion.identity);
+        //prefabToSpawn = newBacterial;
         cropSoundManager.PlaySoundFXClip(BacterialClip, transform, audioSettingsManager.GetSFX());
         Bacterials.Add(newBacterial); // Add to the List
         bacterialspawned++;
@@ -117,49 +118,47 @@ public class RandomSpawn : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             SpawnPrefab();
-            SetRandomTarget();
         }
         KillCount = 0;
         InvokeRepeating("SpawnPrefab", 0f, spawnInterval);
-        InvokeRepeating("BaterialMoment", 1f, move);
         InvokeRepeating("TimesUP", 0f, DeathInterval);
     }
-    private void BaterialMoment()
-    {
-        foreach (var b in Bacterials)
-        {
-            foreach (var T in TargetPos)
-            {
-                if (b != null)
-                    b.transform.position = Vector2.MoveTowards(b.transform.position, T, Currentspeed * Time.deltaTime);
-                Debug.Log(b.transform.position);
-            }
-        }
-        if (timer == movementInterval)
-        {
-            SetRandomTarget();
-            timer = 0;
-        }
-        timer++;
-    }
-    private void SetRandomTarget()
-    {
-        foreach (var T in TargetPos)
-        {
-            int Count = 0;
-            bool Overlap = false;
-            while (Overlap == false)
-            {
-                float randomX = Random.Range(-movementRange, movementRange);
-                float randomY = Random.Range(-movementRange, movementRange);
-                randomDirections[Count] = new Vector2(randomX, randomY).normalized; // Normalize to ensure consistent speed
-                if (!area.OverlapPoint(randomDirections[Count]))
-                    Overlap = true;
-            }
+    //private void BaterialMoment()
+    //{
+    //    foreach (var b in Bacterials)
+    //    {
+    //        foreach (var T in TargetPos)
+    //        {
+    //            if (b != null)
+    //                b.transform.position = Vector2.MoveTowards(b.transform.position, T, Currentspeed * Time.deltaTime);
+    //            Debug.Log(b.transform.position);
+    //        }
+    //    }
+    //    if (timer == movementInterval)
+    //    {
+    //        SetRandomTarget();
+    //        timer = 0;
+    //    }
+    //    timer++;
+    //}
+    //private void SetRandomTarget()
+    //{
+    //    foreach (var T in TargetPos)
+    //    {
+    //        int Count = 0;
+    //        bool Overlap = false;
+    //        while (Overlap == false)
+    //        {
+    //            float randomX = Random.Range(-movementRange, movementRange);
+    //            float randomY = Random.Range(-movementRange, movementRange);
+    //            randomDirections[Count] = new Vector2(randomX, randomY).normalized; // Normalize to ensure consistent speed
+    //            if (!area.OverlapPoint(randomDirections[Count]))
+    //                Overlap = true;
+    //        }
 
-            T.Set(randomDirections[Count].x, randomDirections[Count].y);
-            Count++;
-        }
-    }
+    //        T.Set(randomDirections[Count].x, randomDirections[Count].y);
+    //        Count++;
+    //    }
+    //}
 
 }

@@ -138,7 +138,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4134371671262320343}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3432240c3dca440a1b09e64b9f626a, type: 3}
   m_Name: 
@@ -146,4 +146,6 @@ MonoBehaviour:
   speed: 2
   movementInterval: 2
   movementRange: 5
-  Area: {fileID: 8975861138932531078, guid: c8ff86991a5d9764cb39908c5f83b306, type: 3}
+  Area: {fileID: 2705346854979533768, guid: 7de9414ca864eb3429d0c6ba302ed46d, type: 3}
+  Spawn: {fileID: 1661527869805969487, guid: 7de9414ca864eb3429d0c6ba302ed46d, type: 3}
+  game: {fileID: 2243226967091640976, guid: 860da18c4e5464d408ab8ef0373371b8, type: 3}
