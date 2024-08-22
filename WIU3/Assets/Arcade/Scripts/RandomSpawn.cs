@@ -11,7 +11,7 @@ public class RandomSpawn : MonoBehaviour
     public GameObject prefabToSpawn; // The prefab to spawn
     public float spawnInterval = 2f; // Time interval between spawns
     public float DeathInterval = 2f;
-    private BoxCollider2D area; // The area within which to spawn the prefab
+    public BoxCollider2D area; // The area within which to spawn the prefab
     public List<GameObject> Bacterials = new List<GameObject>(); // Use a List to hold spawned bacteria
     int bacterialcount = 0, bacterialspawned;
     public int KillCount, currentSpawnIndex, totalAllowedSpawns;
