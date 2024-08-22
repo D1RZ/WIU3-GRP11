@@ -3707,7 +3707,7 @@ PrefabInstance:
       objectReference: {fileID: 505755514}
     - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
       propertyPath: _timeRemaining
-      value: 10
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 2916903101235356665, guid: f7601156109dc3040946f0b48994d343, type: 3}
       propertyPath: Hoops.Array.size

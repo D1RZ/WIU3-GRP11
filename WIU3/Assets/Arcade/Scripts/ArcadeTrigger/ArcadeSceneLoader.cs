@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ArcadeSceneLoader : MonoBehaviour
 {
+    [SerializeField] public GameObject playPrompt;
+    private RectTransform rt;
+    [SerializeField] public Vector2 promptPos;
     [SerializeField] string SceneName;
     private bool isInteract = false;
     private bool isEnter = false;
 
     private void Start()
     {
+        rt = playPrompt.GetComponent<RectTransform>();
     }
 
     private void Update()
@@ -30,12 +35,15 @@ public class ArcadeSceneLoader : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         isEnter = true;
+        rt.anchoredPosition = promptPos;
+        playPrompt.SetActive(true);
         //Debug.Log("Enter OnTriggerEnter2D");
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
         isEnter = false;
+        playPrompt.SetActive(false);
         //Debug.Log("Exit OnTrigger");
     }
 

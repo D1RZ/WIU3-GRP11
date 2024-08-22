@@ -26,6 +26,7 @@ public class ArcadePlayerMovement : MonoBehaviour
         speedy = Input.GetAxisRaw("Vertical") * movspeed;
         rb.velocity = new Vector2(speedx, speedy);
 
+        RestrictPlayer();
         //GetMovement();
         CheckDirection();
 
@@ -34,12 +35,12 @@ public class ArcadePlayerMovement : MonoBehaviour
             && !Input.GetKey(KeyCode.S)
             && !Input.GetKey(KeyCode.D))
         {
-            Debug.Log("is not moving");
+            //Debug.Log("is not moving");
             animator.SetBool("IsMoving", false);
         }
         else
         {
-            Debug.Log("is moving");
+            //Debug.Log("is moving");
             animator.SetBool("IsMoving", true);
         }
 
@@ -47,7 +48,7 @@ public class ArcadePlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", moveDirection.y);
 
 
-
+        Debug.Log(transform.position);
         //if (Input.GetKey(KeyCode.A))
         //{
         //    animator.SetBool("isIdle", false);
@@ -141,5 +142,26 @@ public class ArcadePlayerMovement : MonoBehaviour
         }
 
         //Debug.Log(moveDirection);
+    }
+
+    private void RestrictPlayer()
+    {
+        if (transform.position.y > -23.2f)
+        {
+            transform.position = new Vector2(transform.position.x, -23.2f);
+        }
+        if (transform.position.y < -26.0f)
+        {
+            transform.position = new Vector2(transform.position.x, -26.0f);
+        }
+        if (transform.position.x > 125.5f)
+        {
+            transform.position = new Vector2(125.5f, transform.position.y);
+        }
+        if (transform.position.x < 114.5f)
+        {
+            transform.position = new Vector2(114.5f, transform.position.y);
+        }
+
     }
 }
