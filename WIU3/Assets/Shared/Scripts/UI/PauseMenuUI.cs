@@ -65,6 +65,7 @@ public class PauseMenuUI : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        // pul bool var for pause for aquarium here
     }
     public void Options()
     {
