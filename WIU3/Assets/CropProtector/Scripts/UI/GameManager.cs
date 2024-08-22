@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI MosquitoCountText;
 
+    [SerializeField] TextMeshProUGUI FireflyCountText;
+
     [SerializeField] GameObject MakeScreenDarkerPanel;
 
     [SerializeField] GameObject EndGameUI;
@@ -60,13 +62,15 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int MosquitoWave2MaxCount;
 
-    [SerializeField] private int FireflyWave2MaxCount;
-
     [SerializeField] private int LocusWave3MaxCount;
 
     [SerializeField] private int MosquitoWave3MaxCount;
 
-    [SerializeField] private int FireflyWave3MaxCount;
+    [SerializeField] private int LocusWave4MaxCount;
+
+    [SerializeField] private int MosquitoWave4MaxCount;
+
+    [SerializeField] private int FireflyWave4MaxCount;
 
     [SerializeField] private int MaxNoOfWaves;
 
@@ -134,12 +138,12 @@ public class GameManager : MonoBehaviour
          {
              enemySpawners[i].SetActive(false);
          }
-         
-         //for (int i = 0; i < 3; i++)
-         //{
-         //    enemySpawners[i].GetComponent<EnemySpawner>().currentSpawnType = EnemySpawner.EnemySpawnType.Locust;
-         //    enemySpawners[i].SetActive(true);
-         //}
+
+        for (int i = 0; i < 3; i++)
+        {
+            enemySpawners[i].GetComponent<EnemySpawner>().currentSpawnType = EnemySpawner.EnemySpawnType.Locust;
+            enemySpawners[i].SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -203,7 +207,9 @@ public class GameManager : MonoBehaviour
 
         MosquitoCountText.text = MosquitoCount.ToString();
 
-        if (LocustCount == 0 && MosquitoCount == 0 && CurrentWave != MaxNoOfWaves)
+        FireflyCountText.text = FireflyCount.ToString();
+
+        if (LocustCount == 0 && MosquitoCount == 0 && FireflyCount == 0 && CurrentWave != MaxNoOfWaves)
         {
             CurrentWave += 1;
             currentWave.text = CurrentWave.ToString();
@@ -228,12 +234,25 @@ public class GameManager : MonoBehaviour
                     enemySpawners[i].SetActive(true);
                 }
             }
+            else if (CurrentWave == 4)
+            {
+                LocustMaxCount = LocusWave4MaxCount;
+                MosquitoMaxCount = MosquitoWave4MaxCount;
+                FireflyMaxCount = FireflyWave4MaxCount;
+                for (int i = 7; i < 9; i++)
+                {
+                    enemySpawners[i].GetComponent<EnemySpawner>().currentSpawnType = EnemySpawner.EnemySpawnType.Firefly;
+                    enemySpawners[i].SetActive(true);
+                }
+            }
             LocustCount = LocustMaxCount;
             MosquitoCount = MosquitoMaxCount;
+            FireflyCount = FireflyMaxCount;
             LocustSpawnCount = 0;
             MosquitoSpawnCount = 0;
+            FireflySpawnCount = 0;
         }
-        else if(LocustCount == 0 && MosquitoCount == 0 && CurrentWave == MaxNoOfWaves)
+        else if(LocustCount == 0 && MosquitoCount == 0 && FireflyCount == 0 && CurrentWave == MaxNoOfWaves)
         {
             InGameBGM.SetActive(false);
 

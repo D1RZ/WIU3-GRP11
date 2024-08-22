@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Locust: {fileID: 0}
   Mosquito: {fileID: 0}
+  Firefly: {fileID: 0}
   EnemySpawnRate: 10
   gameManager: {fileID: 0}
   currentSpawnType: 0

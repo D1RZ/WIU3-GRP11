@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
         else if (currentSpawnType == EnemySpawnType.Firefly)
         {
             Instantiate(Mosquito, transform.position, Quaternion.identity);
-            gameManager.MosquitoSpawnCount += 1;
+            gameManager.FireflySpawnCount += 1;
         }
     }
 
