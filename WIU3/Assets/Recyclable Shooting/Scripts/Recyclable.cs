@@ -122,7 +122,7 @@ public class Recyclable : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")
         || collision.gameObject.layer == LayerMask.NameToLayer("Recyclable"))
         {
-            sfxAudioSrc.PlayOneShot(GroundAudioClip, 1.0f);
+            sfxAudioSrc.PlayOneShot(GroundAudioClip);
 
             // Call the Despawn method after a delay
             Invoke("Despawn", despawnDelay);
@@ -130,7 +130,7 @@ public class Recyclable : MonoBehaviour
         else
         {
             //recyclable has hit the hoop
-            sfxAudioSrc.PlayOneShot(HoopAudioClip, 1.0f);
+            sfxAudioSrc.PlayOneShot(HoopAudioClip);
 
         }
     }
