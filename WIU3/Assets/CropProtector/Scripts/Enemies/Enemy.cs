@@ -21,4 +21,12 @@ public class Enemy : MonoBehaviour
 
         EnemyGraphic = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
+    public Vector2 PerpendicularRightVector(Vector2 vector2)
+    {
+        return new Vector2(vector2.y,-vector2.x);
+    }
+    public Vector2 PerpendicularLeftVector(Vector2 vector2)
+    {
+        return new Vector2(-vector2.y,vector2.x);
+    }
 }

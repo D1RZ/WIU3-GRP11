@@ -15,7 +15,7 @@ TagManager:
   - Seaweed
   - SpawnArea
   - Mosquito
-  - Unused
+  - Firefly
   layers:
   - Default
   - TransparentFX

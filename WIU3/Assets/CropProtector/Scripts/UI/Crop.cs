@@ -31,6 +31,10 @@ public class Crop : MonoBehaviour
             {
                 collision.gameObject.GetComponent<Mosquito>()._isEating = true;
             }
+            else if (collision.gameObject.tag == "Firefly")
+            {
+                collision.gameObject.GetComponent<Firefly>()._isEating = true;
+            }
         }
     }
 }
