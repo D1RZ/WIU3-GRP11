@@ -27,8 +27,8 @@ public class SmallFish : MonoBehaviour
     private float timeAlive;
 
     [SerializeField] private float speed = 2f;
-    [SerializeField] private float dieSpeed = 1f; // Speed of the fish sinking when it dies
     [SerializeField] private float slowingDistance = 0.5f;
+    [SerializeField] private float dieSpeed = 1f; // Speed of the fish sinking when it dies
     [SerializeField] private float detectionRadius = 10f;
     [SerializeField] private float starveTime = 20f;
     [SerializeField] private float lifeSpan = 40f;

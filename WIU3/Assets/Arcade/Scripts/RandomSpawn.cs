@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 
@@ -25,6 +26,13 @@ public class RandomSpawn : MonoBehaviour
     [SerializeField] AudioSettingsManager audioSettingsManager;
     [SerializeField] CropSoundManager cropSoundManager;
     [SerializeField] private GameState gameState;
+    public float Currentspeed = 2f;                  // Speed of the enemy
+    public float movementInterval = 2f;       // Time interval to change direction
+    public float move = 0.01f;
+    public float movementRange = 5f;
+    public Vector2[] randomDirections; // Use a List to hold spawned bacteria
+    public List<Vector2> TargetPos = new List<Vector2>(); // Use a List to hold spawned bacteria
+    int timer = 0;
     private bool onetime = true;
     void Start()
     {
@@ -40,11 +48,12 @@ public class RandomSpawn : MonoBehaviour
             if (gameState.GameStart)
             {
                 StartGame();
-                onetime =false;
+                onetime = false;
             }
         }
         if (EndGamed == true)
         {
+            CancelInvoke("BaterialMoment");
             CancelInvoke("SpawnPrefab");
             CancelInvoke("TimesUP");
         }
@@ -108,9 +117,49 @@ public class RandomSpawn : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             SpawnPrefab();
+            SetRandomTarget();
         }
         KillCount = 0;
         InvokeRepeating("SpawnPrefab", 0f, spawnInterval);
+        InvokeRepeating("BaterialMoment", 1f, move);
         InvokeRepeating("TimesUP", 0f, DeathInterval);
     }
+    private void BaterialMoment()
+    {
+        foreach (var b in Bacterials)
+        {
+            foreach (var T in TargetPos)
+            {
+                if (b != null)
+                    b.transform.position = Vector2.MoveTowards(b.transform.position, T, Currentspeed * Time.deltaTime);
+                Debug.Log(b.transform.position);
+            }
+        }
+        if (timer == movementInterval)
+        {
+            SetRandomTarget();
+            timer = 0;
+        }
+        timer++;
+    }
+    private void SetRandomTarget()
+    {
+        foreach (var T in TargetPos)
+        {
+            int Count = 0;
+            bool Overlap = false;
+            while (Overlap == false)
+            {
+                float randomX = Random.Range(-movementRange, movementRange);
+                float randomY = Random.Range(-movementRange, movementRange);
+                randomDirections[Count] = new Vector2(randomX, randomY).normalized; // Normalize to ensure consistent speed
+                if (!area.OverlapPoint(randomDirections[Count]))
+                    Overlap = true;
+            }
+
+            T.Set(randomDirections[Count].x, randomDirections[Count].y);
+            Count++;
+        }
+    }
+
 }
