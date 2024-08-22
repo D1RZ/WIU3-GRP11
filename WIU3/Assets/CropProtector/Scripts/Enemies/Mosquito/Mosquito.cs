@@ -83,7 +83,7 @@ public class Mosquito : Enemy
 
         if (health <= 0)
         {
-            gameManager.LocustCount -= 1;
+            gameManager.MosquitoCount -= 1;
             Destroy(gameObject);
         }
 

@@ -45,8 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3949acd6d85227844906ae959f1739fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Locust: {fileID: 2421615643677127529, guid: b7a39f10ea01a384584754d66f4c1afe, type: 3}
+  Locust: {fileID: 0}
+  Mosquito: {fileID: 0}
   EnemySpawnRate: 10
+  gameManager: {fileID: 0}
+  currentSpawnType: 0
 --- !u!212 &5864452440454148419
 SpriteRenderer:
   m_ObjectHideFlags: 0

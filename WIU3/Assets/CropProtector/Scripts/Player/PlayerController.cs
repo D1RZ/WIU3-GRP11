@@ -125,11 +125,6 @@ public class PlayerController : MonoBehaviour
         if (playerData.health <= 0 || PauseMenuUI.instance.GameIsPaused)
             return;
 
-        if (Input.GetKeyDown(KeyCode.I) && audioSettingsPanel.active == false)
-            audioSettingsPanel.SetActive(true);
-        else if (Input.GetKeyDown(KeyCode.I) && audioSettingsPanel.active == true)
-            audioSettingsPanel.SetActive(false);
-
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector2 direction = new Vector2(horizontal, vertical);

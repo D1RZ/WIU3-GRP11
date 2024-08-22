@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI LocustCountText;
 
+    [SerializeField] TextMeshProUGUI MosquitoCountText;
+
     [SerializeField] GameObject MakeScreenDarkerPanel;
 
     [SerializeField] GameObject EndGameUI;
@@ -56,6 +58,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int LocusWave2MaxCount;
 
+    [SerializeField] private int MosquitoWave2MaxCount;
+
+    [SerializeField] private int MaxNoOfWaves;
+
     private AudioSettingsManager audioSettingsManager;
 
     public int LocustSpawnCount = 0;
@@ -63,6 +69,12 @@ public class GameManager : MonoBehaviour
     public int LocustMaxCount = 5;
 
     public int LocustCount = 5;
+
+    public int MosquitoSpawnCount = 0;
+
+    public int MosquitoMaxCount = 0;
+
+    public int MosquitoCount = 0;
 
     private float CurrentWave = 1;
 
@@ -111,6 +123,7 @@ public class GameManager : MonoBehaviour
          
          for (int i = 0; i < 3; i++)
          {
+             enemySpawners[i].GetComponent<EnemySpawner>().currentSpawnType = EnemySpawner.EnemySpawnType.Locust;
              enemySpawners[i].SetActive(true);
          }
     }
@@ -174,20 +187,29 @@ public class GameManager : MonoBehaviour
 
         LocustCountText.text = LocustCount.ToString();
 
-        if (LocustCount == 0 && CurrentWave != 2)
+        MosquitoCountText.text = MosquitoCount.ToString();
+
+        if (LocustCount == 0 && MosquitoCount == 0 && CurrentWave != MaxNoOfWaves)
         {
             CurrentWave += 1;
             currentWave.text = CurrentWave.ToString();
-            LocustMaxCount = LocusWave2MaxCount;
-            LocustCount = LocustMaxCount;
-            LocustSpawnCount = 0;
             if(CurrentWave == 2)
             {
-                enemySpawners[3].SetActive(true);
-                enemySpawners[4].SetActive(true);
+                LocustMaxCount = LocusWave2MaxCount;
+                MosquitoMaxCount = MosquitoWave2MaxCount;
+                for (int i = 3; i < 5; i++)
+                {
+                    enemySpawners[i].GetComponent<EnemySpawner>().currentSpawnType = EnemySpawner.EnemySpawnType.Locust;
+                    enemySpawners[i].SetActive(true);
+                }
+                enemySpawners[1].GetComponent<EnemySpawner>().currentSpawnType = EnemySpawner.EnemySpawnType.Mosquito;
             }
+            LocustCount = LocustMaxCount;
+            MosquitoCount = MosquitoMaxCount;
+            LocustSpawnCount = 0;
+            MosquitoSpawnCount = 0;
         }
-        else if(LocustCount == 0 && CurrentWave == 2)
+        else if(LocustCount == 0 && MosquitoCount == 0 && CurrentWave == MaxNoOfWaves)
         {
             InGameBGM.SetActive(false);
 

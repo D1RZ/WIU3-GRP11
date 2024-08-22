@@ -6,6 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject Locust;
 
+    [SerializeField] private GameObject Mosquito;
+
     [SerializeField] private float EnemySpawnRate;
 
     [SerializeField] private GameManager gameManager;
@@ -23,9 +25,16 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         SpawnTimer = EnemySpawnRate;
-        Instantiate(Locust, transform.position, Quaternion.identity);
-        gameManager.LocustSpawnCount += 1;
-        currentSpawnType = EnemySpawnType.Locust;
+        if (currentSpawnType == EnemySpawnType.Locust)
+        {
+            Instantiate(Locust, transform.position, Quaternion.identity);
+            gameManager.LocustSpawnCount += 1;
+        }
+        else if(currentSpawnType == EnemySpawnType.Mosquito)
+        {
+            Instantiate(Mosquito, transform.position, Quaternion.identity);
+            gameManager.MosquitoSpawnCount += 1;
+        }
     }
 
     // Update is called once per frame
@@ -41,6 +50,20 @@ public class EnemySpawner : MonoBehaviour
                 {
                     Instantiate(Locust, transform.position, Quaternion.identity);
                     gameManager.LocustSpawnCount += 1;
+                    SpawnTimer = EnemySpawnRate;
+                }
+            }
+        }
+        else if (currentSpawnType == EnemySpawnType.Mosquito)
+        {
+            if (gameManager.MosquitoSpawnCount != gameManager.MosquitoMaxCount)
+            {
+                SpawnTimer -= Time.deltaTime;
+
+                if (SpawnTimer <= 0 && gameManager.MosquitoSpawnCount != gameManager.MosquitoMaxCount)
+                {
+                    Instantiate(Mosquito, transform.position, Quaternion.identity);
+                    gameManager.MosquitoSpawnCount += 1;
                     SpawnTimer = EnemySpawnRate;
                 }
             }
